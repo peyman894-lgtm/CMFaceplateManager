@@ -30,7 +30,7 @@ During installation select:
 - ✅ Excellent DLL support
 - ✅ Better than VS Code for WinForms
 
-![Visual Studio project setup](https://github.com/user-attachments/assets/2c155aec-c1bb-4efb-b858-eeff47a42caa)
+
 
 ## Architecture
 
@@ -53,7 +53,7 @@ FaceplateManager.exe
         +--> Open AnalogFaceplate(Tag3)
 ```
 
-![Architecture diagram](https://github.com/user-attachments/assets/ea7c0ac1-4eb6-4233-bc1e-87ae7af2250c)
+
 
 `FaceplateManager.exe` continuously polls the `INDICATOR` tag written by ControlMaestro. Whenever the tag changes, the manager opens the corresponding analog faceplate window for the relevant tag, mirroring the behavior of the original legacy Wizcon addon.
 
