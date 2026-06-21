@@ -1,0 +1,891 @@
+﻿// AnalogFaceplate.Designer.cs
+// Direct translation of the original Delphi Form3 (.dfm) control hierarchy,
+// positions, and sizes into WinForms designer-style InitializeComponent().
+// This IS editable/visible in the Visual Studio Designer view.
+//
+// Original Delphi form: Form3 : TForm3 (analog faceplate - gauge, limits, chart)
+//
+// NOTE: TGauge (Delphi gauge control) has no exact WinForms stock equivalent;
+// ported here as a vertical ProgressBar. Visit the Designer after pasting
+// this in to confirm nesting/positions render as expected, then adjust
+// visually if anything looks off - a 60+ control hand-transcription is a
+// good first draft, not guaranteed pixel-perfect.
+
+namespace CMFaceplateManager
+{
+    partial class AnalogFaceplate
+    {
+        private System.ComponentModel.IContainer components = null;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        private System.Windows.Forms.Panel Panel1;
+        private System.Windows.Forms.Panel P_0;
+        private System.Windows.Forms.Panel Panel3;
+
+        private System.Windows.Forms.Panel Anz_0;
+        private System.Windows.Forms.Label DT_0_X;
+        private System.Windows.Forms.Panel F_0_X;
+        private System.Windows.Forms.Panel Panel6;
+        private System.Windows.Forms.Label Anz_0_X;
+
+        private System.Windows.Forms.Panel Grenz_0;
+        private System.Windows.Forms.Label DT_0_O2;
+        private System.Windows.Forms.Label DT_0_O1;
+        private System.Windows.Forms.Label DT_0_U1;
+        private System.Windows.Forms.Label DT_0_U2;
+        private System.Windows.Forms.Panel PO2_0;
+        private System.Windows.Forms.Label Edit_0_O2;
+        private System.Windows.Forms.Panel PO1_0;
+        private System.Windows.Forms.Label Edit_0_O1;
+        private System.Windows.Forms.Panel PU1_0;
+        private System.Windows.Forms.Label Edit_0_U1;
+        private System.Windows.Forms.Panel PU2_0;
+        private System.Windows.Forms.Label Edit_0_U2;
+
+        private System.Windows.Forms.TextBox WAR_0;
+
+        private System.Windows.Forms.Panel Panel4;
+        private System.Windows.Forms.ProgressBar Gauge0_X;
+        private System.Windows.Forms.Panel P_100;
+        private System.Windows.Forms.Panel P_90;
+        private System.Windows.Forms.Panel P_80;
+        private System.Windows.Forms.Panel P_10;
+        private System.Windows.Forms.Panel P_20;
+        private System.Windows.Forms.Panel P_30;
+        private System.Windows.Forms.Panel P_40;
+        private System.Windows.Forms.Panel P_50;
+        private System.Windows.Forms.Panel P_60;
+        private System.Windows.Forms.Panel P_70;
+
+        private System.Windows.Forms.Panel Panel8;
+        private System.Windows.Forms.Label Z2_0;
+        private System.Windows.Forms.Label Z1_0;
+
+        private System.Windows.Forms.Button Parameter_0;
+
+        private System.Windows.Forms.Panel Panel5;
+        private System.Windows.Forms.Label EINH_0;
+
+        private System.Windows.Forms.Button Grenzwerte_0;
+        private System.Windows.Forms.Button Button1;
+        private System.Windows.Forms.Button Button2;
+        private System.Windows.Forms.TextBox Edit1;
+
+        private System.Windows.Forms.Panel MOS;
+        private System.Windows.Forms.Label StaticText1;
+        private System.Windows.Forms.Button MOS_SET;
+        private System.Windows.Forms.Button MOS_RESET;
+        private System.Windows.Forms.Button CONFIRM;
+        private System.Windows.Forms.Button SwareCtl1;
+        private System.Windows.Forms.Button MOS_Reset3;
+        private System.Windows.Forms.Button MOS_Set3;
+        private System.Windows.Forms.Label StaticText2;
+
+        private System.Windows.Forms.Panel MOS1;
+        private System.Windows.Forms.Button Confirm1;
+        private System.Windows.Forms.Button MOS_RESET1;
+        private System.Windows.Forms.Button MOS_SET1;
+        private System.Windows.Forms.Label StaticText4;
+
+        private System.Windows.Forms.Button LO;
+        private System.Windows.Forms.Button RO;
+
+        private void InitializeComponent()
+        {
+            this.Panel1 = new System.Windows.Forms.Panel();
+            this.P_0 = new System.Windows.Forms.Panel();
+            this.Panel3 = new System.Windows.Forms.Panel();
+            this.Anz_0 = new System.Windows.Forms.Panel();
+            this.DT_0_X = new System.Windows.Forms.Label();
+            this.F_0_X = new System.Windows.Forms.Panel();
+            this.Panel6 = new System.Windows.Forms.Panel();
+            this.Anz_0_X = new System.Windows.Forms.Label();
+            this.Grenz_0 = new System.Windows.Forms.Panel();
+            this.DT_0_O2 = new System.Windows.Forms.Label();
+            this.DT_0_O1 = new System.Windows.Forms.Label();
+            this.DT_0_U1 = new System.Windows.Forms.Label();
+            this.DT_0_U2 = new System.Windows.Forms.Label();
+            this.PO2_0 = new System.Windows.Forms.Panel();
+            this.Edit_0_O2 = new System.Windows.Forms.Label();
+            this.PO1_0 = new System.Windows.Forms.Panel();
+            this.Edit_0_O1 = new System.Windows.Forms.Label();
+            this.PU1_0 = new System.Windows.Forms.Panel();
+            this.Edit_0_U1 = new System.Windows.Forms.Label();
+            this.PU2_0 = new System.Windows.Forms.Panel();
+            this.Edit_0_U2 = new System.Windows.Forms.Label();
+            this.WAR_0 = new System.Windows.Forms.TextBox();
+            this.Panel4 = new System.Windows.Forms.Panel();
+            this.Gauge0_X = new System.Windows.Forms.ProgressBar();
+            this.P_100 = new System.Windows.Forms.Panel();
+            this.P_90 = new System.Windows.Forms.Panel();
+            this.P_80 = new System.Windows.Forms.Panel();
+            this.P_70 = new System.Windows.Forms.Panel();
+            this.P_60 = new System.Windows.Forms.Panel();
+            this.P_50 = new System.Windows.Forms.Panel();
+            this.P_40 = new System.Windows.Forms.Panel();
+            this.P_30 = new System.Windows.Forms.Panel();
+            this.P_20 = new System.Windows.Forms.Panel();
+            this.P_10 = new System.Windows.Forms.Panel();
+            this.Panel8 = new System.Windows.Forms.Panel();
+            this.Z1_0 = new System.Windows.Forms.Label();
+            this.Z2_0 = new System.Windows.Forms.Label();
+            this.Parameter_0 = new System.Windows.Forms.Button();
+            this.Panel5 = new System.Windows.Forms.Panel();
+            this.EINH_0 = new System.Windows.Forms.Label();
+            this.Grenzwerte_0 = new System.Windows.Forms.Button();
+            this.Button1 = new System.Windows.Forms.Button();
+            this.Button2 = new System.Windows.Forms.Button();
+            this.Edit1 = new System.Windows.Forms.TextBox();
+            this.MOS = new System.Windows.Forms.Panel();
+            this.StaticText1 = new System.Windows.Forms.Label();
+            this.MOS_SET = new System.Windows.Forms.Button();
+            this.MOS_RESET = new System.Windows.Forms.Button();
+            this.CONFIRM = new System.Windows.Forms.Button();
+            this.StaticText2 = new System.Windows.Forms.Label();
+            this.MOS_Set3 = new System.Windows.Forms.Button();
+            this.MOS_Reset3 = new System.Windows.Forms.Button();
+            this.SwareCtl1 = new System.Windows.Forms.Button();
+            this.MOS1 = new System.Windows.Forms.Panel();
+            this.StaticText4 = new System.Windows.Forms.Label();
+            this.MOS_SET1 = new System.Windows.Forms.Button();
+            this.MOS_RESET1 = new System.Windows.Forms.Button();
+            this.Confirm1 = new System.Windows.Forms.Button();
+            this.LO = new System.Windows.Forms.Button();
+            this.RO = new System.Windows.Forms.Button();
+            this.Panel1.SuspendLayout();
+            this.P_0.SuspendLayout();
+            this.Panel3.SuspendLayout();
+            this.Anz_0.SuspendLayout();
+            this.Panel6.SuspendLayout();
+            this.Grenz_0.SuspendLayout();
+            this.PO2_0.SuspendLayout();
+            this.PO1_0.SuspendLayout();
+            this.PU1_0.SuspendLayout();
+            this.PU2_0.SuspendLayout();
+            this.Panel4.SuspendLayout();
+            this.Panel8.SuspendLayout();
+            this.Panel5.SuspendLayout();
+            this.MOS.SuspendLayout();
+            this.MOS1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // Panel1
+            // 
+            this.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Panel1.Controls.Add(this.P_0);
+            this.Panel1.Controls.Add(this.LO);
+            this.Panel1.Controls.Add(this.RO);
+            this.Panel1.Location = new System.Drawing.Point(0, 0);
+            this.Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel1.Name = "Panel1";
+            this.Panel1.Size = new System.Drawing.Size(226, 840);
+            this.Panel1.TabIndex = 0;
+            this.Panel1.Click += new System.EventHandler(this.E_Regler_Zu);
+            this.Panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel1MouseDown);
+            // 
+            // P_0
+            // 
+            this.P_0.BackColor = System.Drawing.Color.Black;
+            this.P_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.P_0.Controls.Add(this.Panel3);
+            this.P_0.Controls.Add(this.MOS1);
+            this.P_0.Location = new System.Drawing.Point(9, 16);
+            this.P_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_0.Name = "P_0";
+            this.P_0.Size = new System.Drawing.Size(199, 800);
+            this.P_0.TabIndex = 0;
+            // 
+            // Panel3
+            // 
+            this.Panel3.BackColor = System.Drawing.Color.Gray;
+            this.Panel3.Controls.Add(this.Anz_0);
+            this.Panel3.Controls.Add(this.Grenz_0);
+            this.Panel3.Controls.Add(this.WAR_0);
+            this.Panel3.Controls.Add(this.Panel4);
+            this.Panel3.Controls.Add(this.Panel8);
+            this.Panel3.Controls.Add(this.Parameter_0);
+            this.Panel3.Controls.Add(this.Panel5);
+            this.Panel3.Controls.Add(this.Grenzwerte_0);
+            this.Panel3.Controls.Add(this.Button1);
+            this.Panel3.Controls.Add(this.Button2);
+            this.Panel3.Controls.Add(this.Edit1);
+            this.Panel3.Controls.Add(this.MOS);
+            this.Panel3.Location = new System.Drawing.Point(17, 16);
+            this.Panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel3.Name = "Panel3";
+            this.Panel3.Size = new System.Drawing.Size(165, 769);
+            this.Panel3.TabIndex = 0;
+            this.Panel3.Click += new System.EventHandler(this.E_Regler_Zu);
+            // 
+            // Anz_0
+            // 
+            this.Anz_0.BackColor = System.Drawing.Color.Gray;
+            this.Anz_0.Controls.Add(this.DT_0_X);
+            this.Anz_0.Controls.Add(this.F_0_X);
+            this.Anz_0.Controls.Add(this.Panel6);
+            this.Anz_0.Location = new System.Drawing.Point(3, 409);
+            this.Anz_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Anz_0.Name = "Anz_0";
+            this.Anz_0.Size = new System.Drawing.Size(161, 169);
+            this.Anz_0.TabIndex = 0;
+            // 
+            // DT_0_X
+            // 
+            this.DT_0_X.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.DT_0_X.Location = new System.Drawing.Point(13, 48);
+            this.DT_0_X.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DT_0_X.Name = "DT_0_X";
+            this.DT_0_X.Size = new System.Drawing.Size(12, 21);
+            this.DT_0_X.TabIndex = 0;
+            this.DT_0_X.Text = "X";
+            // 
+            // F_0_X
+            // 
+            this.F_0_X.BackColor = System.Drawing.Color.Maroon;
+            this.F_0_X.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.F_0_X.Location = new System.Drawing.Point(9, 68);
+            this.F_0_X.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.F_0_X.Name = "F_0_X";
+            this.F_0_X.Size = new System.Drawing.Size(21, 7);
+            this.F_0_X.TabIndex = 1;
+            // 
+            // Panel6
+            // 
+            this.Panel6.BackColor = System.Drawing.Color.White;
+            this.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Panel6.Controls.Add(this.Anz_0_X);
+            this.Panel6.Location = new System.Drawing.Point(35, 41);
+            this.Panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel6.Name = "Panel6";
+            this.Panel6.Size = new System.Drawing.Size(112, 31);
+            this.Panel6.TabIndex = 2;
+            // 
+            // Anz_0_X
+            // 
+            this.Anz_0_X.BackColor = System.Drawing.Color.White;
+            this.Anz_0_X.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Anz_0_X.Font = new System.Drawing.Font("Arial", 10.5F);
+            this.Anz_0_X.Location = new System.Drawing.Point(0, 0);
+            this.Anz_0_X.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Anz_0_X.Name = "Anz_0_X";
+            this.Anz_0_X.Size = new System.Drawing.Size(108, 27);
+            this.Anz_0_X.TabIndex = 0;
+            this.Anz_0_X.Text = "Anz_0_X";
+            this.Anz_0_X.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Anz_0_X.Click += new System.EventHandler(this.Anz_0_X_Click_1);
+            // 
+            // Grenz_0
+            // 
+            this.Grenz_0.BackColor = System.Drawing.Color.Gray;
+            this.Grenz_0.Controls.Add(this.DT_0_O2);
+            this.Grenz_0.Controls.Add(this.DT_0_O1);
+            this.Grenz_0.Controls.Add(this.DT_0_U1);
+            this.Grenz_0.Controls.Add(this.DT_0_U2);
+            this.Grenz_0.Controls.Add(this.PO2_0);
+            this.Grenz_0.Controls.Add(this.PO1_0);
+            this.Grenz_0.Controls.Add(this.PU1_0);
+            this.Grenz_0.Controls.Add(this.PU2_0);
+            this.Grenz_0.Location = new System.Drawing.Point(3, 409);
+            this.Grenz_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Grenz_0.Name = "Grenz_0";
+            this.Grenz_0.Size = new System.Drawing.Size(161, 169);
+            this.Grenz_0.TabIndex = 1;
+            this.Grenz_0.Visible = false;
+            // 
+            // DT_0_O2
+            // 
+            this.DT_0_O2.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.DT_0_O2.Location = new System.Drawing.Point(7, 9);
+            this.DT_0_O2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DT_0_O2.Name = "DT_0_O2";
+            this.DT_0_O2.Size = new System.Drawing.Size(24, 21);
+            this.DT_0_O2.TabIndex = 0;
+            this.DT_0_O2.Text = "H2";
+            // 
+            // DT_0_O1
+            // 
+            this.DT_0_O1.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.DT_0_O1.Location = new System.Drawing.Point(7, 48);
+            this.DT_0_O1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DT_0_O1.Name = "DT_0_O1";
+            this.DT_0_O1.Size = new System.Drawing.Size(24, 21);
+            this.DT_0_O1.TabIndex = 1;
+            this.DT_0_O1.Text = "H1";
+            // 
+            // DT_0_U1
+            // 
+            this.DT_0_U1.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.DT_0_U1.Location = new System.Drawing.Point(7, 89);
+            this.DT_0_U1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DT_0_U1.Name = "DT_0_U1";
+            this.DT_0_U1.Size = new System.Drawing.Size(21, 21);
+            this.DT_0_U1.TabIndex = 2;
+            this.DT_0_U1.Text = "L1";
+            // 
+            // DT_0_U2
+            // 
+            this.DT_0_U2.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.DT_0_U2.Location = new System.Drawing.Point(7, 128);
+            this.DT_0_U2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DT_0_U2.Name = "DT_0_U2";
+            this.DT_0_U2.Size = new System.Drawing.Size(21, 21);
+            this.DT_0_U2.TabIndex = 3;
+            this.DT_0_U2.Text = "L2";
+            // 
+            // PO2_0
+            // 
+            this.PO2_0.BackColor = System.Drawing.Color.White;
+            this.PO2_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PO2_0.Controls.Add(this.Edit_0_O2);
+            this.PO2_0.Location = new System.Drawing.Point(35, 0);
+            this.PO2_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PO2_0.Name = "PO2_0";
+            this.PO2_0.Size = new System.Drawing.Size(112, 32);
+            this.PO2_0.TabIndex = 4;
+            // 
+            // Edit_0_O2
+            // 
+            this.Edit_0_O2.BackColor = System.Drawing.Color.White;
+            this.Edit_0_O2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Edit_0_O2.Font = new System.Drawing.Font("Arial", 10.5F);
+            this.Edit_0_O2.Location = new System.Drawing.Point(0, 0);
+            this.Edit_0_O2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Edit_0_O2.Name = "Edit_0_O2";
+            this.Edit_0_O2.Size = new System.Drawing.Size(108, 28);
+            this.Edit_0_O2.TabIndex = 0;
+            this.Edit_0_O2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PO1_0
+            // 
+            this.PO1_0.BackColor = System.Drawing.Color.White;
+            this.PO1_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PO1_0.Controls.Add(this.Edit_0_O1);
+            this.PO1_0.Location = new System.Drawing.Point(35, 41);
+            this.PO1_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PO1_0.Name = "PO1_0";
+            this.PO1_0.Size = new System.Drawing.Size(112, 31);
+            this.PO1_0.TabIndex = 5;
+            // 
+            // Edit_0_O1
+            // 
+            this.Edit_0_O1.BackColor = System.Drawing.Color.White;
+            this.Edit_0_O1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Edit_0_O1.Font = new System.Drawing.Font("Arial", 10.5F);
+            this.Edit_0_O1.Location = new System.Drawing.Point(0, 0);
+            this.Edit_0_O1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Edit_0_O1.Name = "Edit_0_O1";
+            this.Edit_0_O1.Size = new System.Drawing.Size(108, 27);
+            this.Edit_0_O1.TabIndex = 0;
+            this.Edit_0_O1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PU1_0
+            // 
+            this.PU1_0.BackColor = System.Drawing.Color.White;
+            this.PU1_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PU1_0.Controls.Add(this.Edit_0_U1);
+            this.PU1_0.Location = new System.Drawing.Point(35, 80);
+            this.PU1_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PU1_0.Name = "PU1_0";
+            this.PU1_0.Size = new System.Drawing.Size(112, 32);
+            this.PU1_0.TabIndex = 6;
+            // 
+            // Edit_0_U1
+            // 
+            this.Edit_0_U1.BackColor = System.Drawing.Color.White;
+            this.Edit_0_U1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Edit_0_U1.Font = new System.Drawing.Font("Arial", 10.5F);
+            this.Edit_0_U1.Location = new System.Drawing.Point(0, 0);
+            this.Edit_0_U1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Edit_0_U1.Name = "Edit_0_U1";
+            this.Edit_0_U1.Size = new System.Drawing.Size(108, 28);
+            this.Edit_0_U1.TabIndex = 0;
+            this.Edit_0_U1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PU2_0
+            // 
+            this.PU2_0.BackColor = System.Drawing.Color.White;
+            this.PU2_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PU2_0.Controls.Add(this.Edit_0_U2);
+            this.PU2_0.Location = new System.Drawing.Point(35, 121);
+            this.PU2_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PU2_0.Name = "PU2_0";
+            this.PU2_0.Size = new System.Drawing.Size(112, 31);
+            this.PU2_0.TabIndex = 7;
+            // 
+            // Edit_0_U2
+            // 
+            this.Edit_0_U2.BackColor = System.Drawing.Color.White;
+            this.Edit_0_U2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Edit_0_U2.Font = new System.Drawing.Font("Arial", 10.5F);
+            this.Edit_0_U2.Location = new System.Drawing.Point(0, 0);
+            this.Edit_0_U2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Edit_0_U2.Name = "Edit_0_U2";
+            this.Edit_0_U2.Size = new System.Drawing.Size(108, 27);
+            this.Edit_0_U2.TabIndex = 0;
+            this.Edit_0_U2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // WAR_0
+            // 
+            this.WAR_0.Location = new System.Drawing.Point(217, 633);
+            this.WAR_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.WAR_0.Name = "WAR_0";
+            this.WAR_0.Size = new System.Drawing.Size(16, 22);
+            this.WAR_0.TabIndex = 2;
+            this.WAR_0.Text = "WAR_0";
+            this.WAR_0.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WAR_0KeyDown);
+            // 
+            // Panel4
+            // 
+            this.Panel4.BackColor = System.Drawing.Color.Black;
+            this.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Panel4.Controls.Add(this.Gauge0_X);
+            this.Panel4.Controls.Add(this.P_100);
+            this.Panel4.Controls.Add(this.P_90);
+            this.Panel4.Controls.Add(this.P_80);
+            this.Panel4.Controls.Add(this.P_70);
+            this.Panel4.Controls.Add(this.P_60);
+            this.Panel4.Controls.Add(this.P_50);
+            this.Panel4.Controls.Add(this.P_40);
+            this.Panel4.Controls.Add(this.P_30);
+            this.Panel4.Controls.Add(this.P_20);
+            this.Panel4.Controls.Add(this.P_10);
+            this.Panel4.Location = new System.Drawing.Point(13, 73);
+            this.Panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel4.Name = "Panel4";
+            this.Panel4.Size = new System.Drawing.Size(139, 303);
+            this.Panel4.TabIndex = 3;
+            // 
+            // Gauge0_X
+            // 
+            this.Gauge0_X.ForeColor = System.Drawing.Color.Red;
+            this.Gauge0_X.Location = new System.Drawing.Point(83, 1);
+            this.Gauge0_X.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Gauge0_X.Maximum = 1000;
+            this.Gauge0_X.Name = "Gauge0_X";
+            this.Gauge0_X.Size = new System.Drawing.Size(21, 303);
+            this.Gauge0_X.TabIndex = 0;
+            this.Gauge0_X.Click += new System.EventHandler(this.Gauge0_X_Click);
+            // 
+            // P_100
+            // 
+            this.P_100.BackColor = System.Drawing.Color.White;
+            this.P_100.Location = new System.Drawing.Point(128, 2);
+            this.P_100.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_100.Name = "P_100";
+            this.P_100.Size = new System.Drawing.Size(12, 1);
+            this.P_100.TabIndex = 1;
+            // 
+            // P_90
+            // 
+            this.P_90.BackColor = System.Drawing.Color.White;
+            this.P_90.Location = new System.Drawing.Point(128, 30);
+            this.P_90.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_90.Name = "P_90";
+            this.P_90.Size = new System.Drawing.Size(12, 2);
+            this.P_90.TabIndex = 2;
+            // 
+            // P_80
+            // 
+            this.P_80.BackColor = System.Drawing.Color.White;
+            this.P_80.Location = new System.Drawing.Point(128, 60);
+            this.P_80.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_80.Name = "P_80";
+            this.P_80.Size = new System.Drawing.Size(12, 1);
+            this.P_80.TabIndex = 3;
+            // 
+            // P_70
+            // 
+            this.P_70.BackColor = System.Drawing.Color.White;
+            this.P_70.Location = new System.Drawing.Point(128, 90);
+            this.P_70.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_70.Name = "P_70";
+            this.P_70.Size = new System.Drawing.Size(12, 2);
+            this.P_70.TabIndex = 4;
+            // 
+            // P_60
+            // 
+            this.P_60.BackColor = System.Drawing.Color.White;
+            this.P_60.Location = new System.Drawing.Point(128, 121);
+            this.P_60.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_60.Name = "P_60";
+            this.P_60.Size = new System.Drawing.Size(12, 1);
+            this.P_60.TabIndex = 5;
+            // 
+            // P_50
+            // 
+            this.P_50.BackColor = System.Drawing.Color.White;
+            this.P_50.Location = new System.Drawing.Point(128, 150);
+            this.P_50.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_50.Name = "P_50";
+            this.P_50.Size = new System.Drawing.Size(12, 2);
+            this.P_50.TabIndex = 6;
+            // 
+            // P_40
+            // 
+            this.P_40.BackColor = System.Drawing.Color.White;
+            this.P_40.Location = new System.Drawing.Point(128, 180);
+            this.P_40.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_40.Name = "P_40";
+            this.P_40.Size = new System.Drawing.Size(12, 2);
+            this.P_40.TabIndex = 7;
+            // 
+            // P_30
+            // 
+            this.P_30.BackColor = System.Drawing.Color.White;
+            this.P_30.Location = new System.Drawing.Point(128, 210);
+            this.P_30.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_30.Name = "P_30";
+            this.P_30.Size = new System.Drawing.Size(12, 1);
+            this.P_30.TabIndex = 8;
+            // 
+            // P_20
+            // 
+            this.P_20.BackColor = System.Drawing.Color.White;
+            this.P_20.Location = new System.Drawing.Point(128, 240);
+            this.P_20.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_20.Name = "P_20";
+            this.P_20.Size = new System.Drawing.Size(12, 2);
+            this.P_20.TabIndex = 9;
+            // 
+            // P_10
+            // 
+            this.P_10.BackColor = System.Drawing.Color.White;
+            this.P_10.Location = new System.Drawing.Point(128, 270);
+            this.P_10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_10.Name = "P_10";
+            this.P_10.Size = new System.Drawing.Size(12, 2);
+            this.P_10.TabIndex = 10;
+            // 
+            // Panel8
+            // 
+            this.Panel8.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Panel8.Controls.Add(this.Z1_0);
+            this.Panel8.Controls.Add(this.Z2_0);
+            this.Panel8.Location = new System.Drawing.Point(5, 9);
+            this.Panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel8.Name = "Panel8";
+            this.Panel8.Size = new System.Drawing.Size(157, 56);
+            this.Panel8.TabIndex = 4;
+            // 
+            // Z1_0
+            // 
+            this.Z1_0.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Z1_0.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Z1_0.Location = new System.Drawing.Point(0, 5);
+            this.Z1_0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Z1_0.Name = "Z1_0";
+            this.Z1_0.Size = new System.Drawing.Size(157, 26);
+            this.Z1_0.TabIndex = 0;
+            this.Z1_0.Text = "LIRA-0900";
+            this.Z1_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Z2_0
+            // 
+            this.Z2_0.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Z2_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold);
+            this.Z2_0.Location = new System.Drawing.Point(0, 31);
+            this.Z2_0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Z2_0.Name = "Z2_0";
+            this.Z2_0.Size = new System.Drawing.Size(157, 26);
+            this.Z2_0.TabIndex = 1;
+            this.Z2_0.Text = "Sammelbeh. B0900";
+            this.Z2_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Parameter_0
+            // 
+            this.Parameter_0.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.Parameter_0.Location = new System.Drawing.Point(27, 624);
+            this.Parameter_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Parameter_0.Name = "Parameter_0";
+            this.Parameter_0.Size = new System.Drawing.Size(121, 33);
+            this.Parameter_0.TabIndex = 5;
+            this.Parameter_0.Text = "Chart";
+            this.Parameter_0.Click += new System.EventHandler(this.Parameter_0Click);
+            // 
+            // Panel5
+            // 
+            this.Panel5.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.Panel5.Controls.Add(this.EINH_0);
+            this.Panel5.Location = new System.Drawing.Point(5, 380);
+            this.Panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel5.Name = "Panel5";
+            this.Panel5.Size = new System.Drawing.Size(157, 25);
+            this.Panel5.TabIndex = 6;
+            // 
+            // EINH_0
+            // 
+            this.EINH_0.BackColor = System.Drawing.Color.Yellow;
+            this.EINH_0.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EINH_0.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
+            this.EINH_0.Location = new System.Drawing.Point(0, 0);
+            this.EINH_0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.EINH_0.Name = "EINH_0";
+            this.EINH_0.Size = new System.Drawing.Size(157, 25);
+            this.EINH_0.TabIndex = 0;
+            this.EINH_0.Text = "0 - 100 %";
+            this.EINH_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Grenzwerte_0
+            // 
+            this.Grenzwerte_0.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.Grenzwerte_0.Location = new System.Drawing.Point(27, 585);
+            this.Grenzwerte_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Grenzwerte_0.Name = "Grenzwerte_0";
+            this.Grenzwerte_0.Size = new System.Drawing.Size(121, 32);
+            this.Grenzwerte_0.TabIndex = 7;
+            this.Grenzwerte_0.Text = "Grenzwerte";
+            this.Grenzwerte_0.Click += new System.EventHandler(this.Grenzwerte_0Click);
+            // 
+            // Button1
+            // 
+            this.Button1.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.Button1.Location = new System.Drawing.Point(27, 665);
+            this.Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Button1.Name = "Button1";
+            this.Button1.Size = new System.Drawing.Size(121, 57);
+            this.Button1.TabIndex = 8;
+            this.Button1.Text = "MOS";
+            this.Button1.Click += new System.EventHandler(this.Button1Click);
+            // 
+            // Button2
+            // 
+            this.Button2.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.Button2.Location = new System.Drawing.Point(27, 729);
+            this.Button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Button2.Name = "Button2";
+            this.Button2.Size = new System.Drawing.Size(121, 32);
+            this.Button2.TabIndex = 9;
+            this.Button2.Text = "close VIEW";
+            this.Button2.Click += new System.EventHandler(this.E_Regler_Zu);
+            // 
+            // Edit1
+            // 
+            this.Edit1.Location = new System.Drawing.Point(32, 670);
+            this.Edit1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Edit1.Name = "Edit1";
+            this.Edit1.PasswordChar = '*';
+            this.Edit1.Size = new System.Drawing.Size(107, 22);
+            this.Edit1.TabIndex = 10;
+            this.Edit1.Visible = false;
+            this.Edit1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Edit1KeyPress);
+            // 
+            // MOS
+            // 
+            this.MOS.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.MOS.Controls.Add(this.StaticText1);
+            this.MOS.Controls.Add(this.MOS_SET);
+            this.MOS.Controls.Add(this.MOS_RESET);
+            this.MOS.Controls.Add(this.CONFIRM);
+            this.MOS.Controls.Add(this.StaticText2);
+            this.MOS.Controls.Add(this.MOS_Set3);
+            this.MOS.Controls.Add(this.MOS_Reset3);
+            this.MOS.Controls.Add(this.SwareCtl1);
+            this.MOS.Location = new System.Drawing.Point(9, 404);
+            this.MOS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MOS.Name = "MOS";
+            this.MOS.Size = new System.Drawing.Size(147, 356);
+            this.MOS.TabIndex = 11;
+            this.MOS.Visible = false;
+            // 
+            // StaticText1
+            // 
+            this.StaticText1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.StaticText1.Location = new System.Drawing.Point(3, 6);
+            this.StaticText1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.StaticText1.Name = "StaticText1";
+            this.StaticText1.Size = new System.Drawing.Size(143, 25);
+            this.StaticText1.TabIndex = 0;
+            this.StaticText1.Text = "MOS-Startup";
+            this.StaticText1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // MOS_SET
+            // 
+            this.MOS_SET.Location = new System.Drawing.Point(11, 39);
+            this.MOS_SET.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MOS_SET.Name = "MOS_SET";
+            this.MOS_SET.Size = new System.Drawing.Size(129, 41);
+            this.MOS_SET.TabIndex = 1;
+            this.MOS_SET.Text = "activate";
+            this.MOS_SET.Click += new System.EventHandler(this.MOS_SETClick);
+            // 
+            // MOS_RESET
+            // 
+            this.MOS_RESET.Location = new System.Drawing.Point(11, 79);
+            this.MOS_RESET.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MOS_RESET.Name = "MOS_RESET";
+            this.MOS_RESET.Size = new System.Drawing.Size(129, 41);
+            this.MOS_RESET.TabIndex = 2;
+            this.MOS_RESET.Text = "remove";
+            this.MOS_RESET.Click += new System.EventHandler(this.MOS_RESETClick);
+            // 
+            // CONFIRM
+            // 
+            this.CONFIRM.Location = new System.Drawing.Point(11, 128);
+            this.CONFIRM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CONFIRM.Name = "CONFIRM";
+            this.CONFIRM.Size = new System.Drawing.Size(129, 41);
+            this.CONFIRM.TabIndex = 3;
+            this.CONFIRM.Text = "confirm";
+            this.CONFIRM.Click += new System.EventHandler(this.CONFIRMClick);
+            // 
+            // StaticText2
+            // 
+            this.StaticText2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.StaticText2.Location = new System.Drawing.Point(3, 183);
+            this.StaticText2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.StaticText2.Name = "StaticText2";
+            this.StaticText2.Size = new System.Drawing.Size(143, 25);
+            this.StaticText2.TabIndex = 4;
+            this.StaticText2.Text = "MOS-Maintenance";
+            this.StaticText2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // MOS_Set3
+            // 
+            this.MOS_Set3.Location = new System.Drawing.Point(11, 217);
+            this.MOS_Set3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MOS_Set3.Name = "MOS_Set3";
+            this.MOS_Set3.Size = new System.Drawing.Size(129, 41);
+            this.MOS_Set3.TabIndex = 5;
+            this.MOS_Set3.Text = "activate";
+            this.MOS_Set3.Click += new System.EventHandler(this.MOS_SET1Click);
+            // 
+            // MOS_Reset3
+            // 
+            this.MOS_Reset3.Location = new System.Drawing.Point(11, 256);
+            this.MOS_Reset3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MOS_Reset3.Name = "MOS_Reset3";
+            this.MOS_Reset3.Size = new System.Drawing.Size(129, 41);
+            this.MOS_Reset3.TabIndex = 6;
+            this.MOS_Reset3.Text = "remove";
+            this.MOS_Reset3.Click += new System.EventHandler(this.MOS_RESET1Click);
+            // 
+            // SwareCtl1
+            // 
+            this.SwareCtl1.Location = new System.Drawing.Point(11, 305);
+            this.SwareCtl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SwareCtl1.Name = "SwareCtl1";
+            this.SwareCtl1.Size = new System.Drawing.Size(129, 41);
+            this.SwareCtl1.TabIndex = 7;
+            this.SwareCtl1.Text = "confirm";
+            this.SwareCtl1.Click += new System.EventHandler(this.Confirm1Click);
+            // 
+            // MOS1
+            // 
+            this.MOS1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.MOS1.Controls.Add(this.StaticText4);
+            this.MOS1.Controls.Add(this.MOS_SET1);
+            this.MOS1.Controls.Add(this.MOS_RESET1);
+            this.MOS1.Controls.Add(this.Confirm1);
+            this.MOS1.Location = new System.Drawing.Point(28, 591);
+            this.MOS1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MOS1.Name = "MOS1";
+            this.MOS1.Size = new System.Drawing.Size(147, 187);
+            this.MOS1.TabIndex = 1;
+            this.MOS1.Visible = false;
+            // 
+            // StaticText4
+            // 
+            this.StaticText4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.StaticText4.Location = new System.Drawing.Point(3, 6);
+            this.StaticText4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.StaticText4.Name = "StaticText4";
+            this.StaticText4.Size = new System.Drawing.Size(143, 25);
+            this.StaticText4.TabIndex = 0;
+            this.StaticText4.Text = "MOS-Maint.";
+            this.StaticText4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // MOS_SET1
+            // 
+            this.MOS_SET1.Location = new System.Drawing.Point(11, 39);
+            this.MOS_SET1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MOS_SET1.Name = "MOS_SET1";
+            this.MOS_SET1.Size = new System.Drawing.Size(129, 41);
+            this.MOS_SET1.TabIndex = 1;
+            this.MOS_SET1.Text = "activate";
+            this.MOS_SET1.Click += new System.EventHandler(this.MOS_SET1Click);
+            // 
+            // MOS_RESET1
+            // 
+            this.MOS_RESET1.Location = new System.Drawing.Point(11, 79);
+            this.MOS_RESET1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MOS_RESET1.Name = "MOS_RESET1";
+            this.MOS_RESET1.Size = new System.Drawing.Size(129, 41);
+            this.MOS_RESET1.TabIndex = 2;
+            this.MOS_RESET1.Text = "remove";
+            this.MOS_RESET1.Click += new System.EventHandler(this.MOS_RESET1Click);
+            // 
+            // Confirm1
+            // 
+            this.Confirm1.Location = new System.Drawing.Point(11, 128);
+            this.Confirm1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Confirm1.Name = "Confirm1";
+            this.Confirm1.Size = new System.Drawing.Size(129, 41);
+            this.Confirm1.TabIndex = 3;
+            this.Confirm1.Text = "Confirm";
+            this.Confirm1.Click += new System.EventHandler(this.Confirm1Click);
+            // 
+            // LO
+            // 
+            this.LO.Location = new System.Drawing.Point(0, 0);
+            this.LO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LO.Name = "LO";
+            this.LO.Size = new System.Drawing.Size(36, 17);
+            this.LO.TabIndex = 1;
+            this.LO.Text = "<";
+            this.LO.Click += new System.EventHandler(this.LOClick);
+            // 
+            // RO
+            // 
+            this.RO.Location = new System.Drawing.Point(191, 0);
+            this.RO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RO.Name = "RO";
+            this.RO.Size = new System.Drawing.Size(36, 17);
+            this.RO.TabIndex = 2;
+            this.RO.Text = ">";
+            this.RO.Click += new System.EventHandler(this.ROClick);
+            // 
+            // AnalogFaceplate
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(228, 863);
+            this.Controls.Add(this.Panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "AnalogFaceplate";
+            this.Text = "Einblendregler";
+            this.TopMost = true;
+            this.Panel1.ResumeLayout(false);
+            this.P_0.ResumeLayout(false);
+            this.Panel3.ResumeLayout(false);
+            this.Panel3.PerformLayout();
+            this.Anz_0.ResumeLayout(false);
+            this.Panel6.ResumeLayout(false);
+            this.Grenz_0.ResumeLayout(false);
+            this.PO2_0.ResumeLayout(false);
+            this.PO1_0.ResumeLayout(false);
+            this.PU1_0.ResumeLayout(false);
+            this.PU2_0.ResumeLayout(false);
+            this.Panel4.ResumeLayout(false);
+            this.Panel8.ResumeLayout(false);
+            this.Panel5.ResumeLayout(false);
+            this.MOS.ResumeLayout(false);
+            this.MOS1.ResumeLayout(false);
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+    }
+}

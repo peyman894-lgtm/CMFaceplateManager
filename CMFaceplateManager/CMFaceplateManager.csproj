@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FaceplateManager.cs" />
     <Compile Include="CMApi.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -73,8 +74,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="AnalogFaceplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalogFaceplate.Designer.cs">
+      <DependentUpon>AnalogFaceplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AnalogFaceplate.resx">
+      <DependentUpon>AnalogFaceplate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
