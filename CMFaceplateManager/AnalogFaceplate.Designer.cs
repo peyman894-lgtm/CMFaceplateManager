@@ -32,13 +32,13 @@ namespace CMFaceplateManager
         private System.Windows.Forms.Panel P_0;
         private System.Windows.Forms.Panel Panel3;
 
-        private System.Windows.Forms.Panel Anz_0;
+        private System.Windows.Forms.Panel PV_Panel;
         private System.Windows.Forms.Label DT_0_X;
         private System.Windows.Forms.Panel F_0_X;
         private System.Windows.Forms.Panel Panel6;
         private System.Windows.Forms.Label Anz_0_X;
 
-        private System.Windows.Forms.Panel Grenz_0;
+        private System.Windows.Forms.Panel SP_Panel;
         private System.Windows.Forms.Label DT_0_O2;
         private System.Windows.Forms.Label DT_0_O1;
         private System.Windows.Forms.Label DT_0_U1;
@@ -76,17 +76,17 @@ namespace CMFaceplateManager
         private System.Windows.Forms.Panel Panel5;
         private System.Windows.Forms.Label EINH_0;
 
-        private System.Windows.Forms.Button Grenzwerte_0;
-        private System.Windows.Forms.Button Button1;
+        private System.Windows.Forms.Button Setpoints;
+        private System.Windows.Forms.Button MOS_Button;
         private System.Windows.Forms.Button Button2;
         private System.Windows.Forms.TextBox Edit1;
 
-        private System.Windows.Forms.Panel MOS;
+        private System.Windows.Forms.Panel MOS_Panel;
         private System.Windows.Forms.Label StaticText1;
         private System.Windows.Forms.Button MOS_SET;
         private System.Windows.Forms.Button MOS_RESET;
-        private System.Windows.Forms.Button CONFIRM;
-        private System.Windows.Forms.Button SwareCtl1;
+        private System.Windows.Forms.Button CONF_MOS_S_Button;
+        private System.Windows.Forms.Button CONF_MOS_M_Button;
         private System.Windows.Forms.Button MOS_Reset3;
         private System.Windows.Forms.Button MOS_Set3;
         private System.Windows.Forms.Label StaticText2;
@@ -105,12 +105,21 @@ namespace CMFaceplateManager
             this.Panel1 = new System.Windows.Forms.Panel();
             this.P_0 = new System.Windows.Forms.Panel();
             this.Panel3 = new System.Windows.Forms.Panel();
-            this.Anz_0 = new System.Windows.Forms.Panel();
+            this.MOS_Panel = new System.Windows.Forms.Panel();
+            this.StaticText1 = new System.Windows.Forms.Label();
+            this.MOS_SET = new System.Windows.Forms.Button();
+            this.MOS_RESET = new System.Windows.Forms.Button();
+            this.CONF_MOS_S_Button = new System.Windows.Forms.Button();
+            this.StaticText2 = new System.Windows.Forms.Label();
+            this.MOS_Set3 = new System.Windows.Forms.Button();
+            this.MOS_Reset3 = new System.Windows.Forms.Button();
+            this.CONF_MOS_M_Button = new System.Windows.Forms.Button();
+            this.PV_Panel = new System.Windows.Forms.Panel();
             this.DT_0_X = new System.Windows.Forms.Label();
             this.F_0_X = new System.Windows.Forms.Panel();
             this.Panel6 = new System.Windows.Forms.Panel();
             this.Anz_0_X = new System.Windows.Forms.Label();
-            this.Grenz_0 = new System.Windows.Forms.Panel();
+            this.SP_Panel = new System.Windows.Forms.Panel();
             this.DT_0_O2 = new System.Windows.Forms.Label();
             this.DT_0_O1 = new System.Windows.Forms.Label();
             this.DT_0_U1 = new System.Windows.Forms.Label();
@@ -142,19 +151,10 @@ namespace CMFaceplateManager
             this.Parameter_0 = new System.Windows.Forms.Button();
             this.Panel5 = new System.Windows.Forms.Panel();
             this.EINH_0 = new System.Windows.Forms.Label();
-            this.Grenzwerte_0 = new System.Windows.Forms.Button();
-            this.Button1 = new System.Windows.Forms.Button();
+            this.Setpoints = new System.Windows.Forms.Button();
+            this.MOS_Button = new System.Windows.Forms.Button();
             this.Button2 = new System.Windows.Forms.Button();
             this.Edit1 = new System.Windows.Forms.TextBox();
-            this.MOS = new System.Windows.Forms.Panel();
-            this.StaticText1 = new System.Windows.Forms.Label();
-            this.MOS_SET = new System.Windows.Forms.Button();
-            this.MOS_RESET = new System.Windows.Forms.Button();
-            this.CONFIRM = new System.Windows.Forms.Button();
-            this.StaticText2 = new System.Windows.Forms.Label();
-            this.MOS_Set3 = new System.Windows.Forms.Button();
-            this.MOS_Reset3 = new System.Windows.Forms.Button();
-            this.SwareCtl1 = new System.Windows.Forms.Button();
             this.MOS1 = new System.Windows.Forms.Panel();
             this.StaticText4 = new System.Windows.Forms.Label();
             this.MOS_SET1 = new System.Windows.Forms.Button();
@@ -162,12 +162,15 @@ namespace CMFaceplateManager
             this.Confirm1 = new System.Windows.Forms.Button();
             this.LO = new System.Windows.Forms.Button();
             this.RO = new System.Windows.Forms.Button();
+            this.MOS_PASS = new System.Windows.Forms.TextBox();
+            this.Pin_Button = new System.Windows.Forms.Button();
             this.Panel1.SuspendLayout();
             this.P_0.SuspendLayout();
             this.Panel3.SuspendLayout();
-            this.Anz_0.SuspendLayout();
+            this.MOS_Panel.SuspendLayout();
+            this.PV_Panel.SuspendLayout();
             this.Panel6.SuspendLayout();
-            this.Grenz_0.SuspendLayout();
+            this.SP_Panel.SuspendLayout();
             this.PO2_0.SuspendLayout();
             this.PO1_0.SuspendLayout();
             this.PU1_0.SuspendLayout();
@@ -175,18 +178,18 @@ namespace CMFaceplateManager
             this.Panel4.SuspendLayout();
             this.Panel8.SuspendLayout();
             this.Panel5.SuspendLayout();
-            this.MOS.SuspendLayout();
             this.MOS1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel1
             // 
             this.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Panel1.Controls.Add(this.P_0);
             this.Panel1.Controls.Add(this.LO);
             this.Panel1.Controls.Add(this.RO);
+            this.Panel1.Controls.Add(this.Pin_Button);
+            this.Panel1.Controls.Add(this.P_0);
             this.Panel1.Location = new System.Drawing.Point(0, 0);
-            this.Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.Panel1.Name = "Panel1";
             this.Panel1.Size = new System.Drawing.Size(226, 840);
             this.Panel1.TabIndex = 0;
@@ -200,7 +203,7 @@ namespace CMFaceplateManager
             this.P_0.Controls.Add(this.Panel3);
             this.P_0.Controls.Add(this.MOS1);
             this.P_0.Location = new System.Drawing.Point(9, 16);
-            this.P_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_0.Margin = new System.Windows.Forms.Padding(4);
             this.P_0.Name = "P_0";
             this.P_0.Size = new System.Drawing.Size(199, 800);
             this.P_0.TabIndex = 0;
@@ -208,36 +211,138 @@ namespace CMFaceplateManager
             // Panel3
             // 
             this.Panel3.BackColor = System.Drawing.Color.Gray;
-            this.Panel3.Controls.Add(this.Anz_0);
-            this.Panel3.Controls.Add(this.Grenz_0);
+            this.Panel3.Controls.Add(this.MOS_Panel);
+            this.Panel3.Controls.Add(this.MOS_PASS);
+            this.Panel3.Controls.Add(this.PV_Panel);
+            this.Panel3.Controls.Add(this.SP_Panel);
             this.Panel3.Controls.Add(this.WAR_0);
             this.Panel3.Controls.Add(this.Panel4);
             this.Panel3.Controls.Add(this.Panel8);
             this.Panel3.Controls.Add(this.Parameter_0);
             this.Panel3.Controls.Add(this.Panel5);
-            this.Panel3.Controls.Add(this.Grenzwerte_0);
-            this.Panel3.Controls.Add(this.Button1);
+            this.Panel3.Controls.Add(this.Setpoints);
+            this.Panel3.Controls.Add(this.MOS_Button);
             this.Panel3.Controls.Add(this.Button2);
             this.Panel3.Controls.Add(this.Edit1);
-            this.Panel3.Controls.Add(this.MOS);
             this.Panel3.Location = new System.Drawing.Point(17, 16);
-            this.Panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel3.Margin = new System.Windows.Forms.Padding(4);
             this.Panel3.Name = "Panel3";
             this.Panel3.Size = new System.Drawing.Size(165, 769);
             this.Panel3.TabIndex = 0;
             this.Panel3.Click += new System.EventHandler(this.E_Regler_Zu);
             // 
-            // Anz_0
+            // MOS_Panel
             // 
-            this.Anz_0.BackColor = System.Drawing.Color.Gray;
-            this.Anz_0.Controls.Add(this.DT_0_X);
-            this.Anz_0.Controls.Add(this.F_0_X);
-            this.Anz_0.Controls.Add(this.Panel6);
-            this.Anz_0.Location = new System.Drawing.Point(3, 409);
-            this.Anz_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Anz_0.Name = "Anz_0";
-            this.Anz_0.Size = new System.Drawing.Size(161, 169);
-            this.Anz_0.TabIndex = 0;
+            this.MOS_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.MOS_Panel.Controls.Add(this.StaticText1);
+            this.MOS_Panel.Controls.Add(this.MOS_SET);
+            this.MOS_Panel.Controls.Add(this.MOS_RESET);
+            this.MOS_Panel.Controls.Add(this.CONF_MOS_S_Button);
+            this.MOS_Panel.Controls.Add(this.StaticText2);
+            this.MOS_Panel.Controls.Add(this.MOS_Set3);
+            this.MOS_Panel.Controls.Add(this.MOS_Reset3);
+            this.MOS_Panel.Controls.Add(this.CONF_MOS_M_Button);
+            this.MOS_Panel.Location = new System.Drawing.Point(4, 378);
+            this.MOS_Panel.Margin = new System.Windows.Forms.Padding(4);
+            this.MOS_Panel.Name = "MOS_Panel";
+            this.MOS_Panel.Size = new System.Drawing.Size(158, 387);
+            this.MOS_Panel.TabIndex = 11;
+            this.MOS_Panel.Visible = false;
+            // 
+            // StaticText1
+            // 
+            this.StaticText1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.StaticText1.Location = new System.Drawing.Point(3, 6);
+            this.StaticText1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.StaticText1.Name = "StaticText1";
+            this.StaticText1.Size = new System.Drawing.Size(143, 25);
+            this.StaticText1.TabIndex = 0;
+            this.StaticText1.Text = "MOS-Startup";
+            this.StaticText1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // MOS_SET
+            // 
+            this.MOS_SET.Location = new System.Drawing.Point(11, 39);
+            this.MOS_SET.Margin = new System.Windows.Forms.Padding(4);
+            this.MOS_SET.Name = "MOS_SET";
+            this.MOS_SET.Size = new System.Drawing.Size(129, 41);
+            this.MOS_SET.TabIndex = 1;
+            this.MOS_SET.Text = "activate";
+            this.MOS_SET.Click += new System.EventHandler(this.MOS_SETClick);
+            // 
+            // MOS_RESET
+            // 
+            this.MOS_RESET.Location = new System.Drawing.Point(11, 79);
+            this.MOS_RESET.Margin = new System.Windows.Forms.Padding(4);
+            this.MOS_RESET.Name = "MOS_RESET";
+            this.MOS_RESET.Size = new System.Drawing.Size(129, 41);
+            this.MOS_RESET.TabIndex = 2;
+            this.MOS_RESET.Text = "remove";
+            this.MOS_RESET.Click += new System.EventHandler(this.MOS_RESETClick);
+            // 
+            // CONF_MOS_S_Button
+            // 
+            this.CONF_MOS_S_Button.Location = new System.Drawing.Point(11, 128);
+            this.CONF_MOS_S_Button.Margin = new System.Windows.Forms.Padding(4);
+            this.CONF_MOS_S_Button.Name = "CONF_MOS_S_Button";
+            this.CONF_MOS_S_Button.Size = new System.Drawing.Size(129, 41);
+            this.CONF_MOS_S_Button.TabIndex = 3;
+            this.CONF_MOS_S_Button.Text = "confirm";
+            this.CONF_MOS_S_Button.Click += new System.EventHandler(this.CONF_MOS_S_ButtonClick);
+            // 
+            // StaticText2
+            // 
+            this.StaticText2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.StaticText2.Location = new System.Drawing.Point(3, 183);
+            this.StaticText2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.StaticText2.Name = "StaticText2";
+            this.StaticText2.Size = new System.Drawing.Size(143, 25);
+            this.StaticText2.TabIndex = 4;
+            this.StaticText2.Text = "MOS-Maintenance";
+            this.StaticText2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // MOS_Set3
+            // 
+            this.MOS_Set3.Location = new System.Drawing.Point(11, 217);
+            this.MOS_Set3.Margin = new System.Windows.Forms.Padding(4);
+            this.MOS_Set3.Name = "MOS_Set3";
+            this.MOS_Set3.Size = new System.Drawing.Size(129, 41);
+            this.MOS_Set3.TabIndex = 5;
+            this.MOS_Set3.Text = "activate";
+            this.MOS_Set3.Click += new System.EventHandler(this.MOS_SET1Click);
+            // 
+            // MOS_Reset3
+            // 
+            this.MOS_Reset3.Location = new System.Drawing.Point(11, 256);
+            this.MOS_Reset3.Margin = new System.Windows.Forms.Padding(4);
+            this.MOS_Reset3.Name = "MOS_Reset3";
+            this.MOS_Reset3.Size = new System.Drawing.Size(129, 41);
+            this.MOS_Reset3.TabIndex = 6;
+            this.MOS_Reset3.Text = "remove";
+            this.MOS_Reset3.Click += new System.EventHandler(this.MOS_RESET1Click);
+            // 
+            // CONF_MOS_M_Button
+            // 
+            this.CONF_MOS_M_Button.Location = new System.Drawing.Point(11, 305);
+            this.CONF_MOS_M_Button.Margin = new System.Windows.Forms.Padding(4);
+            this.CONF_MOS_M_Button.Name = "CONF_MOS_M_Button";
+            this.CONF_MOS_M_Button.Size = new System.Drawing.Size(129, 41);
+            this.CONF_MOS_M_Button.TabIndex = 7;
+            this.CONF_MOS_M_Button.Text = "confirm";
+            this.CONF_MOS_M_Button.Click += new System.EventHandler(this.CONF_MOS_M_ButtonClick);
+            // 
+            // PV_Panel
+            // 
+            this.PV_Panel.BackColor = System.Drawing.Color.Gray;
+            this.PV_Panel.Controls.Add(this.DT_0_X);
+            this.PV_Panel.Controls.Add(this.F_0_X);
+            this.PV_Panel.Controls.Add(this.Panel6);
+            this.PV_Panel.Location = new System.Drawing.Point(4, 408);
+            this.PV_Panel.Margin = new System.Windows.Forms.Padding(4);
+            this.PV_Panel.Name = "PV_Panel";
+            this.PV_Panel.Size = new System.Drawing.Size(161, 169);
+            this.PV_Panel.TabIndex = 0;
+            this.PV_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Anz_0_Paint);
             // 
             // DT_0_X
             // 
@@ -254,7 +359,7 @@ namespace CMFaceplateManager
             this.F_0_X.BackColor = System.Drawing.Color.Maroon;
             this.F_0_X.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.F_0_X.Location = new System.Drawing.Point(9, 68);
-            this.F_0_X.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.F_0_X.Margin = new System.Windows.Forms.Padding(4);
             this.F_0_X.Name = "F_0_X";
             this.F_0_X.Size = new System.Drawing.Size(21, 7);
             this.F_0_X.TabIndex = 1;
@@ -265,7 +370,7 @@ namespace CMFaceplateManager
             this.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Panel6.Controls.Add(this.Anz_0_X);
             this.Panel6.Location = new System.Drawing.Point(35, 41);
-            this.Panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel6.Margin = new System.Windows.Forms.Padding(4);
             this.Panel6.Name = "Panel6";
             this.Panel6.Size = new System.Drawing.Size(112, 31);
             this.Panel6.TabIndex = 2;
@@ -284,23 +389,23 @@ namespace CMFaceplateManager
             this.Anz_0_X.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Anz_0_X.Click += new System.EventHandler(this.Anz_0_X_Click_1);
             // 
-            // Grenz_0
+            // SP_Panel
             // 
-            this.Grenz_0.BackColor = System.Drawing.Color.Gray;
-            this.Grenz_0.Controls.Add(this.DT_0_O2);
-            this.Grenz_0.Controls.Add(this.DT_0_O1);
-            this.Grenz_0.Controls.Add(this.DT_0_U1);
-            this.Grenz_0.Controls.Add(this.DT_0_U2);
-            this.Grenz_0.Controls.Add(this.PO2_0);
-            this.Grenz_0.Controls.Add(this.PO1_0);
-            this.Grenz_0.Controls.Add(this.PU1_0);
-            this.Grenz_0.Controls.Add(this.PU2_0);
-            this.Grenz_0.Location = new System.Drawing.Point(3, 409);
-            this.Grenz_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Grenz_0.Name = "Grenz_0";
-            this.Grenz_0.Size = new System.Drawing.Size(161, 169);
-            this.Grenz_0.TabIndex = 1;
-            this.Grenz_0.Visible = false;
+            this.SP_Panel.BackColor = System.Drawing.Color.Gray;
+            this.SP_Panel.Controls.Add(this.DT_0_O2);
+            this.SP_Panel.Controls.Add(this.DT_0_O1);
+            this.SP_Panel.Controls.Add(this.DT_0_U1);
+            this.SP_Panel.Controls.Add(this.DT_0_U2);
+            this.SP_Panel.Controls.Add(this.PO2_0);
+            this.SP_Panel.Controls.Add(this.PO1_0);
+            this.SP_Panel.Controls.Add(this.PU1_0);
+            this.SP_Panel.Controls.Add(this.PU2_0);
+            this.SP_Panel.Location = new System.Drawing.Point(3, 409);
+            this.SP_Panel.Margin = new System.Windows.Forms.Padding(4);
+            this.SP_Panel.Name = "SP_Panel";
+            this.SP_Panel.Size = new System.Drawing.Size(161, 169);
+            this.SP_Panel.TabIndex = 1;
+            this.SP_Panel.Visible = false;
             // 
             // DT_0_O2
             // 
@@ -348,7 +453,7 @@ namespace CMFaceplateManager
             this.PO2_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PO2_0.Controls.Add(this.Edit_0_O2);
             this.PO2_0.Location = new System.Drawing.Point(35, 0);
-            this.PO2_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PO2_0.Margin = new System.Windows.Forms.Padding(4);
             this.PO2_0.Name = "PO2_0";
             this.PO2_0.Size = new System.Drawing.Size(112, 32);
             this.PO2_0.TabIndex = 4;
@@ -371,7 +476,7 @@ namespace CMFaceplateManager
             this.PO1_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PO1_0.Controls.Add(this.Edit_0_O1);
             this.PO1_0.Location = new System.Drawing.Point(35, 41);
-            this.PO1_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PO1_0.Margin = new System.Windows.Forms.Padding(4);
             this.PO1_0.Name = "PO1_0";
             this.PO1_0.Size = new System.Drawing.Size(112, 31);
             this.PO1_0.TabIndex = 5;
@@ -394,7 +499,7 @@ namespace CMFaceplateManager
             this.PU1_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PU1_0.Controls.Add(this.Edit_0_U1);
             this.PU1_0.Location = new System.Drawing.Point(35, 80);
-            this.PU1_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PU1_0.Margin = new System.Windows.Forms.Padding(4);
             this.PU1_0.Name = "PU1_0";
             this.PU1_0.Size = new System.Drawing.Size(112, 32);
             this.PU1_0.TabIndex = 6;
@@ -417,7 +522,7 @@ namespace CMFaceplateManager
             this.PU2_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PU2_0.Controls.Add(this.Edit_0_U2);
             this.PU2_0.Location = new System.Drawing.Point(35, 121);
-            this.PU2_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PU2_0.Margin = new System.Windows.Forms.Padding(4);
             this.PU2_0.Name = "PU2_0";
             this.PU2_0.Size = new System.Drawing.Size(112, 31);
             this.PU2_0.TabIndex = 7;
@@ -437,7 +542,7 @@ namespace CMFaceplateManager
             // WAR_0
             // 
             this.WAR_0.Location = new System.Drawing.Point(217, 633);
-            this.WAR_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.WAR_0.Margin = new System.Windows.Forms.Padding(4);
             this.WAR_0.Name = "WAR_0";
             this.WAR_0.Size = new System.Drawing.Size(16, 22);
             this.WAR_0.TabIndex = 2;
@@ -460,7 +565,7 @@ namespace CMFaceplateManager
             this.Panel4.Controls.Add(this.P_20);
             this.Panel4.Controls.Add(this.P_10);
             this.Panel4.Location = new System.Drawing.Point(13, 73);
-            this.Panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel4.Margin = new System.Windows.Forms.Padding(4);
             this.Panel4.Name = "Panel4";
             this.Panel4.Size = new System.Drawing.Size(139, 303);
             this.Panel4.TabIndex = 3;
@@ -469,7 +574,7 @@ namespace CMFaceplateManager
             // 
             this.Gauge0_X.ForeColor = System.Drawing.Color.Red;
             this.Gauge0_X.Location = new System.Drawing.Point(83, 1);
-            this.Gauge0_X.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Gauge0_X.Margin = new System.Windows.Forms.Padding(4);
             this.Gauge0_X.Maximum = 1000;
             this.Gauge0_X.Name = "Gauge0_X";
             this.Gauge0_X.Size = new System.Drawing.Size(21, 303);
@@ -480,7 +585,7 @@ namespace CMFaceplateManager
             // 
             this.P_100.BackColor = System.Drawing.Color.White;
             this.P_100.Location = new System.Drawing.Point(128, 2);
-            this.P_100.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_100.Margin = new System.Windows.Forms.Padding(4);
             this.P_100.Name = "P_100";
             this.P_100.Size = new System.Drawing.Size(12, 1);
             this.P_100.TabIndex = 1;
@@ -489,7 +594,7 @@ namespace CMFaceplateManager
             // 
             this.P_90.BackColor = System.Drawing.Color.White;
             this.P_90.Location = new System.Drawing.Point(128, 30);
-            this.P_90.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_90.Margin = new System.Windows.Forms.Padding(4);
             this.P_90.Name = "P_90";
             this.P_90.Size = new System.Drawing.Size(12, 2);
             this.P_90.TabIndex = 2;
@@ -498,7 +603,7 @@ namespace CMFaceplateManager
             // 
             this.P_80.BackColor = System.Drawing.Color.White;
             this.P_80.Location = new System.Drawing.Point(128, 60);
-            this.P_80.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_80.Margin = new System.Windows.Forms.Padding(4);
             this.P_80.Name = "P_80";
             this.P_80.Size = new System.Drawing.Size(12, 1);
             this.P_80.TabIndex = 3;
@@ -507,7 +612,7 @@ namespace CMFaceplateManager
             // 
             this.P_70.BackColor = System.Drawing.Color.White;
             this.P_70.Location = new System.Drawing.Point(128, 90);
-            this.P_70.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_70.Margin = new System.Windows.Forms.Padding(4);
             this.P_70.Name = "P_70";
             this.P_70.Size = new System.Drawing.Size(12, 2);
             this.P_70.TabIndex = 4;
@@ -516,7 +621,7 @@ namespace CMFaceplateManager
             // 
             this.P_60.BackColor = System.Drawing.Color.White;
             this.P_60.Location = new System.Drawing.Point(128, 121);
-            this.P_60.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_60.Margin = new System.Windows.Forms.Padding(4);
             this.P_60.Name = "P_60";
             this.P_60.Size = new System.Drawing.Size(12, 1);
             this.P_60.TabIndex = 5;
@@ -525,7 +630,7 @@ namespace CMFaceplateManager
             // 
             this.P_50.BackColor = System.Drawing.Color.White;
             this.P_50.Location = new System.Drawing.Point(128, 150);
-            this.P_50.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_50.Margin = new System.Windows.Forms.Padding(4);
             this.P_50.Name = "P_50";
             this.P_50.Size = new System.Drawing.Size(12, 2);
             this.P_50.TabIndex = 6;
@@ -534,7 +639,7 @@ namespace CMFaceplateManager
             // 
             this.P_40.BackColor = System.Drawing.Color.White;
             this.P_40.Location = new System.Drawing.Point(128, 180);
-            this.P_40.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_40.Margin = new System.Windows.Forms.Padding(4);
             this.P_40.Name = "P_40";
             this.P_40.Size = new System.Drawing.Size(12, 2);
             this.P_40.TabIndex = 7;
@@ -543,7 +648,7 @@ namespace CMFaceplateManager
             // 
             this.P_30.BackColor = System.Drawing.Color.White;
             this.P_30.Location = new System.Drawing.Point(128, 210);
-            this.P_30.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_30.Margin = new System.Windows.Forms.Padding(4);
             this.P_30.Name = "P_30";
             this.P_30.Size = new System.Drawing.Size(12, 1);
             this.P_30.TabIndex = 8;
@@ -552,7 +657,7 @@ namespace CMFaceplateManager
             // 
             this.P_20.BackColor = System.Drawing.Color.White;
             this.P_20.Location = new System.Drawing.Point(128, 240);
-            this.P_20.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_20.Margin = new System.Windows.Forms.Padding(4);
             this.P_20.Name = "P_20";
             this.P_20.Size = new System.Drawing.Size(12, 2);
             this.P_20.TabIndex = 9;
@@ -561,7 +666,7 @@ namespace CMFaceplateManager
             // 
             this.P_10.BackColor = System.Drawing.Color.White;
             this.P_10.Location = new System.Drawing.Point(128, 270);
-            this.P_10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.P_10.Margin = new System.Windows.Forms.Padding(4);
             this.P_10.Name = "P_10";
             this.P_10.Size = new System.Drawing.Size(12, 2);
             this.P_10.TabIndex = 10;
@@ -573,7 +678,7 @@ namespace CMFaceplateManager
             this.Panel8.Controls.Add(this.Z1_0);
             this.Panel8.Controls.Add(this.Z2_0);
             this.Panel8.Location = new System.Drawing.Point(5, 9);
-            this.Panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel8.Margin = new System.Windows.Forms.Padding(4);
             this.Panel8.Name = "Panel8";
             this.Panel8.Size = new System.Drawing.Size(157, 56);
             this.Panel8.TabIndex = 4;
@@ -606,7 +711,7 @@ namespace CMFaceplateManager
             // 
             this.Parameter_0.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Parameter_0.Location = new System.Drawing.Point(27, 624);
-            this.Parameter_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Parameter_0.Margin = new System.Windows.Forms.Padding(4);
             this.Parameter_0.Name = "Parameter_0";
             this.Parameter_0.Size = new System.Drawing.Size(121, 33);
             this.Parameter_0.TabIndex = 5;
@@ -618,7 +723,7 @@ namespace CMFaceplateManager
             this.Panel5.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Panel5.Controls.Add(this.EINH_0);
             this.Panel5.Location = new System.Drawing.Point(5, 380);
-            this.Panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel5.Margin = new System.Windows.Forms.Padding(4);
             this.Panel5.Name = "Panel5";
             this.Panel5.Size = new System.Drawing.Size(157, 25);
             this.Panel5.TabIndex = 6;
@@ -636,33 +741,33 @@ namespace CMFaceplateManager
             this.EINH_0.Text = "0 - 100 %";
             this.EINH_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Grenzwerte_0
+            // Setpoints
             // 
-            this.Grenzwerte_0.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Grenzwerte_0.Location = new System.Drawing.Point(27, 585);
-            this.Grenzwerte_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Grenzwerte_0.Name = "Grenzwerte_0";
-            this.Grenzwerte_0.Size = new System.Drawing.Size(121, 32);
-            this.Grenzwerte_0.TabIndex = 7;
-            this.Grenzwerte_0.Text = "Grenzwerte";
-            this.Grenzwerte_0.Click += new System.EventHandler(this.Grenzwerte_0Click);
+            this.Setpoints.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.Setpoints.Location = new System.Drawing.Point(27, 585);
+            this.Setpoints.Margin = new System.Windows.Forms.Padding(4);
+            this.Setpoints.Name = "Setpoints";
+            this.Setpoints.Size = new System.Drawing.Size(121, 32);
+            this.Setpoints.TabIndex = 7;
+            this.Setpoints.Text = "Setpoints";
+            this.Setpoints.Click += new System.EventHandler(this.SP_ButtonClick);
             // 
-            // Button1
+            // MOS_Button
             // 
-            this.Button1.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Button1.Location = new System.Drawing.Point(27, 665);
-            this.Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(121, 57);
-            this.Button1.TabIndex = 8;
-            this.Button1.Text = "MOS";
-            this.Button1.Click += new System.EventHandler(this.Button1Click);
+            this.MOS_Button.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.MOS_Button.Location = new System.Drawing.Point(27, 665);
+            this.MOS_Button.Margin = new System.Windows.Forms.Padding(4);
+            this.MOS_Button.Name = "MOS_Button";
+            this.MOS_Button.Size = new System.Drawing.Size(121, 57);
+            this.MOS_Button.TabIndex = 8;
+            this.MOS_Button.Text = "MOS";
+            this.MOS_Button.Click += new System.EventHandler(this.MOS_ButtonClick);
             // 
             // Button2
             // 
             this.Button2.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Button2.Location = new System.Drawing.Point(27, 729);
-            this.Button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Button2.Margin = new System.Windows.Forms.Padding(4);
             this.Button2.Name = "Button2";
             this.Button2.Size = new System.Drawing.Size(121, 32);
             this.Button2.TabIndex = 9;
@@ -672,113 +777,13 @@ namespace CMFaceplateManager
             // Edit1
             // 
             this.Edit1.Location = new System.Drawing.Point(32, 670);
-            this.Edit1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Edit1.Margin = new System.Windows.Forms.Padding(4);
             this.Edit1.Name = "Edit1";
             this.Edit1.PasswordChar = '*';
             this.Edit1.Size = new System.Drawing.Size(107, 22);
             this.Edit1.TabIndex = 10;
             this.Edit1.Visible = false;
             this.Edit1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Edit1KeyPress);
-            // 
-            // MOS
-            // 
-            this.MOS.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.MOS.Controls.Add(this.StaticText1);
-            this.MOS.Controls.Add(this.MOS_SET);
-            this.MOS.Controls.Add(this.MOS_RESET);
-            this.MOS.Controls.Add(this.CONFIRM);
-            this.MOS.Controls.Add(this.StaticText2);
-            this.MOS.Controls.Add(this.MOS_Set3);
-            this.MOS.Controls.Add(this.MOS_Reset3);
-            this.MOS.Controls.Add(this.SwareCtl1);
-            this.MOS.Location = new System.Drawing.Point(9, 404);
-            this.MOS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MOS.Name = "MOS";
-            this.MOS.Size = new System.Drawing.Size(147, 356);
-            this.MOS.TabIndex = 11;
-            this.MOS.Visible = false;
-            // 
-            // StaticText1
-            // 
-            this.StaticText1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.StaticText1.Location = new System.Drawing.Point(3, 6);
-            this.StaticText1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.StaticText1.Name = "StaticText1";
-            this.StaticText1.Size = new System.Drawing.Size(143, 25);
-            this.StaticText1.TabIndex = 0;
-            this.StaticText1.Text = "MOS-Startup";
-            this.StaticText1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // MOS_SET
-            // 
-            this.MOS_SET.Location = new System.Drawing.Point(11, 39);
-            this.MOS_SET.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MOS_SET.Name = "MOS_SET";
-            this.MOS_SET.Size = new System.Drawing.Size(129, 41);
-            this.MOS_SET.TabIndex = 1;
-            this.MOS_SET.Text = "activate";
-            this.MOS_SET.Click += new System.EventHandler(this.MOS_SETClick);
-            // 
-            // MOS_RESET
-            // 
-            this.MOS_RESET.Location = new System.Drawing.Point(11, 79);
-            this.MOS_RESET.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MOS_RESET.Name = "MOS_RESET";
-            this.MOS_RESET.Size = new System.Drawing.Size(129, 41);
-            this.MOS_RESET.TabIndex = 2;
-            this.MOS_RESET.Text = "remove";
-            this.MOS_RESET.Click += new System.EventHandler(this.MOS_RESETClick);
-            // 
-            // CONFIRM
-            // 
-            this.CONFIRM.Location = new System.Drawing.Point(11, 128);
-            this.CONFIRM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.CONFIRM.Name = "CONFIRM";
-            this.CONFIRM.Size = new System.Drawing.Size(129, 41);
-            this.CONFIRM.TabIndex = 3;
-            this.CONFIRM.Text = "confirm";
-            this.CONFIRM.Click += new System.EventHandler(this.CONFIRMClick);
-            // 
-            // StaticText2
-            // 
-            this.StaticText2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.StaticText2.Location = new System.Drawing.Point(3, 183);
-            this.StaticText2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.StaticText2.Name = "StaticText2";
-            this.StaticText2.Size = new System.Drawing.Size(143, 25);
-            this.StaticText2.TabIndex = 4;
-            this.StaticText2.Text = "MOS-Maintenance";
-            this.StaticText2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // MOS_Set3
-            // 
-            this.MOS_Set3.Location = new System.Drawing.Point(11, 217);
-            this.MOS_Set3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MOS_Set3.Name = "MOS_Set3";
-            this.MOS_Set3.Size = new System.Drawing.Size(129, 41);
-            this.MOS_Set3.TabIndex = 5;
-            this.MOS_Set3.Text = "activate";
-            this.MOS_Set3.Click += new System.EventHandler(this.MOS_SET1Click);
-            // 
-            // MOS_Reset3
-            // 
-            this.MOS_Reset3.Location = new System.Drawing.Point(11, 256);
-            this.MOS_Reset3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MOS_Reset3.Name = "MOS_Reset3";
-            this.MOS_Reset3.Size = new System.Drawing.Size(129, 41);
-            this.MOS_Reset3.TabIndex = 6;
-            this.MOS_Reset3.Text = "remove";
-            this.MOS_Reset3.Click += new System.EventHandler(this.MOS_RESET1Click);
-            // 
-            // SwareCtl1
-            // 
-            this.SwareCtl1.Location = new System.Drawing.Point(11, 305);
-            this.SwareCtl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.SwareCtl1.Name = "SwareCtl1";
-            this.SwareCtl1.Size = new System.Drawing.Size(129, 41);
-            this.SwareCtl1.TabIndex = 7;
-            this.SwareCtl1.Text = "confirm";
-            this.SwareCtl1.Click += new System.EventHandler(this.Confirm1Click);
             // 
             // MOS1
             // 
@@ -788,7 +793,7 @@ namespace CMFaceplateManager
             this.MOS1.Controls.Add(this.MOS_RESET1);
             this.MOS1.Controls.Add(this.Confirm1);
             this.MOS1.Location = new System.Drawing.Point(28, 591);
-            this.MOS1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MOS1.Margin = new System.Windows.Forms.Padding(4);
             this.MOS1.Name = "MOS1";
             this.MOS1.Size = new System.Drawing.Size(147, 187);
             this.MOS1.TabIndex = 1;
@@ -808,7 +813,7 @@ namespace CMFaceplateManager
             // MOS_SET1
             // 
             this.MOS_SET1.Location = new System.Drawing.Point(11, 39);
-            this.MOS_SET1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MOS_SET1.Margin = new System.Windows.Forms.Padding(4);
             this.MOS_SET1.Name = "MOS_SET1";
             this.MOS_SET1.Size = new System.Drawing.Size(129, 41);
             this.MOS_SET1.TabIndex = 1;
@@ -818,7 +823,7 @@ namespace CMFaceplateManager
             // MOS_RESET1
             // 
             this.MOS_RESET1.Location = new System.Drawing.Point(11, 79);
-            this.MOS_RESET1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MOS_RESET1.Margin = new System.Windows.Forms.Padding(4);
             this.MOS_RESET1.Name = "MOS_RESET1";
             this.MOS_RESET1.Size = new System.Drawing.Size(129, 41);
             this.MOS_RESET1.TabIndex = 2;
@@ -828,19 +833,19 @@ namespace CMFaceplateManager
             // Confirm1
             // 
             this.Confirm1.Location = new System.Drawing.Point(11, 128);
-            this.Confirm1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Confirm1.Margin = new System.Windows.Forms.Padding(4);
             this.Confirm1.Name = "Confirm1";
             this.Confirm1.Size = new System.Drawing.Size(129, 41);
             this.Confirm1.TabIndex = 3;
             this.Confirm1.Text = "Confirm";
-            this.Confirm1.Click += new System.EventHandler(this.Confirm1Click);
+            this.Confirm1.Click += new System.EventHandler(this.CONF_MOS_M_ButtonClick);
             // 
             // LO
             // 
             this.LO.Location = new System.Drawing.Point(0, 0);
-            this.LO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LO.Margin = new System.Windows.Forms.Padding(4);
             this.LO.Name = "LO";
-            this.LO.Size = new System.Drawing.Size(36, 17);
+            this.LO.Size = new System.Drawing.Size(36, 26);
             this.LO.TabIndex = 1;
             this.LO.Text = "<";
             this.LO.Click += new System.EventHandler(this.LOClick);
@@ -848,31 +853,57 @@ namespace CMFaceplateManager
             // RO
             // 
             this.RO.Location = new System.Drawing.Point(191, 0);
-            this.RO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RO.Margin = new System.Windows.Forms.Padding(4);
             this.RO.Name = "RO";
-            this.RO.Size = new System.Drawing.Size(36, 17);
+            this.RO.Size = new System.Drawing.Size(36, 26);
             this.RO.TabIndex = 2;
             this.RO.Text = ">";
             this.RO.Click += new System.EventHandler(this.ROClick);
+            // 
+            // MOS_PASS
+            // 
+            this.MOS_PASS.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MOS_PASS.Location = new System.Drawing.Point(34, 677);
+            this.MOS_PASS.Name = "MOS_PASS";
+            this.MOS_PASS.Size = new System.Drawing.Size(107, 34);
+            this.MOS_PASS.TabIndex = 12;
+            this.MOS_PASS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MOS_PASS.UseSystemPasswordChar = true;
+            this.MOS_PASS.Visible = false;
+            this.MOS_PASS.TextChanged += new System.EventHandler(this.MOS_PASS_TextChanged);
+            this.MOS_PASS.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MOS_PASS_KeyDown);
+            // 
+            // Pin_Button
+            // 
+            this.Pin_Button.Location = new System.Drawing.Point(100, 0);
+            this.Pin_Button.Margin = new System.Windows.Forms.Padding(4);
+            this.Pin_Button.Name = "Pin_Button";
+            this.Pin_Button.Size = new System.Drawing.Size(30, 26);
+            this.Pin_Button.TabIndex = 3;
+            this.Pin_Button.Text = "📌";
+            this.Pin_Button.Click += new System.EventHandler(this.Pin_Button_Click);
             // 
             // AnalogFaceplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(228, 863);
             this.Controls.Add(this.Panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AnalogFaceplate";
-            this.Text = "Einblendregler";
-            this.TopMost = true;
+            this.Text = "Analog Faceplate";
             this.Panel1.ResumeLayout(false);
             this.P_0.ResumeLayout(false);
             this.Panel3.ResumeLayout(false);
             this.Panel3.PerformLayout();
-            this.Anz_0.ResumeLayout(false);
+            this.MOS_Panel.ResumeLayout(false);
+            this.PV_Panel.ResumeLayout(false);
             this.Panel6.ResumeLayout(false);
-            this.Grenz_0.ResumeLayout(false);
+            this.SP_Panel.ResumeLayout(false);
             this.PO2_0.ResumeLayout(false);
             this.PO1_0.ResumeLayout(false);
             this.PU1_0.ResumeLayout(false);
@@ -880,12 +911,14 @@ namespace CMFaceplateManager
             this.Panel4.ResumeLayout(false);
             this.Panel8.ResumeLayout(false);
             this.Panel5.ResumeLayout(false);
-            this.MOS.ResumeLayout(false);
             this.MOS1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox MOS_PASS;
+        private System.Windows.Forms.Button Pin_Button;
     }
 }

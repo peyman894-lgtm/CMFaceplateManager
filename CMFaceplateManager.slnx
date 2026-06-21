@@ -3,7 +3,7 @@
     <Platform Name="Any CPU" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="CMFaceplateManager/CMFaceplateManager.csproj">
+  <Project Path="CMFaceplateManager/CMFaceplateManager.csproj" Id="3a8d8dbb-0b6f-4d1f-bc98-24c4db3decb2">
     <Platform Solution="*|x86" Project="x86" />
   </Project>
 </Solution>

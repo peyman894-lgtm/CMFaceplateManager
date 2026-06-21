@@ -12,6 +12,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace CMFaceplateManager
 {
@@ -90,18 +91,26 @@ namespace CMFaceplateManager
             Console.WriteLine($"[{TagName}] Parameter_0Click — show Chart");
         }
 
-        private void Grenzwerte_0Click(object sender, EventArgs e)
+        private void SP_ButtonClick(object sender, EventArgs e)
         {
-            Console.WriteLine($"[{TagName}] Grenzwerte_0Click — toggle limits panel");
-            bool showingLimits = this.Grenz_0.Visible;
-            this.Grenz_0.Visible = !showingLimits;
-            this.Anz_0.Visible = showingLimits;
+            Console.WriteLine($"[{TagName}] SP_ButtonClick — toggle limits panel");
+            bool showingSP = SP_Panel.Visible;
+
+            SP_Panel.Visible = !showingSP;
+            PV_Panel.Visible = showingSP;
+
+            Setpoints.Text = showingSP
+                ? "Setpoint"
+                : "Process Value";
         }
 
-        private void Button1Click(object sender, EventArgs e)
+        private void MOS_ButtonClick(object sender, EventArgs e)
         {
-            Console.WriteLine($"[{TagName}] Button1Click — toggle MOS panel");
-            this.MOS.Visible = !this.MOS.Visible;
+            Console.WriteLine($"[{TagName}] MOS_ButtonClick — toggle MOS panel");
+            
+            this.MOS_PASS.Visible = !this.MOS_PASS.Visible;
+            MOS_PASS.Focus();
+            MOS_PASS.SelectAll();
         }
 
         private void MOS_SETClick(object sender, EventArgs e)
@@ -114,9 +123,11 @@ namespace CMFaceplateManager
             Console.WriteLine($"[{TagName}] MOS_RESETClick — remove MOS Startup override");
         }
 
-        private void CONFIRMClick(object sender, EventArgs e)
+        private void CONF_MOS_S_ButtonClick(object sender, EventArgs e)
         {
-            Console.WriteLine($"[{TagName}] CONFIRMClick — confirm MOS Startup action");
+            Console.WriteLine($"[{TagName}] CONF_MOS_S_ButtonClick — confirm MOS Startup action");
+            MOS_PASS.Clear();
+            this.MOS_Panel.Visible = !this.MOS_Panel.Visible;
         }
 
         private void MOS_SET1Click(object sender, EventArgs e)
@@ -129,9 +140,11 @@ namespace CMFaceplateManager
             Console.WriteLine($"[{TagName}] MOS_RESET1Click — remove MOS Maintenance override");
         }
 
-        private void Confirm1Click(object sender, EventArgs e)
+        private void CONF_MOS_M_ButtonClick(object sender, EventArgs e)
         {
-            Console.WriteLine($"[{TagName}] Confirm1Click — confirm MOS Maintenance action");
+            Console.WriteLine($"[{TagName}] CONF_MOS_M_ButtonClick — confirm MOS Maintenance action");
+            MOS_PASS.Clear();
+            this.MOS_Panel.Visible = !this.MOS_Panel.Visible;
         }
 
         private void WAR_0KeyDown(object sender, KeyEventArgs e)
@@ -171,6 +184,45 @@ namespace CMFaceplateManager
         private void Gauge0_X_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Anz_0_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void MOS_PASS_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Enter)
+                return;
+
+            e.SuppressKeyPress = true;
+            e.Handled = true;
+
+            if (MOS_PASS.Text.Trim() == "MOS")
+            {
+                MOS_Panel.Visible = true;
+                MOS_PASS.Visible = false;
+            }
+            else
+            {
+                MOS_PASS.Clear();
+                MOS_PASS.Visible = false;
+            }
+        }
+
+        private void MOS_PASS_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Pin_Button_Click(object sender, EventArgs e)
+        {
+            TopMost = !TopMost;
+
+            // Show the action that will happen on the next click
+            Pin_Button.Text = TopMost ? "📍" : "📌";
+            Pin_Button.AccessibleName = TopMost ? "Unpin" : "Pin";
         }
     }
 }
