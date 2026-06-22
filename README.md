@@ -386,3 +386,288 @@ This should display one or more installed SDK versions.
 ---
 
 Happy Coding!
+
+
+# ControlMaestro WinForms Project Setup
+
+This document describes the recommended Visual Studio project configuration for developing Windows Forms applications that use the **ControlMaestro SDK (Wizpro.dll)**.
+
+## Requirements
+
+* Visual Studio 2022 Community (or later)
+* .NET Framework 4.8
+* ControlMaestro Runtime
+* Wizpro.dll (32-bit version)
+
+---
+
+# Why x86?
+
+`Wizpro.dll` is a **32-bit DLL**.
+
+A 32-bit DLL can only be loaded by a 32-bit process.
+
+Therefore, the application **must be built as x86**.
+
+If the application is built as:
+
+```text id="w6w1qz"
+Any CPU
+```
+
+or
+
+```text id="6yqzpd"
+x64
+```
+
+the application may fail with errors such as:
+
+```text id="o13x5n"
+BadImageFormatException
+```
+
+or
+
+```text id="4b0av3"
+Unable to load DLL 'Wizpro.dll'
+```
+
+---
+
+# Create the Project
+
+## Step 1
+
+Open Visual Studio.
+
+Select:
+
+```text id="w6dk7y"
+Create a new project
+```
+
+---
+
+## Step 2
+
+Search for:
+
+```text id="i63z0u"
+Windows Forms App (.NET Framework)
+```
+
+Select the template and click:
+
+```text id="50c3nh"
+Next
+```
+
+---
+
+## Step 3
+
+Enter:
+
+```text id="d5eh5l"
+Project Name
+Location
+Solution Name
+```
+
+Click:
+
+```text id="v4cv9n"
+Create
+```
+
+---
+
+# Configure .NET Framework
+
+Open:
+
+```text id="8e6iq6"
+Project
+→ Properties
+→ Application
+```
+
+Verify:
+
+```text id="v8uivn"
+Target Framework:
+.NET Framework 4.8
+```
+
+---
+
+# Configure Platform Target
+
+Open:
+
+```text id="7gx6ia"
+Project
+→ Properties
+→ Build
+```
+
+Set:
+
+```text id="uws0t2"
+Platform target: x86
+```
+
+Disable:
+
+```text id="lp3m8e"
+Prefer 32-bit
+```
+
+if the option is visible.
+
+Expected configuration:
+
+```text id="r2qpcw"
+Configuration: Debug
+Platform target: x86
+```
+
+and
+
+```text id="cwzqjf"
+Configuration: Release
+Platform target: x86
+```
+
+---
+
+# Configuration Manager
+
+Open:
+
+```text id="s1m7d9"
+Build
+→ Configuration Manager
+```
+
+Verify:
+
+```text id="6oqm5o"
+Active solution platform = x86
+```
+
+If x86 does not exist:
+
+```text id="z2vks5"
+New...
+→ x86
+→ Copy settings from Any CPU
+```
+
+Click:
+
+```text id="h7l7wo"
+OK
+```
+
+---
+
+# Add Wizpro.dll
+
+Create a project folder:
+
+```text id="ukep5s"
+<ProjectRoot>
+│
+├── Bin
+│   └── Wizpro.dll
+│
+├── Forms
+├── Classes
+└── Program.cs
+```
+
+
+ControlMaestroTest
+│
+├── Bin
+│   └── Wizpro.dll
+│
+├── Forms
+│   └── MainForm.cs
+│
+├── Classes
+│   └── CMClient.cs
+│
+├── Program.cs
+│
+├── App.config
+│
+└── ControlMaestroTest.csproj
+```
+
+---
+
+# Common Errors
+
+## BadImageFormatException
+
+Cause:
+
+```text id="xt1ehq"
+64-bit application loading 32-bit DLL
+```
+
+Solution:
+
+```text id="mqoik4"
+Build Target = x86
+```
+
+---
+
+## DLL Not Found
+
+Cause:
+
+```text id="6kzgt6"
+Wizpro.dll not copied to output folder
+```
+
+Solution:
+
+```text id="7olz3r"
+Copy to Output Directory = Copy if newer
+```
+
+---
+
+## Access Violation
+
+Cause:
+
+```text id="0x0u7l"
+Incorrect P/Invoke declaration
+Wrong calling convention
+Incorrect parameter types
+```
+
+Solution:
+
+Verify all imported function signatures against the ControlMaestro SDK documentation.
+
+---
+
+# Recommended for ControlMaestro Development
+
+For maximum compatibility with legacy SCADA systems:
+
+```text id="whh2es"
+Framework: .NET Framework 4.8
+Platform: x86
+Visual Studio: 2022 Community
+Runtime: ControlMaestro Runtime running
+```
+
+This configuration is the safest choice when integrating with legacy 32-bit ControlMaestro components and Wizpro.dll.
