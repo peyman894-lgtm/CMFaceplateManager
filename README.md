@@ -68,3 +68,321 @@ FaceplateManager.exe
 
 - CM2018 API reference (`CMMkClient`, `CMGetGateVal`, `CMPutGateVal`, `CMGetGateRawValue`, `CMCook`, `CMRunMacroByName`, etc.)
 - CM2018 Toolkit API reference
+
+
+
+# Installing Visual Studio 2022 for C# WinForms Development
+
+This guide explains how to install **Visual Studio Community 2022**, **C#**, and **.NET Desktop Development** tools required for creating **Windows Forms (WinForms)** applications.
+
+---
+
+## Prerequisites
+
+* Windows 10 or Windows 11
+* Internet connection
+* Administrator privileges
+
+---
+
+## Step 1: Download Visual Studio Community 2022
+
+Download Visual Studio Community from:
+
+https://visualstudio.microsoft.com/vs/community/
+
+Click **Download Visual Studio Community**.
+
+Run:
+
+```text
+vs_Community.exe
+```
+
+---
+
+## Step 2: Launch the Installer
+
+After the installer starts, Visual Studio Installer will open.
+
+If Visual Studio is already installed:
+
+1. Open **Visual Studio Installer**
+2. Locate **Visual Studio Community 2022**
+3. Click **Modify**
+
+---
+
+## Step 3: Install the Required Workload
+
+In the **Workloads** tab:
+
+### Desktop & Mobile
+
+Enable:
+
+```text
+☑ .NET desktop development
+```
+
+This workload installs:
+
+* C# Compiler
+* .NET SDK
+* Windows Forms Designer
+* WPF Designer
+* Debugger
+* Project Templates
+
+---
+
+## Step 4: Verify Included Components
+
+When **.NET desktop development** is selected, Visual Studio automatically installs:
+
+```text
+.NET SDK
+.NET Runtime
+Windows Forms
+WPF
+C#
+Visual Basic
+MSBuild Tools
+```
+
+No additional configuration is normally required.
+
+---
+
+## Step 5: Install
+
+Click:
+
+```text
+Modify
+```
+
+or
+
+```text
+Install
+```
+
+depending on your installation state.
+
+Wait for the installation to complete.
+
+Typical installation time:
+
+```text
+10 - 30 minutes
+```
+
+depending on internet speed and system performance.
+
+---
+
+## Step 6: Start Visual Studio
+
+Launch:
+
+```text
+Visual Studio 2022
+```
+
+---
+
+## Step 7: Create a WinForms Project
+
+Click:
+
+```text
+Create a new project
+```
+
+Search for:
+
+```text
+windows forms
+```
+
+Select:
+
+```text
+Windows Forms App (.NET)
+```
+
+Click:
+
+```text
+Next
+```
+
+---
+
+## Step 8: Configure the Project
+
+Example settings:
+
+```text
+Project Name: MyFirstWinForms
+Location: C:\Projects\MyFirstWinForms
+```
+
+Click:
+
+```text
+Next
+```
+
+---
+
+## Step 9: Select .NET Version
+
+Choose one of:
+
+```text
+.NET 8.0 (Recommended)
+```
+
+or
+
+```text
+.NET 9.0
+```
+
+Click:
+
+```text
+Create
+```
+
+---
+
+## Step 10: Verify the WinForms Designer
+
+Visual Studio should generate:
+
+```text
+Form1.cs
+Form1.Designer.cs
+Program.cs
+```
+
+A blank form should appear in the Designer window.
+
+If you can drag controls from the Toolbox onto the form, WinForms is installed correctly.
+
+---
+
+## Step 11: Test the Installation
+
+Open `Form1.cs`.
+
+Double-click the form to create the `Load` event.
+
+Add the following code:
+
+```csharp
+private void Form1_Load(object sender, EventArgs e)
+{
+    MessageBox.Show("Hello WinForms!");
+}
+```
+
+Run the application:
+
+```text
+F5
+```
+
+Expected result:
+
+```text
+Hello WinForms!
+```
+
+---
+
+## Step 12: Verify .NET SDK Installation
+
+Open Command Prompt and run:
+
+```cmd
+dotnet --version
+```
+
+Example output:
+
+```text
+8.0.xxx
+```
+
+This confirms that the .NET SDK is installed correctly.
+
+---
+
+## Recommended Project Type for Legacy DLLs
+
+For industrial software and legacy DLLs such as:
+
+* Wizpro.dll
+* ControlMaestro SDK
+* Older SCADA integrations
+
+consider using:
+
+```text
+Windows Forms App (.NET Framework 4.8)
+```
+
+instead of the latest .NET version.
+
+Many legacy DLLs were developed for the .NET Framework and may work more reliably with .NET Framework 4.8.
+
+---
+
+## Troubleshooting
+
+### "No templates found"
+
+Ensure that:
+
+```text
+.NET desktop development
+```
+
+is installed in Visual Studio Installer.
+
+### WinForms template missing
+
+Open Visual Studio Installer:
+
+```text
+Visual Studio Installer
+    → Modify
+    → Workloads
+    → .NET desktop development
+```
+
+and verify that the workload is checked.
+
+### Verify installation from command line
+
+```cmd
+dotnet --list-sdks
+```
+
+This should display one or more installed SDK versions.
+
+---
+
+## References
+
+* https://visualstudio.microsoft.com/
+* https://dotnet.microsoft.com/
+* https://learn.microsoft.com/dotnet/desktop/winforms/
+
+---
+
+Happy Coding!
