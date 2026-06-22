@@ -71,603 +71,239 @@ FaceplateManager.exe
 
 
 
-# Installing Visual Studio 2022 for C# WinForms Development
+# 🛠️ Visual Studio Setup Guide — C# WinForms with 32-bit DLL Support
 
-This guide explains how to install **Visual Studio Community 2022**, **C#**, and **.NET Desktop Development** tools required for creating **Windows Forms (WinForms)** applications.
-
----
-
-## Prerequisites
-
-* Windows 10 or Windows 11
-* Internet connection
-* Administrator privileges
+This guide walks through installing **Visual Studio** with the components needed to build
+a **C# WinForms** application (.NET Framework) that interoperates with **32-bit (x86) native DLLs**
+(e.g. `WIZPro.dll`, `WIZ5API.dll`, or any legacy unmanaged DLL).
 
 ---
 
-## Step 1: Download Visual Studio Community 2022
+## 📋 Prerequisites
 
-Download Visual Studio Community from:
-
-https://visualstudio.microsoft.com/vs/community/
-
-Click **Download Visual Studio Community**.
-
-Run:
-
-```text
-vs_Community.exe
-```
+| Requirement | Details |
+|---|---|
+| OS | Windows 10 (64-bit) or Windows 11 |
+| Disk space | ~10–15 GB free (for VS + workloads) |
+| RAM | 8 GB minimum, 16 GB recommended |
+| Internet | Required for installer download |
+| Permissions | Local Administrator account |
 
 ---
 
-## Step 2: Launch the Installer
+## 📥 Step 1 — Download Visual Studio Installer
 
-After the installer starts, Visual Studio Installer will open.
+1. Open your browser and go to:
+   👉 https://visualstudio.microsoft.com/downloads/
 
-If Visual Studio is already installed:
+2. Choose your edition:
+   - **Community** — Free for individuals, open-source, and small teams ✅ (recommended)
+   - **Professional** — Paid, for commercial use
+   - **Enterprise** — Paid, for large teams
 
-1. Open **Visual Studio Installer**
-2. Locate **Visual Studio Community 2022**
-3. Click **Modify**
+3. Click **Free download** under Community (or your chosen edition).
+
+4. Save the file `VisualStudioSetup.exe` to your Downloads folder.
 
 ---
 
-## Step 3: Install the Required Workload
+## ▶️ Step 2 — Run the Installer
+
+1. Double-click `VisualStudioSetup.exe`.
+2. If prompted by User Account Control (UAC), click **Yes**.
+3. The **Visual Studio Installer** bootstrapper will launch and download a small setup engine (~5 MB).
+4. Wait for the installer window to open — it will show a list of available **Workloads**.
+
+---
+
+## 🧩 Step 3 — Select the Required Workload
+
+> ⚠️ This is the most important step. Choose the wrong workload and key tools will be missing.
 
 In the **Workloads** tab:
 
-### Desktop & Mobile
+1. ✅ Check **".NET desktop development"**
 
-Enable:
+   This single workload installs everything needed:
+   - C# language support
+   - Windows Forms (WinForms) designer
+   - .NET Framework 4.8 targeting pack
+   - MSBuild tools
 
-```text
-☑ .NET desktop development
-```
+   ![Workload selection illustration]
 
-This workload installs:
-
-* C# Compiler
-* .NET SDK
-* Windows Forms Designer
-* WPF Designer
-* Debugger
-* Project Templates
+2. Optionally also check:
+   - **"Desktop development with C++"** — only if you need to build or debug the native DLLs themselves
 
 ---
 
-## Step 4: Verify Included Components
+## 🔧 Step 4 — Verify Individual Components (x86 / 32-bit Support)
 
-When **.NET desktop development** is selected, Visual Studio automatically installs:
+1. While still in the installer, click the **"Individual components"** tab at the top.
+2. Use the search box to find and confirm the following are checked:
 
-```text
-.NET SDK
-.NET Runtime
-Windows Forms
-WPF
-C#
-Visual Basic
-MSBuild Tools
-```
+   | Component | Why it is needed |
+   |---|---|
+   | `.NET Framework 4.8 targeting pack` | Required to target .NET Framework 4.8 |
+   | `.NET Framework 4.8 SDK` | Build tools for .NET Framework projects |
+   | `C# and Visual Basic Roslyn compilers` | Core C# compiler |
+   | `NuGet package manager` | Dependency management |
+   | `Windows 10 SDK (10.0.xxxxx)` | Windows API headers (useful for P/Invoke work) |
 
-No additional configuration is normally required.
-
----
-
-## Step 5: Install
-
-Click:
-
-```text
-Modify
-```
-
-or
-
-```text
-Install
-```
-
-depending on your installation state.
-
-Wait for the installation to complete.
-
-Typical installation time:
-
-```text
-10 - 30 minutes
-```
-
-depending on internet speed and system performance.
+   > These are usually selected automatically by the workload — just verify they are checked.
 
 ---
 
-## Step 6: Start Visual Studio
+## 💾 Step 5 — Choose Installation Location
 
-Launch:
-
-```text
-Visual Studio 2022
-```
+1. At the bottom of the installer, click the **"Installation locations"** tab.
+2. Set your preferred path (default: `C:\Program Files\Microsoft Visual Studio\2022\Community`).
+3. Ensure the drive has at least **10 GB free**.
 
 ---
 
-## Step 7: Create a WinForms Project
+## 🚀 Step 6 — Install
 
-Click:
-
-```text
-Create a new project
-```
-
-Search for:
-
-```text
-windows forms
-```
-
-Select:
-
-```text
-Windows Forms App (.NET)
-```
-
-Click:
-
-```text
-Next
-```
+1. Click the **Install** button (bottom right).
+2. The installer will download and install all selected components.
+3. ⏱️ This typically takes **10–30 minutes** depending on your internet speed.
+4. When complete, click **Launch** to open Visual Studio.
 
 ---
 
-## Step 8: Configure the Project
+## 🆕 Step 7 — Create a New WinForms Project
 
-Example settings:
-
-```text
-Project Name: MyFirstWinForms
-Location: C:\Projects\MyFirstWinForms
-```
-
-Click:
-
-```text
-Next
-```
+1. On the Visual Studio start screen, click **"Create a new project"**.
+2. In the search box, type: `winforms`
+3. Select **"Windows Forms App (.NET Framework)"**
+   > ⚠️ Make sure it says **(.NET Framework)** — NOT (.NET 6/7/8). You need .NET Framework for legacy DLL compatibility.
+4. Click **Next**.
+5. Fill in:
+   - **Project name**: e.g. `FaceplateManager`
+   - **Location**: your working folder
+   - **Framework**: `.NET Framework 4.8`
+6. Click **Create**.
 
 ---
 
-## Step 9: Select .NET Version
+## ⚙️ Step 8 — Configure Project Platform to x86 (32-bit)
 
-Choose one of:
+This is **critical** when using 32-bit native DLLs. A 64-bit process cannot load a 32-bit DLL.
 
-```text
-.NET 8.0 (Recommended)
-```
+1. In the top toolbar, click the **platform dropdown** (it shows `Any CPU` by default).
+2. Click **"Configuration Manager…"**
+3. In the **Active solution platform** dropdown, click `<New…>`
+4. Select **`x86`** and click **OK**.
+5. Close Configuration Manager.
+6. The toolbar should now show **`x86`** as the active platform.
 
-or
+**Alternatively via Project Properties:**
 
-```text
-.NET 9.0
-```
-
-Click:
-
-```text
-Create
-```
+1. Right-click the project in Solution Explorer → **Properties**.
+2. Go to the **Build** tab.
+3. Set **Platform target** to **`x86`**.
+4. Save (`Ctrl+S`).
 
 ---
 
-## Step 10: Verify the WinForms Designer
+## 📦 Step 9 — Add the 32-bit DLL to Your Project
 
-Visual Studio should generate:
+1. Copy your `.dll` file(s) (e.g. `WIZPro.dll`, `WIZ5API.dll`) into the project folder
+   (same folder as your `.csproj` file, or a subfolder like `lib\`).
 
-```text
-Form1.cs
-Form1.Designer.cs
-Program.cs
-```
+2. In **Solution Explorer**, click **"Show All Files"** (toolbar icon at the top of Solution Explorer).
 
-A blank form should appear in the Designer window.
+3. Right-click the DLL file → **"Include In Project"**.
 
-If you can drag controls from the Toolbox onto the form, WinForms is installed correctly.
+4. Select the DLL in Solution Explorer, then in the **Properties** panel (F4) set:
+   - **Build Action**: `Content`
+   - **Copy to Output Directory**: `Copy always`
+
+   This ensures the DLL lands next to your `.exe` in the `bin\x86\Debug\` folder at build time.
 
 ---
 
-## Step 11: Test the Installation
+## 🔗 Step 10 — Declare P/Invoke Signatures in C#
 
-Open `Form1.cs`.
-
-Double-click the form to create the `Load` event.
-
-Add the following code:
+To call functions from the unmanaged DLL, use `DllImport`:
 
 ```csharp
-private void Form1_Load(object sender, EventArgs e)
+using System.Runtime.InteropServices;
+
+internal static class NativeMethods
 {
-    MessageBox.Show("Hello WinForms!");
+    // Example: calling a function from a 32-bit DLL
+    [DllImport("WIZPro.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+    public static extern int CMOpenServer(string serverName);
+
+    [DllImport("WIZ5API.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+    public static extern int CMGetGateStr(int gateId, StringBuilder value, int bufLen);
 }
 ```
 
-Run the application:
-
-```text
-F5
-```
-
-Expected result:
-
-```text
-Hello WinForms!
-```
+> 💡 If you are unsure of the calling convention, start with `StdCall` (most common for legacy Win32 DLLs).
+> Use `Cdecl` if you get `AccessViolationException` or stack corruption.
 
 ---
 
-## Step 12: Verify .NET SDK Installation
+## ✅ Step 11 — Build and Test
 
-Open Command Prompt and run:
-
-```cmd
-dotnet --version
-```
-
-Example output:
-
-```text
-8.0.xxx
-```
-
-This confirms that the .NET SDK is installed correctly.
+1. Press **`Ctrl+Shift+B`** to build.
+2. Verify there are no errors in the **Error List** panel.
+3. Check that the output folder (`bin\x86\Debug\`) contains:
+   - Your `.exe`
+   - The `.dll` file(s)
+4. Press **`F5`** to run with the debugger attached.
 
 ---
 
-## Recommended Project Type for Legacy DLLs
+## 🐛 Common Issues and Fixes
 
-For industrial software and legacy DLLs such as:
-
-* Wizpro.dll
-* ControlMaestro SDK
-* Older SCADA integrations
-
-consider using:
-
-```text
-Windows Forms App (.NET Framework 4.8)
-```
-
-instead of the latest .NET version.
-
-Many legacy DLLs were developed for the .NET Framework and may work more reliably with .NET Framework 4.8.
+| Problem | Cause | Fix |
+|---|---|---|
+| `BadImageFormatException` | Project is `Any CPU` or `x64` but DLL is 32-bit | Set platform target to **x86** (Step 8) |
+| `DllNotFoundException` | DLL not in output directory | Set Copy to Output = **Copy always** (Step 9) |
+| `EntryPointNotFoundException` | Wrong function name or decoration | Check the exported name with `dumpbin /exports yourfile.dll` in Developer Command Prompt |
+| `AccessViolationException` | Wrong calling convention | Try switching `StdCall` ↔ `Cdecl` in `DllImport` |
+| WinForms designer not available | Wrong project type (.NET 6+ selected) | Re-create project as **.NET Framework** (Step 7) |
 
 ---
 
-## Troubleshooting
+## 🗂️ Recommended Project Structure
 
-### "No templates found"
-
-Ensure that:
-
-```text
-.NET desktop development
 ```
-
-is installed in Visual Studio Installer.
-
-### WinForms template missing
-
-Open Visual Studio Installer:
-
-```text
-Visual Studio Installer
-    → Modify
-    → Workloads
-    → .NET desktop development
-```
-
-and verify that the workload is checked.
-
-### Verify installation from command line
-
-```cmd
-dotnet --list-sdks
-```
-
-This should display one or more installed SDK versions.
-
----
-
-## References
-
-* https://visualstudio.microsoft.com/
-* https://dotnet.microsoft.com/
-* https://learn.microsoft.com/dotnet/desktop/winforms/
-
----
-
-Happy Coding!
-
-
-# ControlMaestro WinForms Project Setup
-
-This document describes the recommended Visual Studio project configuration for developing Windows Forms applications that use the **ControlMaestro SDK (Wizpro.dll)**.
-
-## Requirements
-
-* Visual Studio 2022 Community (or later)
-* .NET Framework 4.8
-* ControlMaestro Runtime
-* Wizpro.dll (32-bit version)
-
----
-
-# Why x86?
-
-`Wizpro.dll` is a **32-bit DLL**.
-
-A 32-bit DLL can only be loaded by a 32-bit process.
-
-Therefore, the application **must be built as x86**.
-
-If the application is built as:
-
-```text id="w6w1qz"
-Any CPU
-```
-
-or
-
-```text id="6yqzpd"
-x64
-```
-
-the application may fail with errors such as:
-
-```text id="o13x5n"
-BadImageFormatException
-```
-
-or
-
-```text id="4b0av3"
-Unable to load DLL 'Wizpro.dll'
-```
-
----
-
-# Create the Project
-
-## Step 1
-
-Open Visual Studio.
-
-Select:
-
-```text id="w6dk7y"
-Create a new project
-```
-
----
-
-## Step 2
-
-Search for:
-
-```text id="i63z0u"
-Windows Forms App (.NET Framework)
-```
-
-Select the template and click:
-
-```text id="50c3nh"
-Next
-```
-
----
-
-## Step 3
-
-Enter:
-
-```text id="d5eh5l"
-Project Name
-Location
-Solution Name
-```
-
-Click:
-
-```text id="v4cv9n"
-Create
-```
-
----
-
-# Configure .NET Framework
-
-Open:
-
-```text id="8e6iq6"
-Project
-→ Properties
-→ Application
-```
-
-Verify:
-
-```text id="v8uivn"
-Target Framework:
-.NET Framework 4.8
-```
-
----
-
-# Configure Platform Target
-
-Open:
-
-```text id="7gx6ia"
-Project
-→ Properties
-→ Build
-```
-
-Set:
-
-```text id="uws0t2"
-Platform target: x86
-```
-
-Disable:
-
-```text id="lp3m8e"
-Prefer 32-bit
-```
-
-if the option is visible.
-
-Expected configuration:
-
-```text id="r2qpcw"
-Configuration: Debug
-Platform target: x86
-```
-
-and
-
-```text id="cwzqjf"
-Configuration: Release
-Platform target: x86
-```
-
----
-
-# Configuration Manager
-
-Open:
-
-```text id="s1m7d9"
-Build
-→ Configuration Manager
-```
-
-Verify:
-
-```text id="6oqm5o"
-Active solution platform = x86
-```
-
-If x86 does not exist:
-
-```text id="z2vks5"
-New...
-→ x86
-→ Copy settings from Any CPU
-```
-
-Click:
-
-```text id="h7l7wo"
-OK
-```
-
----
-
-# Add Wizpro.dll
-
-Create a project folder:
-
-```text id="ukep5s"
-<ProjectRoot>
-│
-├── Bin
-│   └── Wizpro.dll
-│
-├── Forms
-├── Classes
-└── Program.cs
-```
-
-
-ControlMaestroTest
-│
-├── Bin
-│   └── Wizpro.dll
-│
-├── Forms
-│   └── MainForm.cs
-│
-├── Classes
-│   └── CMClient.cs
-│
+YourProject/
+├── lib/
+│   ├── WIZPro.dll          ← 32-bit native DLL
+│   └── WIZ5API.dll         ← 32-bit native DLL
+├── Forms/
+│   ├── MainForm.cs
+│   └── AnalogFaceplate.cs
+├── NativeMethods.cs        ← All DllImport declarations
 ├── Program.cs
-│
-├── App.config
-│
-└── ControlMaestroTest.csproj
+└── YourProject.csproj
 ```
 
 ---
 
-# Common Errors
+## 📚 References
 
-## BadImageFormatException
-
-Cause:
-
-```text id="xt1ehq"
-64-bit application loading 32-bit DLL
-```
-
-Solution:
-
-```text id="mqoik4"
-Build Target = x86
-```
+- [Visual Studio Downloads](https://visualstudio.microsoft.com/downloads/)
+- [WinForms Documentation (.NET Framework)](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/)
+- [P/Invoke — DllImport Guide](https://learn.microsoft.com/en-us/dotnet/standard/native-interop/pinvoke)
+- [Platform Target Configuration](https://learn.microsoft.com/en-us/visualstudio/ide/how-to-configure-projects-to-target-platforms)
 
 ---
 
-## DLL Not Found
+## 🏷️ Version Info
 
-Cause:
-
-```text id="6kzgt6"
-Wizpro.dll not copied to output folder
-```
-
-Solution:
-
-```text id="7olz3r"
-Copy to Output Directory = Copy if newer
-```
+| Tool | Version used in this guide |
+|---|---|
+| Visual Studio | 2022 Community (v17.x) |
+| .NET Framework | 4.8 |
+| Target platform | x86 (32-bit) |
+| OS | Windows 10 / 11 (64-bit) |
 
 ---
 
-## Access Violation
-
-Cause:
-
-```text id="0x0u7l"
-Incorrect P/Invoke declaration
-Wrong calling convention
-Incorrect parameter types
-```
-
-Solution:
-
-Verify all imported function signatures against the ControlMaestro SDK documentation.
-
----
-
-# Recommended for ControlMaestro Development
-
-For maximum compatibility with legacy SCADA systems:
-
-```text id="whh2es"
-Framework: .NET Framework 4.8
-Platform: x86
-Visual Studio: 2022 Community
-Runtime: ControlMaestro Runtime running
-```
-
-This configuration is the safest choice when integrating with legacy 32-bit ControlMaestro components and Wizpro.dll.
+*Maintained as part of the FaceplateManager SCADA migration project.*
