@@ -44,18 +44,18 @@ namespace CMFaceplateManager
         private System.Windows.Forms.Label DT_0_U1;
         private System.Windows.Forms.Label DT_0_U2;
         private System.Windows.Forms.Panel PO2_0;
-        private System.Windows.Forms.Label Edit_0_O2;
+        private System.Windows.Forms.Label SPHH;
         private System.Windows.Forms.Panel PO1_0;
-        private System.Windows.Forms.Label Edit_0_O1;
+        private System.Windows.Forms.Label SPH;
         private System.Windows.Forms.Panel PU1_0;
-        private System.Windows.Forms.Label Edit_0_U1;
+        private System.Windows.Forms.Label SPL;
         private System.Windows.Forms.Panel PU2_0;
-        private System.Windows.Forms.Label Edit_0_U2;
+        private System.Windows.Forms.Label SPLL;
 
         private System.Windows.Forms.TextBox WAR_0;
 
         private System.Windows.Forms.Panel Panel4;
-        private System.Windows.Forms.ProgressBar Gauge0_X;
+        private CMFaceplateManager.VerticalProgressBar Gauge0_X;
         private System.Windows.Forms.Panel P_100;
         private System.Windows.Forms.Panel P_90;
         private System.Windows.Forms.Panel P_80;
@@ -103,6 +103,9 @@ namespace CMFaceplateManager
         private void InitializeComponent()
         {
             this.Panel1 = new System.Windows.Forms.Panel();
+            this.LO = new System.Windows.Forms.Button();
+            this.RO = new System.Windows.Forms.Button();
+            this.Pin_Button = new System.Windows.Forms.Button();
             this.P_0 = new System.Windows.Forms.Panel();
             this.Panel3 = new System.Windows.Forms.Panel();
             this.MOS_Panel = new System.Windows.Forms.Panel();
@@ -114,6 +117,7 @@ namespace CMFaceplateManager
             this.MOS_Set3 = new System.Windows.Forms.Button();
             this.MOS_Reset3 = new System.Windows.Forms.Button();
             this.CONF_MOS_M_Button = new System.Windows.Forms.Button();
+            this.MOS_PASS = new System.Windows.Forms.TextBox();
             this.PV_Panel = new System.Windows.Forms.Panel();
             this.DT_0_X = new System.Windows.Forms.Label();
             this.F_0_X = new System.Windows.Forms.Panel();
@@ -125,16 +129,16 @@ namespace CMFaceplateManager
             this.DT_0_U1 = new System.Windows.Forms.Label();
             this.DT_0_U2 = new System.Windows.Forms.Label();
             this.PO2_0 = new System.Windows.Forms.Panel();
-            this.Edit_0_O2 = new System.Windows.Forms.Label();
+            this.SPHH = new System.Windows.Forms.Label();
             this.PO1_0 = new System.Windows.Forms.Panel();
-            this.Edit_0_O1 = new System.Windows.Forms.Label();
+            this.SPH = new System.Windows.Forms.Label();
             this.PU1_0 = new System.Windows.Forms.Panel();
-            this.Edit_0_U1 = new System.Windows.Forms.Label();
+            this.SPL = new System.Windows.Forms.Label();
             this.PU2_0 = new System.Windows.Forms.Panel();
-            this.Edit_0_U2 = new System.Windows.Forms.Label();
+            this.SPLL = new System.Windows.Forms.Label();
             this.WAR_0 = new System.Windows.Forms.TextBox();
             this.Panel4 = new System.Windows.Forms.Panel();
-            this.Gauge0_X = new System.Windows.Forms.ProgressBar();
+            this.Gauge0_X = new CMFaceplateManager.VerticalProgressBar();
             this.P_100 = new System.Windows.Forms.Panel();
             this.P_90 = new System.Windows.Forms.Panel();
             this.P_80 = new System.Windows.Forms.Panel();
@@ -160,10 +164,6 @@ namespace CMFaceplateManager
             this.MOS_SET1 = new System.Windows.Forms.Button();
             this.MOS_RESET1 = new System.Windows.Forms.Button();
             this.Confirm1 = new System.Windows.Forms.Button();
-            this.LO = new System.Windows.Forms.Button();
-            this.RO = new System.Windows.Forms.Button();
-            this.MOS_PASS = new System.Windows.Forms.TextBox();
-            this.Pin_Button = new System.Windows.Forms.Button();
             this.Panel1.SuspendLayout();
             this.P_0.SuspendLayout();
             this.Panel3.SuspendLayout();
@@ -195,6 +195,36 @@ namespace CMFaceplateManager
             this.Panel1.TabIndex = 0;
             this.Panel1.Click += new System.EventHandler(this.E_Regler_Zu);
             this.Panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel1MouseDown);
+            // 
+            // LO
+            // 
+            this.LO.Location = new System.Drawing.Point(0, 0);
+            this.LO.Margin = new System.Windows.Forms.Padding(4);
+            this.LO.Name = "LO";
+            this.LO.Size = new System.Drawing.Size(36, 26);
+            this.LO.TabIndex = 1;
+            this.LO.Text = "<";
+            this.LO.Click += new System.EventHandler(this.LOClick);
+            // 
+            // RO
+            // 
+            this.RO.Location = new System.Drawing.Point(191, 0);
+            this.RO.Margin = new System.Windows.Forms.Padding(4);
+            this.RO.Name = "RO";
+            this.RO.Size = new System.Drawing.Size(36, 26);
+            this.RO.TabIndex = 2;
+            this.RO.Text = ">";
+            this.RO.Click += new System.EventHandler(this.ROClick);
+            // 
+            // Pin_Button
+            // 
+            this.Pin_Button.Location = new System.Drawing.Point(100, 0);
+            this.Pin_Button.Margin = new System.Windows.Forms.Padding(4);
+            this.Pin_Button.Name = "Pin_Button";
+            this.Pin_Button.Size = new System.Drawing.Size(30, 26);
+            this.Pin_Button.TabIndex = 3;
+            this.Pin_Button.Text = "📌";
+            this.Pin_Button.Click += new System.EventHandler(this.Pin_Button_Click);
             // 
             // P_0
             // 
@@ -242,10 +272,10 @@ namespace CMFaceplateManager
             this.MOS_Panel.Controls.Add(this.MOS_Set3);
             this.MOS_Panel.Controls.Add(this.MOS_Reset3);
             this.MOS_Panel.Controls.Add(this.CONF_MOS_M_Button);
-            this.MOS_Panel.Location = new System.Drawing.Point(4, 378);
+            this.MOS_Panel.Location = new System.Drawing.Point(3, 411);
             this.MOS_Panel.Margin = new System.Windows.Forms.Padding(4);
             this.MOS_Panel.Name = "MOS_Panel";
-            this.MOS_Panel.Size = new System.Drawing.Size(158, 387);
+            this.MOS_Panel.Size = new System.Drawing.Size(158, 356);
             this.MOS_Panel.TabIndex = 11;
             this.MOS_Panel.Visible = false;
             // 
@@ -331,13 +361,26 @@ namespace CMFaceplateManager
             this.CONF_MOS_M_Button.Text = "confirm";
             this.CONF_MOS_M_Button.Click += new System.EventHandler(this.CONF_MOS_M_ButtonClick);
             // 
+            // MOS_PASS
+            // 
+            this.MOS_PASS.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MOS_PASS.Location = new System.Drawing.Point(34, 677);
+            this.MOS_PASS.Name = "MOS_PASS";
+            this.MOS_PASS.Size = new System.Drawing.Size(107, 34);
+            this.MOS_PASS.TabIndex = 12;
+            this.MOS_PASS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MOS_PASS.UseSystemPasswordChar = true;
+            this.MOS_PASS.Visible = false;
+            this.MOS_PASS.TextChanged += new System.EventHandler(this.MOS_PASS_TextChanged);
+            this.MOS_PASS.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MOS_PASS_KeyDown);
+            // 
             // PV_Panel
             // 
             this.PV_Panel.BackColor = System.Drawing.Color.Gray;
             this.PV_Panel.Controls.Add(this.DT_0_X);
             this.PV_Panel.Controls.Add(this.F_0_X);
             this.PV_Panel.Controls.Add(this.Panel6);
-            this.PV_Panel.Location = new System.Drawing.Point(4, 408);
+            this.PV_Panel.Location = new System.Drawing.Point(1, 408);
             this.PV_Panel.Margin = new System.Windows.Forms.Padding(4);
             this.PV_Panel.Name = "PV_Panel";
             this.PV_Panel.Size = new System.Drawing.Size(161, 169);
@@ -451,93 +494,94 @@ namespace CMFaceplateManager
             // 
             this.PO2_0.BackColor = System.Drawing.Color.White;
             this.PO2_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PO2_0.Controls.Add(this.Edit_0_O2);
+            this.PO2_0.Controls.Add(this.SPHH);
             this.PO2_0.Location = new System.Drawing.Point(35, 0);
             this.PO2_0.Margin = new System.Windows.Forms.Padding(4);
             this.PO2_0.Name = "PO2_0";
             this.PO2_0.Size = new System.Drawing.Size(112, 32);
             this.PO2_0.TabIndex = 4;
             // 
-            // Edit_0_O2
+            // SPHH
             // 
-            this.Edit_0_O2.BackColor = System.Drawing.Color.White;
-            this.Edit_0_O2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Edit_0_O2.Font = new System.Drawing.Font("Arial", 10.5F);
-            this.Edit_0_O2.Location = new System.Drawing.Point(0, 0);
-            this.Edit_0_O2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Edit_0_O2.Name = "Edit_0_O2";
-            this.Edit_0_O2.Size = new System.Drawing.Size(108, 28);
-            this.Edit_0_O2.TabIndex = 0;
-            this.Edit_0_O2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SPHH.BackColor = System.Drawing.Color.White;
+            this.SPHH.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SPHH.Font = new System.Drawing.Font("Arial", 10.5F);
+            this.SPHH.Location = new System.Drawing.Point(0, 0);
+            this.SPHH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SPHH.Name = "SPHH";
+            this.SPHH.Size = new System.Drawing.Size(108, 28);
+            this.SPHH.TabIndex = 0;
+            this.SPHH.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SPHH.Click += new System.EventHandler(this.Edit_0_O2_Click);
             // 
             // PO1_0
             // 
             this.PO1_0.BackColor = System.Drawing.Color.White;
             this.PO1_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PO1_0.Controls.Add(this.Edit_0_O1);
+            this.PO1_0.Controls.Add(this.SPH);
             this.PO1_0.Location = new System.Drawing.Point(35, 41);
             this.PO1_0.Margin = new System.Windows.Forms.Padding(4);
             this.PO1_0.Name = "PO1_0";
             this.PO1_0.Size = new System.Drawing.Size(112, 31);
             this.PO1_0.TabIndex = 5;
             // 
-            // Edit_0_O1
+            // SPH
             // 
-            this.Edit_0_O1.BackColor = System.Drawing.Color.White;
-            this.Edit_0_O1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Edit_0_O1.Font = new System.Drawing.Font("Arial", 10.5F);
-            this.Edit_0_O1.Location = new System.Drawing.Point(0, 0);
-            this.Edit_0_O1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Edit_0_O1.Name = "Edit_0_O1";
-            this.Edit_0_O1.Size = new System.Drawing.Size(108, 27);
-            this.Edit_0_O1.TabIndex = 0;
-            this.Edit_0_O1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SPH.BackColor = System.Drawing.Color.White;
+            this.SPH.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SPH.Font = new System.Drawing.Font("Arial", 10.5F);
+            this.SPH.Location = new System.Drawing.Point(0, 0);
+            this.SPH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SPH.Name = "SPH";
+            this.SPH.Size = new System.Drawing.Size(108, 27);
+            this.SPH.TabIndex = 0;
+            this.SPH.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PU1_0
             // 
             this.PU1_0.BackColor = System.Drawing.Color.White;
             this.PU1_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PU1_0.Controls.Add(this.Edit_0_U1);
+            this.PU1_0.Controls.Add(this.SPL);
             this.PU1_0.Location = new System.Drawing.Point(35, 80);
             this.PU1_0.Margin = new System.Windows.Forms.Padding(4);
             this.PU1_0.Name = "PU1_0";
             this.PU1_0.Size = new System.Drawing.Size(112, 32);
             this.PU1_0.TabIndex = 6;
             // 
-            // Edit_0_U1
+            // SPL
             // 
-            this.Edit_0_U1.BackColor = System.Drawing.Color.White;
-            this.Edit_0_U1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Edit_0_U1.Font = new System.Drawing.Font("Arial", 10.5F);
-            this.Edit_0_U1.Location = new System.Drawing.Point(0, 0);
-            this.Edit_0_U1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Edit_0_U1.Name = "Edit_0_U1";
-            this.Edit_0_U1.Size = new System.Drawing.Size(108, 28);
-            this.Edit_0_U1.TabIndex = 0;
-            this.Edit_0_U1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SPL.BackColor = System.Drawing.Color.White;
+            this.SPL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SPL.Font = new System.Drawing.Font("Arial", 10.5F);
+            this.SPL.Location = new System.Drawing.Point(0, 0);
+            this.SPL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SPL.Name = "SPL";
+            this.SPL.Size = new System.Drawing.Size(108, 28);
+            this.SPL.TabIndex = 0;
+            this.SPL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PU2_0
             // 
             this.PU2_0.BackColor = System.Drawing.Color.White;
             this.PU2_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PU2_0.Controls.Add(this.Edit_0_U2);
+            this.PU2_0.Controls.Add(this.SPLL);
             this.PU2_0.Location = new System.Drawing.Point(35, 121);
             this.PU2_0.Margin = new System.Windows.Forms.Padding(4);
             this.PU2_0.Name = "PU2_0";
             this.PU2_0.Size = new System.Drawing.Size(112, 31);
             this.PU2_0.TabIndex = 7;
             // 
-            // Edit_0_U2
+            // SPLL
             // 
-            this.Edit_0_U2.BackColor = System.Drawing.Color.White;
-            this.Edit_0_U2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Edit_0_U2.Font = new System.Drawing.Font("Arial", 10.5F);
-            this.Edit_0_U2.Location = new System.Drawing.Point(0, 0);
-            this.Edit_0_U2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Edit_0_U2.Name = "Edit_0_U2";
-            this.Edit_0_U2.Size = new System.Drawing.Size(108, 27);
-            this.Edit_0_U2.TabIndex = 0;
-            this.Edit_0_U2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SPLL.BackColor = System.Drawing.Color.White;
+            this.SPLL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SPLL.Font = new System.Drawing.Font("Arial", 10.5F);
+            this.SPLL.Location = new System.Drawing.Point(0, 0);
+            this.SPLL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SPLL.Name = "SPLL";
+            this.SPLL.Size = new System.Drawing.Size(108, 27);
+            this.SPLL.TabIndex = 0;
+            this.SPLL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // WAR_0
             // 
@@ -575,7 +619,7 @@ namespace CMFaceplateManager
             this.Gauge0_X.ForeColor = System.Drawing.Color.Red;
             this.Gauge0_X.Location = new System.Drawing.Point(83, 1);
             this.Gauge0_X.Margin = new System.Windows.Forms.Padding(4);
-            this.Gauge0_X.Maximum = 1000;
+            this.Gauge0_X.Maximum = 300;
             this.Gauge0_X.Name = "Gauge0_X";
             this.Gauge0_X.Size = new System.Drawing.Size(21, 303);
             this.Gauge0_X.TabIndex = 0;
@@ -839,49 +883,6 @@ namespace CMFaceplateManager
             this.Confirm1.TabIndex = 3;
             this.Confirm1.Text = "Confirm";
             this.Confirm1.Click += new System.EventHandler(this.CONF_MOS_M_ButtonClick);
-            // 
-            // LO
-            // 
-            this.LO.Location = new System.Drawing.Point(0, 0);
-            this.LO.Margin = new System.Windows.Forms.Padding(4);
-            this.LO.Name = "LO";
-            this.LO.Size = new System.Drawing.Size(36, 26);
-            this.LO.TabIndex = 1;
-            this.LO.Text = "<";
-            this.LO.Click += new System.EventHandler(this.LOClick);
-            // 
-            // RO
-            // 
-            this.RO.Location = new System.Drawing.Point(191, 0);
-            this.RO.Margin = new System.Windows.Forms.Padding(4);
-            this.RO.Name = "RO";
-            this.RO.Size = new System.Drawing.Size(36, 26);
-            this.RO.TabIndex = 2;
-            this.RO.Text = ">";
-            this.RO.Click += new System.EventHandler(this.ROClick);
-            // 
-            // MOS_PASS
-            // 
-            this.MOS_PASS.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MOS_PASS.Location = new System.Drawing.Point(34, 677);
-            this.MOS_PASS.Name = "MOS_PASS";
-            this.MOS_PASS.Size = new System.Drawing.Size(107, 34);
-            this.MOS_PASS.TabIndex = 12;
-            this.MOS_PASS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.MOS_PASS.UseSystemPasswordChar = true;
-            this.MOS_PASS.Visible = false;
-            this.MOS_PASS.TextChanged += new System.EventHandler(this.MOS_PASS_TextChanged);
-            this.MOS_PASS.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MOS_PASS_KeyDown);
-            // 
-            // Pin_Button
-            // 
-            this.Pin_Button.Location = new System.Drawing.Point(100, 0);
-            this.Pin_Button.Margin = new System.Windows.Forms.Padding(4);
-            this.Pin_Button.Name = "Pin_Button";
-            this.Pin_Button.Size = new System.Drawing.Size(30, 26);
-            this.Pin_Button.TabIndex = 3;
-            this.Pin_Button.Text = "📌";
-            this.Pin_Button.Click += new System.EventHandler(this.Pin_Button_Click);
             // 
             // AnalogFaceplate
             // 

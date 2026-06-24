@@ -36,8 +36,6 @@ namespace CMFaceplateManager
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine($"Faceplate [{TagName}] polling...");
-
                 double value = CMApi.ReadAnalog(TagName);
 
                 Anz_0_X.Text = value.ToString("0.00");
@@ -45,6 +43,16 @@ namespace CMFaceplateManager
 
                 int gaugeValue = (int)Math.Max(0, Math.Min(1000, value / 100.0 * 1000.0));
                 Gauge0_X.Value = gaugeValue;
+
+                double spHH = CMApi.ReadAnalog(TagName + "_SPHH");
+                double spH = CMApi.ReadAnalog(TagName + "_SPH");
+                double spL = CMApi.ReadAnalog(TagName + "_SPL");
+                double spLL = CMApi.ReadAnalog(TagName + "_SPLL");
+
+                SPHH.Text = spHH.ToString("0.00");
+                SPH.Text = spH.ToString("0.00");
+                SPL.Text = spL.ToString("0.00");
+                SPLL.Text = spLL.ToString("0.00");
             }
             catch (Exception ex)
             {
@@ -52,7 +60,7 @@ namespace CMFaceplateManager
                 Anz_0_X.ForeColor = Color.Red;
 
                 System.Diagnostics.Debug.WriteLine(
-                    $"[{TagName}] ReadAnalog failed: {ex.Message}");
+                    $"[{TagName}] ReadAndShowValue failed: {ex.Message}");
             }
         }
 
@@ -210,6 +218,11 @@ namespace CMFaceplateManager
 
             Pin_Button.Text = TopMost ? "Unpin" : "Pin";
             Pin_Button.AccessibleName = TopMost ? "Unpin" : "Pin";
+        }
+
+        private void Edit_0_O2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

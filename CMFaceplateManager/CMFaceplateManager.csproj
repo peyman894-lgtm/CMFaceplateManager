@@ -76,6 +76,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VerticalProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="AnalogFaceplate.resx">
       <DependentUpon>AnalogFaceplate.cs</DependentUpon>
     </EmbeddedResource>
