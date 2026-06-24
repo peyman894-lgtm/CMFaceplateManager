@@ -92,7 +92,7 @@ namespace CMFaceplateManager
 
         private void Parameter_0Click(object sender, EventArgs e)
         {
-            Console.WriteLine($"[{TagName}] Parameter_0Click - chart button");
+
         }
 
         private void SP_ButtonClick(object sender, EventArgs e)
@@ -223,6 +223,11 @@ namespace CMFaceplateManager
         private void Edit_0_O2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ChartClick(object sender, EventArgs e)
+        {
+            CMApi.RunMacro(TagName + "_CH");
         }
     }
 }

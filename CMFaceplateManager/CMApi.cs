@@ -46,6 +46,11 @@ namespace CMFaceplateManager
             uint Seconds,
             ushort MilliSeconds);
 
+        [DllImport("WIZ5API.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        public static extern ushort CMRunMacroByName(
+            byte Hook,
+            string MacroName);
+
         public static byte Hook = 0;
         public static bool IsConnected { get; private set; } = false;
         public static ushort LastConnectRc { get; private set; }
@@ -123,6 +128,16 @@ namespace CMFaceplateManager
                 throw new InvalidOperationException($"CMGetGateId('{tagName}') failed, rc={rc}");
 
             return gateId;
+        }
+
+        public static ushort RunMacro(string macroName)
+        {
+            ushort rc = CMRunMacroByName(Hook, macroName);
+
+            System.Diagnostics.Debug.WriteLine(
+                $"RunMacro('{macroName}') rc={rc}");
+
+            return rc;
         }
     }
 }

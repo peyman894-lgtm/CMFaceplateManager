@@ -71,7 +71,7 @@ namespace CMFaceplateManager
         private System.Windows.Forms.Label Z2_0;
         private System.Windows.Forms.Label Z1_0;
 
-        private System.Windows.Forms.Button Parameter_0;
+        private System.Windows.Forms.Button Chart;
 
         private System.Windows.Forms.Panel Panel5;
         private System.Windows.Forms.Label EINH_0;
@@ -138,7 +138,6 @@ namespace CMFaceplateManager
             this.SPLL = new System.Windows.Forms.Label();
             this.WAR_0 = new System.Windows.Forms.TextBox();
             this.Panel4 = new System.Windows.Forms.Panel();
-            this.Gauge0_X = new CMFaceplateManager.VerticalProgressBar();
             this.P_100 = new System.Windows.Forms.Panel();
             this.P_90 = new System.Windows.Forms.Panel();
             this.P_80 = new System.Windows.Forms.Panel();
@@ -152,7 +151,7 @@ namespace CMFaceplateManager
             this.Panel8 = new System.Windows.Forms.Panel();
             this.Z1_0 = new System.Windows.Forms.Label();
             this.Z2_0 = new System.Windows.Forms.Label();
-            this.Parameter_0 = new System.Windows.Forms.Button();
+            this.Chart = new System.Windows.Forms.Button();
             this.Panel5 = new System.Windows.Forms.Panel();
             this.EINH_0 = new System.Windows.Forms.Label();
             this.Setpoints = new System.Windows.Forms.Button();
@@ -164,6 +163,7 @@ namespace CMFaceplateManager
             this.MOS_SET1 = new System.Windows.Forms.Button();
             this.MOS_RESET1 = new System.Windows.Forms.Button();
             this.Confirm1 = new System.Windows.Forms.Button();
+            this.Gauge0_X = new CMFaceplateManager.VerticalProgressBar();
             this.Panel1.SuspendLayout();
             this.P_0.SuspendLayout();
             this.Panel3.SuspendLayout();
@@ -248,7 +248,7 @@ namespace CMFaceplateManager
             this.Panel3.Controls.Add(this.WAR_0);
             this.Panel3.Controls.Add(this.Panel4);
             this.Panel3.Controls.Add(this.Panel8);
-            this.Panel3.Controls.Add(this.Parameter_0);
+            this.Panel3.Controls.Add(this.Chart);
             this.Panel3.Controls.Add(this.Panel5);
             this.Panel3.Controls.Add(this.Setpoints);
             this.Panel3.Controls.Add(this.MOS_Button);
@@ -272,7 +272,7 @@ namespace CMFaceplateManager
             this.MOS_Panel.Controls.Add(this.MOS_Set3);
             this.MOS_Panel.Controls.Add(this.MOS_Reset3);
             this.MOS_Panel.Controls.Add(this.CONF_MOS_M_Button);
-            this.MOS_Panel.Location = new System.Drawing.Point(3, 411);
+            this.MOS_Panel.Location = new System.Drawing.Point(3, 257);
             this.MOS_Panel.Margin = new System.Windows.Forms.Padding(4);
             this.MOS_Panel.Name = "MOS_Panel";
             this.MOS_Panel.Size = new System.Drawing.Size(158, 356);
@@ -614,17 +614,6 @@ namespace CMFaceplateManager
             this.Panel4.Size = new System.Drawing.Size(139, 303);
             this.Panel4.TabIndex = 3;
             // 
-            // Gauge0_X
-            // 
-            this.Gauge0_X.ForeColor = System.Drawing.Color.Red;
-            this.Gauge0_X.Location = new System.Drawing.Point(83, 1);
-            this.Gauge0_X.Margin = new System.Windows.Forms.Padding(4);
-            this.Gauge0_X.Maximum = 300;
-            this.Gauge0_X.Name = "Gauge0_X";
-            this.Gauge0_X.Size = new System.Drawing.Size(21, 303);
-            this.Gauge0_X.TabIndex = 0;
-            this.Gauge0_X.Click += new System.EventHandler(this.Gauge0_X_Click);
-            // 
             // P_100
             // 
             this.P_100.BackColor = System.Drawing.Color.White;
@@ -751,16 +740,16 @@ namespace CMFaceplateManager
             this.Z2_0.Text = "Sammelbeh. B0900";
             this.Z2_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Parameter_0
+            // Chart
             // 
-            this.Parameter_0.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Parameter_0.Location = new System.Drawing.Point(27, 624);
-            this.Parameter_0.Margin = new System.Windows.Forms.Padding(4);
-            this.Parameter_0.Name = "Parameter_0";
-            this.Parameter_0.Size = new System.Drawing.Size(121, 33);
-            this.Parameter_0.TabIndex = 5;
-            this.Parameter_0.Text = "Chart";
-            this.Parameter_0.Click += new System.EventHandler(this.Parameter_0Click);
+            this.Chart.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.Chart.Location = new System.Drawing.Point(27, 624);
+            this.Chart.Margin = new System.Windows.Forms.Padding(4);
+            this.Chart.Name = "Chart";
+            this.Chart.Size = new System.Drawing.Size(121, 33);
+            this.Chart.TabIndex = 5;
+            this.Chart.Text = "Chart";
+            this.Chart.Click += new System.EventHandler(this.ChartClick);
             // 
             // Panel5
             // 
@@ -883,6 +872,17 @@ namespace CMFaceplateManager
             this.Confirm1.TabIndex = 3;
             this.Confirm1.Text = "Confirm";
             this.Confirm1.Click += new System.EventHandler(this.CONF_MOS_M_ButtonClick);
+            // 
+            // Gauge0_X
+            // 
+            this.Gauge0_X.ForeColor = System.Drawing.Color.Red;
+            this.Gauge0_X.Location = new System.Drawing.Point(83, 1);
+            this.Gauge0_X.Margin = new System.Windows.Forms.Padding(4);
+            this.Gauge0_X.Maximum = 300;
+            this.Gauge0_X.Name = "Gauge0_X";
+            this.Gauge0_X.Size = new System.Drawing.Size(21, 303);
+            this.Gauge0_X.TabIndex = 0;
+            this.Gauge0_X.Click += new System.EventHandler(this.Gauge0_X_Click);
             // 
             // AnalogFaceplate
             // 
