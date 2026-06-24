@@ -36,6 +36,8 @@ namespace CMFaceplateManager
         {
             try
             {
+                System.Diagnostics.Debug.WriteLine($"Faceplate [{TagName}] polling...");
+
                 double value = CMApi.ReadAnalog(TagName);
 
                 Anz_0_X.Text = value.ToString("0.00");

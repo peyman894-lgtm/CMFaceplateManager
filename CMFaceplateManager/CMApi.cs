@@ -37,12 +37,12 @@ namespace CMFaceplateManager
             ref uint Seconds,
             ref ushort MilliSeconds);
 
-        [DllImport("Wizpro.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("Wizpro.dll", CallingConvention = CallingConvention.StdCall)]
         public static extern ushort CMGetGateStr(
             byte Hook,
             ushort Mode,
             int GateId,
-            StringBuilder Value,
+            byte[] Value,
             uint Seconds,
             ushort MilliSeconds);
 
@@ -82,8 +82,9 @@ namespace CMFaceplateManager
                 ref seconds,
                 ref milliseconds);
 
-            if (rc != 0)
-                throw new InvalidOperationException($"CMGetGateVal('{tagName}') failed, rc={rc}");
+                System.Diagnostics.Debug.WriteLine(
+                    $"ReadAnalog('{tagName}') rc={rc}, value={value}");
+
 
             return value;
         }
@@ -92,7 +93,7 @@ namespace CMFaceplateManager
         {
             int gateId = GetGateId(tagName);
 
-            var buffer = new StringBuilder(256);
+            byte[] buffer = new byte[256];
 
             ushort rc = CMGetGateStr(
                 Hook,
@@ -105,7 +106,11 @@ namespace CMFaceplateManager
             if (rc != 0)
                 throw new InvalidOperationException($"CMGetGateStr('{tagName}') failed, rc={rc}");
 
-            return buffer.ToString();
+            int length = Array.IndexOf(buffer, (byte)0);
+            if (length < 0)
+                length = buffer.Length;
+
+            return Encoding.Default.GetString(buffer, 0, length).Trim();
         }
 
         private static int GetGateId(string tagName)
