@@ -55,7 +55,6 @@ namespace CMFaceplateManager
         private System.Windows.Forms.TextBox WAR_0;
 
         private System.Windows.Forms.Panel Panel4;
-        private CMFaceplateManager.VerticalProgressBar Gauge0_X;
         private System.Windows.Forms.Panel P_100;
         private System.Windows.Forms.Panel P_90;
         private System.Windows.Forms.Panel P_80;
@@ -66,6 +65,10 @@ namespace CMFaceplateManager
         private System.Windows.Forms.Panel P_50;
         private System.Windows.Forms.Panel P_60;
         private System.Windows.Forms.Panel P_70;
+        private System.Windows.Forms.Panel markerHH;
+        private System.Windows.Forms.Panel markerH;
+        private System.Windows.Forms.Panel markerL;
+        private System.Windows.Forms.Panel markerLL;
 
         private System.Windows.Forms.Panel Panel8;
         private System.Windows.Forms.Label Z2_0;
@@ -218,12 +221,13 @@ namespace CMFaceplateManager
             // 
             // Pin_Button
             // 
+            this.Pin_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Pin_Button.Location = new System.Drawing.Point(100, 0);
             this.Pin_Button.Margin = new System.Windows.Forms.Padding(4);
             this.Pin_Button.Name = "Pin_Button";
             this.Pin_Button.Size = new System.Drawing.Size(30, 26);
             this.Pin_Button.TabIndex = 3;
-            this.Pin_Button.Text = "📌";
+            this.Pin_Button.Text = "🔓";
             this.Pin_Button.Click += new System.EventHandler(this.Pin_Button_Click);
             // 
             // P_0
@@ -272,7 +276,7 @@ namespace CMFaceplateManager
             this.MOS_Panel.Controls.Add(this.MOS_Set3);
             this.MOS_Panel.Controls.Add(this.MOS_Reset3);
             this.MOS_Panel.Controls.Add(this.CONF_MOS_M_Button);
-            this.MOS_Panel.Location = new System.Drawing.Point(3, 257);
+            this.MOS_Panel.Location = new System.Drawing.Point(3, 411);
             this.MOS_Panel.Margin = new System.Windows.Forms.Padding(4);
             this.MOS_Panel.Name = "MOS_Panel";
             this.MOS_Panel.Size = new System.Drawing.Size(158, 356);
@@ -608,6 +612,11 @@ namespace CMFaceplateManager
             this.Panel4.Controls.Add(this.P_30);
             this.Panel4.Controls.Add(this.P_20);
             this.Panel4.Controls.Add(this.P_10);
+            //this.Panel4.Controls.Add(this.markerHH);
+            //this.Panel4.Controls.Add(this.markerH);
+            //this.Panel4.Controls.Add(this.markerL);
+            //this.Panel4.Controls.Add(this.markerLL);
+
             this.Panel4.Location = new System.Drawing.Point(13, 73);
             this.Panel4.Margin = new System.Windows.Forms.Padding(4);
             this.Panel4.Name = "Panel4";
@@ -921,5 +930,6 @@ namespace CMFaceplateManager
 
         private System.Windows.Forms.TextBox MOS_PASS;
         private System.Windows.Forms.Button Pin_Button;
+        private VerticalProgressBar Gauge0_X;
     }
 }

@@ -83,11 +83,25 @@ namespace CMFaceplateManager
         private void LOClick(object sender, EventArgs e)
         {
             Console.WriteLine($"[{TagName}] LOClick");
+            Screen screen = Screen.FromControl(this);
+            Rectangle workArea = screen.WorkingArea;
+
+            this.Location = new Point(
+                workArea.Left,   // flush to left edge
+                workArea.Top     // flush to top edge
+            );
         }
 
         private void ROClick(object sender, EventArgs e)
         {
             Console.WriteLine($"[{TagName}] ROClick");
+            Screen screen = Screen.FromControl(this);
+            Rectangle workArea = screen.WorkingArea;
+
+            this.Location = new Point(
+                workArea.Right - this.Width,   // flush to right edge
+                workArea.Top                   // flush to top edge
+            );
         }
 
         private void Parameter_0Click(object sender, EventArgs e)
@@ -121,11 +135,13 @@ namespace CMFaceplateManager
         private void MOS_SETClick(object sender, EventArgs e)
         {
             Console.WriteLine($"[{TagName}] MOS_SETClick");
+            CMApi.RunMacro(TagName + "_OSS");
         }
 
         private void MOS_RESETClick(object sender, EventArgs e)
         {
             Console.WriteLine($"[{TagName}] MOS_RESETClick");
+            CMApi.RunMacro(TagName + "_OSR");
         }
 
         private void CONF_MOS_S_ButtonClick(object sender, EventArgs e)
@@ -137,11 +153,13 @@ namespace CMFaceplateManager
         private void MOS_SET1Click(object sender, EventArgs e)
         {
             Console.WriteLine($"[{TagName}] MOS_SET1Click");
+            CMApi.RunMacro(TagName + "_OSS");
         }
 
         private void MOS_RESET1Click(object sender, EventArgs e)
         {
             Console.WriteLine($"[{TagName}] MOS_RESET1Click");
+            CMApi.RunMacro(TagName + "_OSR");
         }
 
         private void CONF_MOS_M_ButtonClick(object sender, EventArgs e)
@@ -216,7 +234,7 @@ namespace CMFaceplateManager
         {
             TopMost = !TopMost;
 
-            Pin_Button.Text = TopMost ? "Unpin" : "Pin";
+            Pin_Button.Text = TopMost ? "🔒" : "🔓";
             Pin_Button.AccessibleName = TopMost ? "Unpin" : "Pin";
         }
 
