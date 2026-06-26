@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace CMFaceplateManager
@@ -16,7 +17,7 @@ namespace CMFaceplateManager
 
             InitializeComponent();
 
-            Z1_0.Text = TagName;
+            PrcTag.Text = TagName;
 
             pollTimer = new Timer();
             pollTimer.Interval = 1000;
@@ -64,6 +65,42 @@ namespace CMFaceplateManager
             }
         }
 
+
+
+        private void LoadTagMetadata()
+        {
+            string csvPath = Path.Combine(
+                @"C:\Users\Peyman\source\repos\CMFaceplateManager\CMFaceplateManager",
+                "Regler_UTL.csv");
+
+            try
+            {
+                var lookup = new TagLookup(csvPath);
+
+                string description = lookup.Description(TagName);
+                string Range = lookup.Range(TagName);
+                string ProcessTag = lookup.TAG(TagName);
+
+                Description.Text = string.IsNullOrWhiteSpace(description)
+                      ? TagName
+                      : description;
+
+                Span.Text = string.IsNullOrWhiteSpace(Range)
+                    ? string.Empty
+                    : Range;
+                PrcTag.Text = string.IsNullOrWhiteSpace(ProcessTag)
+                    ? string.Empty
+                    : ProcessTag;
+            }
+            catch (Exception ex)
+            {
+                Description.Text = TagName;
+                Span.Text = string.Empty;
+
+                System.Diagnostics.Debug.WriteLine(
+                    $"[{TagName}] LoadTagMetadata failed: {ex.Message}");
+            }
+        }
         private void AnalogFaceplate_FormClosed(object sender, FormClosedEventArgs e)
         {
             pollTimer.Stop();
@@ -181,8 +218,10 @@ namespace CMFaceplateManager
 
         private void FormCreate(object sender, EventArgs e)
         {
+            LoadTagMetadata();
             ReadAndShowValue();
             pollTimer.Start();
+
         }
 
         private void FormActivate(object sender, EventArgs e)

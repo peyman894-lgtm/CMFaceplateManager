@@ -71,13 +71,13 @@ namespace CMFaceplateManager
         private System.Windows.Forms.Panel markerLL;
 
         private System.Windows.Forms.Panel Panel8;
-        private System.Windows.Forms.Label Z2_0;
-        private System.Windows.Forms.Label Z1_0;
+        private System.Windows.Forms.Label Description;
+        private System.Windows.Forms.Label PrcTag;
 
         private System.Windows.Forms.Button Chart;
 
         private System.Windows.Forms.Panel Panel5;
-        private System.Windows.Forms.Label EINH_0;
+        private System.Windows.Forms.Label Span;
 
         private System.Windows.Forms.Button Setpoints;
         private System.Windows.Forms.Button MOS_Button;
@@ -152,11 +152,11 @@ namespace CMFaceplateManager
             this.P_20 = new System.Windows.Forms.Panel();
             this.P_10 = new System.Windows.Forms.Panel();
             this.Panel8 = new System.Windows.Forms.Panel();
-            this.Z1_0 = new System.Windows.Forms.Label();
-            this.Z2_0 = new System.Windows.Forms.Label();
+            this.PrcTag = new System.Windows.Forms.Label();
+            this.Description = new System.Windows.Forms.Label();
             this.Chart = new System.Windows.Forms.Button();
             this.Panel5 = new System.Windows.Forms.Panel();
-            this.EINH_0 = new System.Windows.Forms.Label();
+            this.Span = new System.Windows.Forms.Label();
             this.Setpoints = new System.Windows.Forms.Button();
             this.MOS_Button = new System.Windows.Forms.Button();
             this.Button2 = new System.Windows.Forms.Button();
@@ -612,11 +612,6 @@ namespace CMFaceplateManager
             this.Panel4.Controls.Add(this.P_30);
             this.Panel4.Controls.Add(this.P_20);
             this.Panel4.Controls.Add(this.P_10);
-            //this.Panel4.Controls.Add(this.markerHH);
-            //this.Panel4.Controls.Add(this.markerH);
-            //this.Panel4.Controls.Add(this.markerL);
-            //this.Panel4.Controls.Add(this.markerLL);
-
             this.Panel4.Location = new System.Drawing.Point(13, 73);
             this.Panel4.Margin = new System.Windows.Forms.Padding(4);
             this.Panel4.Name = "Panel4";
@@ -717,37 +712,37 @@ namespace CMFaceplateManager
             // 
             this.Panel8.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Panel8.Controls.Add(this.Z1_0);
-            this.Panel8.Controls.Add(this.Z2_0);
+            this.Panel8.Controls.Add(this.PrcTag);
+            this.Panel8.Controls.Add(this.Description);
             this.Panel8.Location = new System.Drawing.Point(5, 9);
             this.Panel8.Margin = new System.Windows.Forms.Padding(4);
             this.Panel8.Name = "Panel8";
             this.Panel8.Size = new System.Drawing.Size(157, 56);
             this.Panel8.TabIndex = 4;
             // 
-            // Z1_0
+            // PrcTag
             // 
-            this.Z1_0.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Z1_0.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold);
-            this.Z1_0.Location = new System.Drawing.Point(0, 5);
-            this.Z1_0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Z1_0.Name = "Z1_0";
-            this.Z1_0.Size = new System.Drawing.Size(157, 26);
-            this.Z1_0.TabIndex = 0;
-            this.Z1_0.Text = "LIRA-0900";
-            this.Z1_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PrcTag.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.PrcTag.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold);
+            this.PrcTag.Location = new System.Drawing.Point(0, 5);
+            this.PrcTag.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PrcTag.Name = "PrcTag";
+            this.PrcTag.Size = new System.Drawing.Size(157, 26);
+            this.PrcTag.TabIndex = 0;
+            this.PrcTag.Text = "LIRA-0900";
+            this.PrcTag.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Z2_0
+            // Description
             // 
-            this.Z2_0.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Z2_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold);
-            this.Z2_0.Location = new System.Drawing.Point(0, 31);
-            this.Z2_0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Z2_0.Name = "Z2_0";
-            this.Z2_0.Size = new System.Drawing.Size(157, 26);
-            this.Z2_0.TabIndex = 1;
-            this.Z2_0.Text = "Sammelbeh. B0900";
-            this.Z2_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Description.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Description.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold);
+            this.Description.Location = new System.Drawing.Point(0, 31);
+            this.Description.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Description.Name = "Description";
+            this.Description.Size = new System.Drawing.Size(157, 26);
+            this.Description.TabIndex = 1;
+            this.Description.Text = "Sammelbeh. B0900";
+            this.Description.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Chart
             // 
@@ -763,25 +758,25 @@ namespace CMFaceplateManager
             // Panel5
             // 
             this.Panel5.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Panel5.Controls.Add(this.EINH_0);
+            this.Panel5.Controls.Add(this.Span);
             this.Panel5.Location = new System.Drawing.Point(5, 380);
             this.Panel5.Margin = new System.Windows.Forms.Padding(4);
             this.Panel5.Name = "Panel5";
             this.Panel5.Size = new System.Drawing.Size(157, 25);
             this.Panel5.TabIndex = 6;
             // 
-            // EINH_0
+            // Span
             // 
-            this.EINH_0.BackColor = System.Drawing.Color.Yellow;
-            this.EINH_0.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EINH_0.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
-            this.EINH_0.Location = new System.Drawing.Point(0, 0);
-            this.EINH_0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.EINH_0.Name = "EINH_0";
-            this.EINH_0.Size = new System.Drawing.Size(157, 25);
-            this.EINH_0.TabIndex = 0;
-            this.EINH_0.Text = "0 - 100 %";
-            this.EINH_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Span.BackColor = System.Drawing.Color.Yellow;
+            this.Span.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Span.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
+            this.Span.Location = new System.Drawing.Point(0, 0);
+            this.Span.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Span.Name = "Span";
+            this.Span.Size = new System.Drawing.Size(157, 25);
+            this.Span.TabIndex = 0;
+            this.Span.Text = "0 - 100 %";
+            this.Span.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Setpoints
             // 
