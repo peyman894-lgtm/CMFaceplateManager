@@ -86,25 +86,25 @@ namespace CMFaceplateManager
             return alarm.Length > pos ? alarm[pos] : '0';
         }
 
-        public bool ShowHH(string prefix)
+        public bool ShowLL(string prefix)
         {
             var row = FindRow(prefix);
             return row != null && AlarmDigit(row, 4) != '0';   // A xxx 1 — last char
         }
 
-        public bool ShowH(string prefix)
+        public bool ShowL(string prefix)
         {
             var row = FindRow(prefix);
             return row != null && AlarmDigit(row, 3) != '0';   // A xx 1 x
         }
 
-        public bool ShowL(string prefix)
+        public bool ShowH(string prefix)
         {
             var row = FindRow(prefix);
             return row != null && AlarmDigit(row, 2) != '0';   // A x 1 xx
         }
 
-        public bool ShowLL(string prefix)
+        public bool ShowHH(string prefix)
         {
             var row = FindRow(prefix);
             return row != null && AlarmDigit(row, 1) != '0';   // A 1 xxx

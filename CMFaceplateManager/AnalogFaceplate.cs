@@ -11,6 +11,11 @@ namespace CMFaceplateManager
 
         private readonly Timer pollTimer;
 
+        private bool showHH = true;
+        private bool showH = true;
+        private bool showL = true;
+        private bool showLL = true;
+
         public AnalogFaceplate(string tagName)
         {
             TagName = tagName.Trim();
@@ -42,18 +47,63 @@ namespace CMFaceplateManager
                 Anz_0_X.Text = value.ToString("0.00");
                 Anz_0_X.ForeColor = Color.Black;
 
-                int gaugeValue = (int)Math.Max(0, Math.Min(1000, value / 100.0 * 1000.0));
-                Gauge0_X.Value = gaugeValue;
+                int processValue = (int)Math.Round(value);
+
+                if (processValue < ProcessBar.Minimum)
+                    processValue = ProcessBar.Minimum;
+
+                if (processValue > ProcessBar.Maximum)
+                    processValue = ProcessBar.Maximum;
+
+                ProcessBar.Value = processValue;
+                ProcessBar.Invalidate();
 
                 double spHH = CMApi.ReadAnalog(TagName + "_SPHH");
                 double spH = CMApi.ReadAnalog(TagName + "_SPH");
                 double spL = CMApi.ReadAnalog(TagName + "_SPL");
                 double spLL = CMApi.ReadAnalog(TagName + "_SPLL");
 
-                SPHH.Text = spHH.ToString("0.00");
-                SPH.Text = spH.ToString("0.00");
-                SPL.Text = spL.ToString("0.00");
-                SPLL.Text = spLL.ToString("0.00");
+                if (showHH)
+                {
+                    SPHH.Text = spHH.ToString("0.00");
+                    ProcessBar.SPHH = ClampToBarRange(spHH);
+                }
+                else
+                {
+                    ProcessBar.SPHH = null;
+                }
+
+                if (showH)
+                {
+                    SPH.Text = spH.ToString("0.00");
+                    ProcessBar.SPH = ClampToBarRange(spH);
+                }
+                else
+                {
+                    ProcessBar.SPH = null;
+                }
+
+                if (showL)
+                {
+                    SPL.Text = spL.ToString("0.00");
+                    ProcessBar.SPL = ClampToBarRange(spL);
+                }
+                else
+                {
+                    ProcessBar.SPL = null;
+                }
+
+                if (showLL)
+                {
+                    SPLL.Text = spLL.ToString("0.00");
+                    ProcessBar.SPLL = ClampToBarRange(spLL);
+                }
+                else
+                {
+                    ProcessBar.SPLL = null;
+                }
+
+                ProcessBar.Invalidate();
             }
             catch (Exception ex)
             {
@@ -65,7 +115,18 @@ namespace CMFaceplateManager
             }
         }
 
+        private int ClampToBarRange(double value)
+        {
+            int intValue = (int)Math.Round(value);
 
+            if (intValue < ProcessBar.Minimum)
+                return ProcessBar.Minimum;
+
+            if (intValue > ProcessBar.Maximum)
+                return ProcessBar.Maximum;
+
+            return intValue;
+        }
 
         private void LoadTagMetadata()
         {
@@ -76,6 +137,16 @@ namespace CMFaceplateManager
             try
             {
                 var lookup = new TagLookup(csvPath);
+
+                showHH = lookup.ShowHH(TagName);
+                showH = lookup.ShowH(TagName);
+                showL = lookup.ShowL(TagName);
+                showLL = lookup.ShowLL(TagName);
+
+                SPHH.Visible = showHH;
+                SPH.Visible = showH;
+                SPL.Visible = showL;
+                SPLL.Visible = showLL;
 
                 string description = lookup.Description(TagName);
                 string Range = lookup.Range(TagName);
@@ -91,11 +162,31 @@ namespace CMFaceplateManager
                 PrcTag.Text = string.IsNullOrWhiteSpace(ProcessTag)
                     ? string.Empty
                     : ProcessTag;
+                int min;
+                int max;
+
+                if (int.TryParse(lookup.LR(TagName), out min) &&
+                    int.TryParse(lookup.HR(TagName), out max) &&
+                    max > min)
+                {
+                    ProcessBar.Minimum = min;
+                    ProcessBar.Maximum = max;
+                }
+                else
+                {
+                    ProcessBar.Minimum = 0;
+                    ProcessBar.Maximum = 100;
+                }
+
+                ProcessBar.Invalidate();
             }
             catch (Exception ex)
             {
                 Description.Text = TagName;
                 Span.Text = string.Empty;
+                PrcTag.Text = TagName;
+                ProcessBar.Minimum = 0;
+                ProcessBar.Maximum = 100;
 
                 System.Diagnostics.Debug.WriteLine(
                     $"[{TagName}] LoadTagMetadata failed: {ex.Message}");

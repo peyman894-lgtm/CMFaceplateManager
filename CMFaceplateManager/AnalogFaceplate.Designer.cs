@@ -166,7 +166,7 @@ namespace CMFaceplateManager
             this.MOS_SET1 = new System.Windows.Forms.Button();
             this.MOS_RESET1 = new System.Windows.Forms.Button();
             this.Confirm1 = new System.Windows.Forms.Button();
-            this.Gauge0_X = new CMFaceplateManager.VerticalProgressBar();
+            this.ProcessBar = new VerticalBar();
             this.Panel1.SuspendLayout();
             this.P_0.SuspendLayout();
             this.Panel3.SuspendLayout();
@@ -601,7 +601,7 @@ namespace CMFaceplateManager
             // 
             this.Panel4.BackColor = System.Drawing.Color.Black;
             this.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Panel4.Controls.Add(this.Gauge0_X);
+            this.Panel4.Controls.Add(this.ProcessBar);
             this.Panel4.Controls.Add(this.P_100);
             this.Panel4.Controls.Add(this.P_90);
             this.Panel4.Controls.Add(this.P_80);
@@ -877,16 +877,21 @@ namespace CMFaceplateManager
             this.Confirm1.Text = "Confirm";
             this.Confirm1.Click += new System.EventHandler(this.CONF_MOS_M_ButtonClick);
             // 
-            // Gauge0_X
+            // ProcessBar
             // 
-            this.Gauge0_X.ForeColor = System.Drawing.Color.Red;
-            this.Gauge0_X.Location = new System.Drawing.Point(83, 1);
-            this.Gauge0_X.Margin = new System.Windows.Forms.Padding(4);
-            this.Gauge0_X.Maximum = 300;
-            this.Gauge0_X.Name = "Gauge0_X";
-            this.Gauge0_X.Size = new System.Drawing.Size(21, 303);
-            this.Gauge0_X.TabIndex = 0;
-            this.Gauge0_X.Click += new System.EventHandler(this.Gauge0_X_Click);
+            this.ProcessBar.BarColor = System.Drawing.Color.Lime;
+            this.ProcessBar.Location = new System.Drawing.Point(74, 2);
+            this.ProcessBar.Maximum = 100;
+            this.ProcessBar.Minimum = 0;
+            this.ProcessBar.Name = "ProcessBar";
+            this.ProcessBar.Size = new System.Drawing.Size(28, 293);
+            this.ProcessBar.SPH = null;
+            this.ProcessBar.SPHH = null;
+            this.ProcessBar.SPL = null;
+            this.ProcessBar.SPLL = null;
+            this.ProcessBar.TabIndex = 11;
+            this.ProcessBar.Text = "verticalBar1";
+            this.ProcessBar.Value = 20;
             // 
             // AnalogFaceplate
             // 
@@ -925,6 +930,6 @@ namespace CMFaceplateManager
 
         private System.Windows.Forms.TextBox MOS_PASS;
         private System.Windows.Forms.Button Pin_Button;
-        private VerticalProgressBar Gauge0_X;
+        private VerticalBar ProcessBar;
     }
 }

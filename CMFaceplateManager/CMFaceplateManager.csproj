@@ -66,6 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FaceplateManager.cs" />
     <Compile Include="CMApi.cs" />
     <Compile Include="AnalogFaceplate.cs">
