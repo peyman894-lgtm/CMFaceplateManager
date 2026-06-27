@@ -57,6 +57,7 @@ namespace CMFaceplateManager
                 {
                     existing.WindowState = FormWindowState.Normal;
                     existing.BringToFront();
+                    existing.Activate();
                     existing.Focus();
                     return;
                 }
@@ -73,6 +74,10 @@ namespace CMFaceplateManager
 
             _openFaceplates[tagName] = faceplate;
             faceplate.Show();
+            faceplate.WindowState = FormWindowState.Normal;
+            faceplate.BringToFront();
+            faceplate.Activate();
+            faceplate.Focus();
         }
     }
 }

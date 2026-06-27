@@ -16,6 +16,8 @@ namespace CMFaceplateManager
         private bool showL = true;
         private bool showLL = true;
 
+        private string valueFormat = "0.00";
+
         public AnalogFaceplate(string tagName)
         {
             TagName = tagName.Trim();
@@ -23,7 +25,7 @@ namespace CMFaceplateManager
             InitializeComponent();
 
             PrcTag.Text = TagName;
-
+            this.Text = TagName;
             pollTimer = new Timer();
             pollTimer.Interval = 1000;
             pollTimer.Tick += PollTimer_Tick;
@@ -44,7 +46,7 @@ namespace CMFaceplateManager
             {
                 double value = CMApi.ReadAnalog(TagName);
 
-                Anz_0_X.Text = value.ToString("0.00");
+                Anz_0_X.Text = value.ToString(valueFormat);
                 Anz_0_X.ForeColor = Color.Black;
 
                 int processValue = (int)Math.Round(value);
@@ -65,7 +67,7 @@ namespace CMFaceplateManager
 
                 if (showHH)
                 {
-                    SPHH.Text = spHH.ToString("0.00");
+                    SPHH.Text = spHH.ToString(valueFormat);
                     ProcessBar.SPHH = ClampToBarRange(spHH);
                 }
                 else
@@ -75,7 +77,7 @@ namespace CMFaceplateManager
 
                 if (showH)
                 {
-                    SPH.Text = spH.ToString("0.00");
+                    SPH.Text = spH.ToString(valueFormat);
                     ProcessBar.SPH = ClampToBarRange(spH);
                 }
                 else
@@ -85,7 +87,7 @@ namespace CMFaceplateManager
 
                 if (showL)
                 {
-                    SPL.Text = spL.ToString("0.00");
+                    SPL.Text = spL.ToString(valueFormat);
                     ProcessBar.SPL = ClampToBarRange(spL);
                 }
                 else
@@ -95,7 +97,7 @@ namespace CMFaceplateManager
 
                 if (showLL)
                 {
-                    SPLL.Text = spLL.ToString("0.00");
+                    SPLL.Text = spLL.ToString(valueFormat);
                     ProcessBar.SPLL = ClampToBarRange(spLL);
                 }
                 else
@@ -137,6 +139,8 @@ namespace CMFaceplateManager
             try
             {
                 var lookup = new TagLookup(csvPath);
+
+                valueFormat = BuildNumberFormat(lookup.Format(TagName));
 
                 showHH = lookup.ShowHH(TagName);
                 showH = lookup.ShowH(TagName);
@@ -192,6 +196,42 @@ namespace CMFaceplateManager
                     $"[{TagName}] LoadTagMetadata failed: {ex.Message}");
             }
         }
+
+        private string BuildNumberFormat(string formatText)
+        {
+            if (string.IsNullOrWhiteSpace(formatText))
+                return "0.00";
+
+            string[] parts = formatText.Trim().Split('.');
+
+            if (parts.Length != 2)
+                return "0.00";
+
+            int beforeDecimal;
+            int afterDecimal;
+
+            if (!int.TryParse(parts[0], out beforeDecimal))
+                beforeDecimal = 1;
+
+            if (!int.TryParse(parts[1], out afterDecimal))
+                afterDecimal = 2;
+
+            if (beforeDecimal < 1)
+                beforeDecimal = 1;
+
+            if (afterDecimal < 0)
+                afterDecimal = 0;
+
+            string before = new string('#', beforeDecimal - 1) + "0";
+
+            if (afterDecimal == 0)
+                return before;
+
+            string after = new string('0', afterDecimal);
+
+            return before + "." + after;
+        }
+
         private void AnalogFaceplate_FormClosed(object sender, FormClosedEventArgs e)
         {
             pollTimer.Stop();
