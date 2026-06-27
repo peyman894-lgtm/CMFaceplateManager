@@ -133,8 +133,8 @@ namespace CMFaceplateManager
         private void LoadTagMetadata()
         {
             string csvPath = Path.Combine(
-                @"C:\Users\Peyman\source\repos\CMFaceplateManager\CMFaceplateManager",
-                "Regler_UTL.csv");
+                    AppDomain.CurrentDomain.BaseDirectory,
+                    "Regler.csv");
 
             try
             {
