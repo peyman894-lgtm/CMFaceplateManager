@@ -306,4 +306,337 @@ YourProject/
 
 ---
 
+# CMFaceplateManager
+
+A C# Windows Forms HMI client application that integrates with **ControlMaestro (CM)** industrial automation / SCADA systems. The application monitors a CM tag called `INDICATOR`, and whenever an operator selects an instrument from the CM HMI, it automatically opens a live analog faceplate window for that instrument — displaying the process value, alarm limits, and operator controls.
+
+---
+
+## Table of contents
+
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+- [Project structure](#project-structure)
+- [Architecture and call hierarchy](#architecture-and-call-hierarchy)
+  - [Entry point](#entry-point--programcs)
+  - [CMApi — ControlMaestro gateway](#cmapi--cmapics)
+  - [FaceplateManager — window orchestrator](#faceplatemanager--faceplatemanagercs)
+  - [AnalogFaceplate — instrument window](#analogfaceplate--analogfaceplatencs)
+  - [TagLookup — configuration reader](#taglookup--taglookupcs)
+  - [VerticalBar — process bar control](#verticalbar--barcontrolcs)
+- [Tag naming conventions](#tag-naming-conventions)
+- [Configuration file — Regler_UTL.csv](#configuration-file--regler_utlcsv)
+- [Building and running](#building-and-running)
+- [Dependencies](#dependencies)
+
+---
+
+## Overview
+
+CMFaceplateManager runs invisibly in the system tray — there is no main window. It polls a single CM string tag (`INDICATOR`) every 500 ms. When the CM HMI operator clicks on an instrument, CM writes that instrument's tag name (e.g. `PT_9200_70_1`) into the `INDICATOR` tag. CMFaceplateManager detects the change and opens a faceplate window for that instrument automatically.
+
+Each faceplate window then polls the instrument's live process value and its four alarm limits once per second, and gives the operator buttons to activate/deactivate MOS (Manual Override/Setpoint) and to open the CM trend chart — all without the operator needing to interact with CMFaceplateManager directly.
+
+---
+
+## Prerequisites
+
+| Requirement | Detail |
+|---|---|
+| .NET Framework | 4.8 |
+| Visual Studio | 2019 or later (x86 build configuration) |
+| ControlMaestro | Installed on the same machine |
+| `Wizpro.dll` | Provided by CM installation; must be on the system `PATH` or in the output directory |
+| `WIZ5API.dll` | Provided by CM installation; required for macro execution |
+
+The project must be compiled as **x86** (32-bit) because `Wizpro.dll` and `WIZ5API.dll` are 32-bit native libraries.
+
+---
+
+## Project structure
+
+```
+CMFaceplateManager/
+│
+├── Program.cs                  # Entry point — connects to CM, starts FaceplateManager
+├── CMApi.cs                    # All P/Invoke calls to Wizpro.dll and WIZ5API.dll
+├── FaceplateManager.cs         # Monitors INDICATOR tag; opens/focuses faceplate windows
+├── AnalogFaceplate.cs          # Faceplate form logic — polling, display, button handlers
+├── AnalogFaceplate.Designer.cs # WinForms designer-generated control layout
+├── AnalogFaceplate.resx        # Form resource file
+├── BarControl.cs               # Custom VerticalBar control with setpoint markers
+├── VerticalProgressBar.cs      # Thin wrapper around ProgressBar for vertical orientation
+├── TagLookup.cs                # Reads Regler_UTL.csv and looks up tag metadata
+├── Regler_UTL.csv              # Instrument configuration: ranges, units, alarm visibility
+└── CMFaceplateManager.csproj   # Project file (targets .NET 4.8, platform x86)
+```
+
+---
+
+## Architecture and call hierarchy
+
+```
+Program.cs
+  └─ CMApi.Connect()                         # register client with CM
+  └─ FaceplateManager.Start()
+       └─ [Timer 500 ms] WatchTimer_Tick()
+            └─ CMApi.ReadString("INDICATOR") # read active tag name from CM
+                 └─ CMApi.GetGateId()  ──►  CMGetGateId()   [Wizpro.dll]
+                 └─ CMGetGateStr()     ──►  CMGetGateStr()  [Wizpro.dll]
+            └─ OpenOrFocusFaceplate(tagName)
+                 └─ new AnalogFaceplate(tagName)
+                      └─ FormCreate()
+                           ├─ LoadTagMetadata()
+                           │    └─ TagLookup(csvPath)     # parse Regler_UTL.csv
+                           └─ ReadAndShowValue()
+                      └─ [Timer 1000 ms] PollTimer_Tick()
+                           └─ ReadAndShowValue()
+                                ├─ CMApi.ReadAnalog(TagName)
+                                │    └─ GetGateId()  ──►  CMGetGateId()  [Wizpro.dll]
+                                │    └─ CMGetGateVal() ►  CMGetGateVal() [Wizpro.dll]
+                                ├─ CMApi.ReadAnalog(TagName + "_SPHH")
+                                ├─ CMApi.ReadAnalog(TagName + "_SPH")
+                                ├─ CMApi.ReadAnalog(TagName + "_SPL")
+                                └─ CMApi.ReadAnalog(TagName + "_SPLL")
+
+  Button handlers (operator actions):
+       MOS_SETClick / MOS_SET1Click    → CMApi.RunMacro(TagName + "_OSS")
+       MOS_RESETClick / MOS_RESET1Click → CMApi.RunMacro(TagName + "_OSR")
+       ChartClick                       → CMApi.RunMacro(TagName + "_CH")
+            └─ CMRunMacroByName()  ──►  CMRunMacroByName() [WIZ5API.dll]
+```
+
+---
+
+### Entry point — `Program.cs`
+
+`Program.Main()` does three things before showing anything:
+
+1. Calls `CMApi.Connect()`. If connection fails it shows an error dialog and exits — nothing else runs without a CM connection.
+2. Creates a `FaceplateManager` and calls `Start()`.
+3. Calls `Application.Run(new ApplicationContext())` with no main form. The process lives as long as the `ApplicationContext` is alive; closing any faceplate window does **not** exit the application.
+
+On exit, `CMApi.Disconnect()` is called via `Application.ApplicationExit` to deregister the client from CM.
+
+---
+
+### CMApi — `CMApi.cs`
+
+The single static gateway to ControlMaestro. All communication with CM goes through this class. It wraps the CM client API exposed by `Wizpro.dll` and `WIZ5API.dll` via P/Invoke.
+
+**Key members:**
+
+| Member | Description |
+|---|---|
+| `Hook` | Byte handle returned by `CMMkClient`; passed to every subsequent CM API call |
+| `Connect()` | Calls `CMMkClient("FaceplateManager", ...)` to register this process as a CM client |
+| `Disconnect()` | Calls `CMRmClient(Hook)` to cleanly deregister |
+| `ReadAnalog(tagName)` | Resolves the tag to a GateId, then reads the current double value via `CMGetGateVal` |
+| `ReadString(tagName)` | Resolves the tag to a GateId, then reads the current string value via `CMGetGateStr` (mode 11) |
+| `RunMacro(macroName)` | Executes a named CM macro via `CMRunMacroByName` in `WIZ5API.dll` |
+| `GetGateId(tagName)` *(private)* | Calls `CMGetGateId` to resolve a tag name to its numeric GateId |
+
+**Native functions declared:**
+
+| Function | DLL | Purpose |
+|---|---|---|
+| `CMMkClient` | `Wizpro.dll` | Register a new CM client; returns a `Hook` byte |
+| `CMRmClient` | `Wizpro.dll` | Deregister a CM client |
+| `CMGetGateId` | `Wizpro.dll` | Resolve a tag name string to a numeric GateId |
+| `CMGetGateVal` | `Wizpro.dll` | Read an analog (double) value by GateId |
+| `CMGetGateStr` | `Wizpro.dll` | Read a string value by GateId |
+| `CMRunMacroByName` | `WIZ5API.dll` | Execute a CM macro by name |
+
+---
+
+### FaceplateManager — `FaceplateManager.cs`
+
+Runs a background `Timer` every 500 ms and watches the CM string tag `INDICATOR`.
+
+**Logic:**
+
+1. Reads the current value of `INDICATOR` via `CMApi.ReadString("INDICATOR")`.
+2. If the value is empty, or hasn't changed since the last tick, does nothing.
+3. If the value has changed, calls `OpenOrFocusFaceplate(tagName)`:
+   - If a non-disposed `AnalogFaceplate` for that tag already exists in `_openFaceplates`, brings it to the front.
+   - Otherwise creates a new `AnalogFaceplate`, stores it in `_openFaceplates`, and shows it.
+4. When a faceplate is closed, its `FormClosed` event removes it from `_openFaceplates`.
+
+Multiple faceplates for different instruments can be open simultaneously.
+
+---
+
+### AnalogFaceplate — `AnalogFaceplate.cs`
+
+The main operator window for a single instrument tag. Created with a `tagName` string and self-contained from that point on.
+
+**Lifecycle:**
+
+| Event | Action |
+|---|---|
+| `FormCreate` | `LoadTagMetadata()` then initial `ReadAndShowValue()`, then starts 1 s poll timer |
+| `PollTimer_Tick` | `ReadAndShowValue()` — runs every 1000 ms |
+| `FormClosed` | Stops and disposes the poll timer |
+
+**`LoadTagMetadata()`**
+
+Looks up the tag in `Regler_UTL.csv` via `TagLookup` and configures:
+
+- `ProcessBar.Minimum` and `ProcessBar.Maximum` (engineering range)
+- `valueFormat` — C# numeric format string derived from the CSV `Format` column (e.g. `"0.0"`, `"##0.00"`)
+- Visibility of the four alarm limit labels (`SPHH`, `SPH`, `SPL`, `SPLL`)
+- `Description` label text and `Span` label text (range string)
+- `PrcTag` label (the instrument's process tag name)
+
+**`ReadAndShowValue()`**
+
+Makes five `CMApi.ReadAnalog()` calls per cycle:
+
+| Call | Tag read |
+|---|---|
+| 1 | `TagName` — live process value |
+| 2 | `TagName + "_SPHH"` — high-high alarm limit |
+| 3 | `TagName + "_SPH"` — high alarm limit |
+| 4 | `TagName + "_SPL"` — low alarm limit |
+| 5 | `TagName + "_SPLL"` — low-low alarm limit |
+
+Results are displayed in the numeric label (`Anz_0_X`), the `VerticalBar` (`ProcessBar`), and the four setpoint labels. If any call throws, the display shows `"ERR"` in red and logs to the debug output.
+
+**Operator button handlers:**
+
+| Button | Handler | CM action |
+|---|---|---|
+| MOS activate (startup) | `MOS_SETClick` | `RunMacro(TagName + "_OSS")` |
+| MOS deactivate (startup) | `MOS_RESETClick` | `RunMacro(TagName + "_OSR")` |
+| MOS activate (maintenance) | `MOS_SET1Click` | `RunMacro(TagName + "_OSS")` |
+| MOS deactivate (maintenance) | `MOS_RESET1Click` | `RunMacro(TagName + "_OSR")` |
+| Chart | `ChartClick` | `RunMacro(TagName + "_CH")` |
+
+MOS access is password-protected in the UI: the operator must type `MOS` into the hidden `MOS_PASS` text box before the MOS panel becomes visible.
+
+**UI-only buttons (no CM calls):**
+
+| Button | Action |
+|---|---|
+| `<` (LO) | Move window to left edge of screen |
+| `>` (RO) | Move window to right edge of screen |
+| 🔓 / 🔒 (Pin) | Toggle `TopMost` — keeps faceplate above other windows |
+| Setpoints | Toggle between process value view and alarm setpoint view |
+| Close view | Close the faceplate window |
+
+---
+
+### TagLookup — `TagLookup.cs`
+
+Parses `Regler_UTL.csv` at construction time and provides keyed lookups by CM tag name (the `Prefix` column in the CSV, which matches the `TagName` passed from CM).
+
+**Methods exposed:**
+
+| Method | Returns |
+|---|---|
+| `Description(tagName)` | Instrument description string |
+| `Range(tagName)` | Display range string, e.g. `"0 - 100 %"` |
+| `TAG(tagName)` | Process tag identifier |
+| `LR(tagName)` | Low range (minimum) as string |
+| `HR(tagName)` | High range (maximum) as string |
+| `Format(tagName)` | Format string, e.g. `"4.1"` (digits before and after decimal) |
+| `ShowHH(tagName)` | Whether to display the SPHH alarm label |
+| `ShowH(tagName)` | Whether to display the SPH alarm label |
+| `ShowL(tagName)` | Whether to display the SPL alarm label |
+| `ShowLL(tagName)` | Whether to display the SPLL alarm label |
+
+---
+
+### VerticalBar — `BarControl.cs`
+
+A custom `Control` that draws a vertical filled bar with optional setpoint marker lines. Used as `ProcessBar` in the faceplate.
+
+**Properties:**
+
+| Property | Description |
+|---|---|
+| `Minimum` / `Maximum` | Engineering range for the bar |
+| `Value` | Current process value (integer) |
+| `BarColor` | Fill color of the bar (default: `LimeGreen`) |
+| `SPHH` / `SPH` / `SPL` / `SPLL` | Nullable int positions for alarm limit lines |
+
+Alarm limit lines are drawn as horizontal colored lines across the bar: red for HH and LL, yellow for H and L.
+
+---
+
+## Tag naming conventions
+
+All derived tag names are constructed by appending a fixed suffix to the base instrument tag name. This convention is systematic and assumed to be consistent across all instruments in the CM configuration.
+
+| Suffix | Meaning | Used in |
+|---|---|---|
+| *(none)* | Live process value | `ReadAndShowValue()` |
+| `_SPHH` | High-high alarm setpoint | `ReadAndShowValue()` |
+| `_SPH` | High alarm setpoint | `ReadAndShowValue()` |
+| `_SPL` | Low alarm setpoint | `ReadAndShowValue()` |
+| `_SPLL` | Low-low alarm setpoint | `ReadAndShowValue()` |
+| `_OSS` | MOS activate macro | `MOS_SETClick` / `MOS_SET1Click` |
+| `_OSR` | MOS deactivate macro | `MOS_RESETClick` / `MOS_RESET1Click` |
+| `_CH` | Open CM trend chart macro | `ChartClick` |
+
+Example — for tag `PT_9200_70_1`:
+
+```
+PT_9200_70_1        → process value
+PT_9200_70_1_SPHH   → high-high alarm limit
+PT_9200_70_1_SPH    → high alarm limit
+PT_9200_70_1_SPL    → low alarm limit
+PT_9200_70_1_SPLL   → low-low alarm limit
+PT_9200_70_1_OSS    → MOS activate macro
+PT_9200_70_1_OSR    → MOS deactivate macro
+PT_9200_70_1_CH     → trend chart macro
+```
+
+---
+
+## Configuration file — Regler_UTL.csv
+
+Located in the same directory as the executable. Parsed by `TagLookup` at faceplate creation time.
+
+**Columns:**
+
+| Column | Type | Description |
+|---|---|---|
+| `TAG` | String | Instrument process tag identifier |
+| `Description` | String | Human-readable instrument description |
+| `from` | Integer | Engineering range minimum |
+| `to` | Integer | Engineering range maximum |
+| `Format` | Float-string | Display format, e.g. `4.1` means 4 digits total, 1 decimal place |
+| `Unit` | String | Engineering unit (e.g. `bar`, `°C`, `%`) |
+| `Alarm` | String | Alarm visibility flags (which of HH/H/L/LL are active) |
+| `Type` | Integer | Instrument type code |
+| `Prefix` | String | CM tag name — used as the lookup key |
+
+The `Prefix` column must match the tag names written into the `INDICATOR` tag by the CM HMI.
+
+---
+
+## Building and running
+
+1. Open `CMFaceplateManager.sln` in Visual Studio.
+2. Set the build configuration to **Debug | x86** or **Release | x86**.
+3. Ensure `Wizpro.dll` and `WIZ5API.dll` are available to the output directory (either copy them there or ensure the CM installation directory is on the system `PATH`).
+4. Ensure `Regler_UTL.csv` is in the same directory as the compiled executable, or update the path in `AnalogFaceplate.cs` → `LoadTagMetadata()`.
+5. Build and run. The application connects to CM on startup — CM must be running on the same machine.
+
+> **Note:** The application will show a connection error dialog and exit immediately if CM is not running or the `Wizpro.dll` client registration fails.
+
+---
+
+## Dependencies
+
+| Dependency | Source | Notes |
+|---|---|---|
+| `Wizpro.dll` | ControlMaestro installation | P/Invoke; 32-bit native |
+| `WIZ5API.dll` | ControlMaestro installation | P/Invoke; 32-bit native; macro execution |
+| .NET Framework 4.8 | Microsoft | No NuGet packages required |
+| `Regler_UTL.csv` | Project directory | Instrument configuration; must be present at runtime |
+
+No third-party NuGet packages are used. All CM integration is through the native DLLs via P/Invoke.
+
 *Maintained as part of the FaceplateManager SCADA migration project.*
