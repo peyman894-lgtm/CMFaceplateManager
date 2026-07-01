@@ -33,7 +33,7 @@ namespace CMFaceplateManager
         public void Start()
         {
             _watchTimer = new Timer();
-            _watchTimer.Interval = 500;
+            _watchTimer.Interval = 100;
             _watchTimer.Tick += WatchTimer_Tick;
             _watchTimer.Start();
         }
@@ -69,6 +69,8 @@ namespace CMFaceplateManager
 
         private void OpenOrFocusFaceplate(string tagName)
         {
+            if (string.Equals(tagName, "X", StringComparison.OrdinalIgnoreCase))
+                return;
             if (_openFaceplates.TryGetValue(tagName, out AnalogFaceplate existing))
             {
                 if (!existing.IsDisposed)
