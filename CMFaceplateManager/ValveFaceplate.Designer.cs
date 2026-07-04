@@ -42,12 +42,6 @@ namespace CMFaceplateManager
         private System.Windows.Forms.Label PrcTag;
         private System.Windows.Forms.Button Button2;
 
-        private System.Windows.Forms.Panel Command_Panel;
-        private System.Windows.Forms.Button CONF_Button;
-        private System.Windows.Forms.Button CloseButton;
-        private System.Windows.Forms.Button OpenButton;
-        private System.Windows.Forms.Label StaticText2;
-
         private System.Windows.Forms.Panel MOS1;
         private System.Windows.Forms.Button Confirm1;
         private System.Windows.Forms.Button MOS_RESET1;
@@ -65,11 +59,6 @@ namespace CMFaceplateManager
             this.Pin_Button = new System.Windows.Forms.Button();
             this.P_0 = new System.Windows.Forms.Panel();
             this.Panel3 = new System.Windows.Forms.Panel();
-            this.Command_Panel = new System.Windows.Forms.Panel();
-            this.StaticText2 = new System.Windows.Forms.Label();
-            this.OpenButton = new System.Windows.Forms.Button();
-            this.CloseButton = new System.Windows.Forms.Button();
-            this.CONF_Button = new System.Windows.Forms.Button();
             this.WAR_0 = new System.Windows.Forms.TextBox();
             this.Panel8 = new System.Windows.Forms.Panel();
             this.PrcTag = new System.Windows.Forms.Label();
@@ -80,12 +69,15 @@ namespace CMFaceplateManager
             this.MOS_SET1 = new System.Windows.Forms.Button();
             this.MOS_RESET1 = new System.Windows.Forms.Button();
             this.Confirm1 = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
+            this.OpenButton = new System.Windows.Forms.Button();
+            this.Command_Panel = new System.Windows.Forms.Panel();
             this.Panel1.SuspendLayout();
             this.P_0.SuspendLayout();
             this.Panel3.SuspendLayout();
-            this.Command_Panel.SuspendLayout();
             this.Panel8.SuspendLayout();
             this.MOS1.SuspendLayout();
+            this.Command_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel1
@@ -160,60 +152,6 @@ namespace CMFaceplateManager
             this.Panel3.TabIndex = 0;
             this.Panel3.Click += new System.EventHandler(this.E_Regler_Zu);
             // 
-            // Command_Panel
-            // 
-            this.Command_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Command_Panel.Controls.Add(this.StaticText2);
-            this.Command_Panel.Controls.Add(this.OpenButton);
-            this.Command_Panel.Controls.Add(this.CloseButton);
-            this.Command_Panel.Controls.Add(this.CONF_Button);
-            this.Command_Panel.Location = new System.Drawing.Point(4, 122);
-            this.Command_Panel.Margin = new System.Windows.Forms.Padding(4);
-            this.Command_Panel.Name = "Command_Panel";
-            this.Command_Panel.Size = new System.Drawing.Size(157, 370);
-            this.Command_Panel.TabIndex = 11;
-            // 
-            // StaticText2
-            // 
-            this.StaticText2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.StaticText2.Location = new System.Drawing.Point(3, 183);
-            this.StaticText2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.StaticText2.Name = "StaticText2";
-            this.StaticText2.Size = new System.Drawing.Size(143, 25);
-            this.StaticText2.TabIndex = 4;
-            this.StaticText2.Text = "Command";
-            this.StaticText2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // OpenButton
-            // 
-            this.OpenButton.Location = new System.Drawing.Point(11, 217);
-            this.OpenButton.Margin = new System.Windows.Forms.Padding(4);
-            this.OpenButton.Name = "OpenButton";
-            this.OpenButton.Size = new System.Drawing.Size(129, 41);
-            this.OpenButton.TabIndex = 5;
-            this.OpenButton.Text = "Open";
-            this.OpenButton.Click += new System.EventHandler(this.OpenClick);
-            // 
-            // CloseButton
-            // 
-            this.CloseButton.Location = new System.Drawing.Point(11, 256);
-            this.CloseButton.Margin = new System.Windows.Forms.Padding(4);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(129, 41);
-            this.CloseButton.TabIndex = 6;
-            this.CloseButton.Text = "Close";
-            this.CloseButton.Click += new System.EventHandler(this.CloseClick);
-            // 
-            // CONF_Button
-            // 
-            this.CONF_Button.Location = new System.Drawing.Point(11, 305);
-            this.CONF_Button.Margin = new System.Windows.Forms.Padding(4);
-            this.CONF_Button.Name = "CONF_Button";
-            this.CONF_Button.Size = new System.Drawing.Size(129, 41);
-            this.CONF_Button.TabIndex = 7;
-            this.CONF_Button.Text = "confirm";
-            this.CONF_Button.Click += new System.EventHandler(this.CONF_ButtonClick);
-            // 
             // WAR_0
             // 
             this.WAR_0.Location = new System.Drawing.Point(217, 633);
@@ -263,7 +201,7 @@ namespace CMFaceplateManager
             // Button2
             // 
             this.Button2.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Button2.Location = new System.Drawing.Point(27, 729);
+            this.Button2.Location = new System.Drawing.Point(24, 724);
             this.Button2.Margin = new System.Windows.Forms.Padding(4);
             this.Button2.Name = "Button2";
             this.Button2.Size = new System.Drawing.Size(121, 32);
@@ -295,7 +233,20 @@ namespace CMFaceplateManager
             this.StaticText4.TabIndex = 0;
             this.StaticText4.Text = "MOS-Maint.";
             this.StaticText4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
+            // 
+            // MOS_SET1
+            // 
+            this.MOS_SET1.Location = new System.Drawing.Point(0, 0);
+            this.MOS_SET1.Name = "MOS_SET1";
+            this.MOS_SET1.Size = new System.Drawing.Size(75, 23);
+            this.MOS_SET1.TabIndex = 1;
+            // 
+            // MOS_RESET1
+            // 
+            this.MOS_RESET1.Location = new System.Drawing.Point(0, 0);
+            this.MOS_RESET1.Name = "MOS_RESET1";
+            this.MOS_RESET1.Size = new System.Drawing.Size(75, 23);
+            this.MOS_RESET1.TabIndex = 2;
             // 
             // Confirm1
             // 
@@ -305,7 +256,37 @@ namespace CMFaceplateManager
             this.Confirm1.Size = new System.Drawing.Size(129, 41);
             this.Confirm1.TabIndex = 3;
             this.Confirm1.Text = "Confirm";
-            
+            // 
+            // CloseButton
+            // 
+            this.CloseButton.Location = new System.Drawing.Point(10, 63);
+            this.CloseButton.Margin = new System.Windows.Forms.Padding(4);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(129, 41);
+            this.CloseButton.TabIndex = 6;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.Click += new System.EventHandler(this.CloseClick);
+            // 
+            // OpenButton
+            // 
+            this.OpenButton.Location = new System.Drawing.Point(10, 14);
+            this.OpenButton.Margin = new System.Windows.Forms.Padding(4);
+            this.OpenButton.Name = "OpenButton";
+            this.OpenButton.Size = new System.Drawing.Size(129, 41);
+            this.OpenButton.TabIndex = 5;
+            this.OpenButton.Text = "Open";
+            this.OpenButton.Click += new System.EventHandler(this.OpenClick);
+            // 
+            // Command_Panel
+            // 
+            this.Command_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Command_Panel.Controls.Add(this.OpenButton);
+            this.Command_Panel.Controls.Add(this.CloseButton);
+            this.Command_Panel.Location = new System.Drawing.Point(4, 389);
+            this.Command_Panel.Margin = new System.Windows.Forms.Padding(4);
+            this.Command_Panel.Name = "Command_Panel";
+            this.Command_Panel.Size = new System.Drawing.Size(157, 124);
+            this.Command_Panel.TabIndex = 11;
             // 
             // ValveFaceplate
             // 
@@ -324,14 +305,17 @@ namespace CMFaceplateManager
             this.P_0.ResumeLayout(false);
             this.Panel3.ResumeLayout(false);
             this.Panel3.PerformLayout();
-            this.Command_Panel.ResumeLayout(false);
             this.Panel8.ResumeLayout(false);
             this.MOS1.ResumeLayout(false);
+            this.Command_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Button Pin_Button;
+        private System.Windows.Forms.Panel Command_Panel;
+        private System.Windows.Forms.Button OpenButton;
+        private System.Windows.Forms.Button CloseButton;
     }
 }

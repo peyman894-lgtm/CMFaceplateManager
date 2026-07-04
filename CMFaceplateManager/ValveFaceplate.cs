@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 
 namespace CMFaceplateManager
@@ -11,22 +10,27 @@ namespace CMFaceplateManager
 
         private readonly Timer pollTimer;
 
-        private bool showHH = true;
-        private bool showH = true;
-        private bool showL = true;
-        private bool showLL = true;
+        public ValveFaceplate(string tagName)
+        {
+            TagName = tagName.Trim();
 
-        private string valueFormat = "0.00";
+            InitializeComponent();
 
-        
+            this.Text = TagName;
 
+            pollTimer = new Timer();
+            pollTimer.Interval = 1000;
+            pollTimer.Tick += PollTimer_Tick;
 
+            Load += FormCreate;
+            Activated += FormActivate;
+            FormClosed += ValveFaceplate_FormClosed;
+        }
 
-        
-
-        
-
-        
+        private void PollTimer_Tick(object sender, EventArgs e)
+        {
+            // Later: read valve status here if needed.
+        }
 
         private void ValveFaceplate_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -47,43 +51,30 @@ namespace CMFaceplateManager
         private void LOClick(object sender, EventArgs e)
         {
             Console.WriteLine($"[{TagName}] LOClick");
+
             Screen screen = Screen.FromControl(this);
             Rectangle workArea = screen.WorkingArea;
 
             this.Location = new Point(
-                workArea.Left,   // flush to left edge
-                workArea.Top     // flush to top edge
-            );
+                workArea.Left,
+                workArea.Top);
         }
 
         private void ROClick(object sender, EventArgs e)
         {
             Console.WriteLine($"[{TagName}] ROClick");
+
             Screen screen = Screen.FromControl(this);
             Rectangle workArea = screen.WorkingArea;
 
             this.Location = new Point(
-                workArea.Right - this.Width,   // flush to right edge
-                workArea.Top                   // flush to top edge
-            );
+                workArea.Right - this.Width,
+                workArea.Top);
         }
 
         private void Parameter_0Click(object sender, EventArgs e)
         {
-
         }
-
-        
-
-        
-
-
-
-
-
-
-
-
 
         private void WAR_0KeyDown(object sender, KeyEventArgs e)
         {
@@ -98,9 +89,7 @@ namespace CMFaceplateManager
 
         private void FormCreate(object sender, EventArgs e)
         {
-
             pollTimer.Start();
-
         }
 
         private void FormActivate(object sender, EventArgs e)
@@ -124,10 +113,6 @@ namespace CMFaceplateManager
         {
         }
 
-
-
-
-
         private void Pin_Button_Click(object sender, EventArgs e)
         {
             TopMost = !TopMost;
@@ -138,7 +123,6 @@ namespace CMFaceplateManager
 
         private void Edit_0_O2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void ChartClick(object sender, EventArgs e)
@@ -148,22 +132,25 @@ namespace CMFaceplateManager
 
         private void SPL_Click(object sender, EventArgs e)
         {
-
         }
 
         private void OpenClick(object sender, EventArgs e)
         {
-
+            // Later: run valve open macro or command.
+            Console.WriteLine($"[{TagName}] OpenClick");
+            CMApi.RunMacro(TagName + "_OP");
         }
 
         private void CloseClick(object sender, EventArgs e)
         {
-
+            // Later: run valve close macro or command.
+            Console.WriteLine($"[{TagName}] CloseClick");
+            CMApi.RunMacro(TagName + "_CL");
         }
 
         private void CONF_ButtonClick(object sender, EventArgs e)
         {
-
+            // Later: confirm valve command.
         }
     }
 }

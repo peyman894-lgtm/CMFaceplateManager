@@ -7,11 +7,9 @@ namespace CMFaceplateManager
 {
     public class FaceplateManager
     {
-        // Win32: force a window to the foreground even from a background process
         [DllImport("user32.dll")]
         private static extern bool SetForegroundWindow(IntPtr hWnd);
 
-        // Win32: attach/detach thread input queues so foreground promotion works
         [DllImport("user32.dll")]
         private static extern bool AttachThreadInput(uint idAttach, uint idAttachTo, bool fAttach);
 
@@ -24,11 +22,20 @@ namespace CMFaceplateManager
         [DllImport("kernel32.dll")]
         private static extern uint GetCurrentThreadId();
 
-        private readonly Dictionary<string, AnalogFaceplate> _openFaceplates =
+        private readonly Dictionary<string, AnalogFaceplate> _openAnalogFaceplates =
             new Dictionary<string, AnalogFaceplate>();
 
+        private readonly Dictionary<string, ValveFaceplate> _openValveFaceplates =
+            new Dictionary<string, ValveFaceplate>();
+
+        private readonly Dictionary<string, DigitalMOSFaceplate> _openDigitalMosFaceplates =
+            new Dictionary<string, DigitalMOSFaceplate>();
+
         private Timer _watchTimer;
+
         private string _lastIndicatorValue = "";
+        private string _lastValveValue = "";
+        private string _lastDigitalMosValue = "";
 
         public void Start()
         {
@@ -44,6 +51,13 @@ namespace CMFaceplateManager
         }
 
         private void WatchTimer_Tick(object sender, EventArgs e)
+        {
+            WatchAnalogIndicator();
+            WatchValveIndicator();
+            WatchDigitalMosIndicator();
+        }
+
+        private void WatchAnalogIndicator()
         {
             string tagName;
 
@@ -64,14 +78,97 @@ namespace CMFaceplateManager
 
             _lastIndicatorValue = tagName;
 
-            OpenOrFocusFaceplate(tagName);
-        }
-
-        private void OpenOrFocusFaceplate(string tagName)
-        {
             if (string.Equals(tagName, "X", StringComparison.OrdinalIgnoreCase))
                 return;
-            if (_openFaceplates.TryGetValue(tagName, out AnalogFaceplate existing))
+
+            OpenOrFocusAnalogFaceplate(tagName);
+        }
+
+        private void WatchValveIndicator()
+        {
+            string tagName;
+
+            try
+            {
+                tagName = CMApi.ReadString("VALVE").Trim();
+            }
+            catch
+            {
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(tagName))
+                return;
+
+            if (tagName == _lastValveValue)
+                return;
+
+            _lastValveValue = tagName;
+
+            if (string.Equals(tagName, "X", StringComparison.OrdinalIgnoreCase))
+                return;
+
+            OpenOrFocusValveFaceplate(tagName);
+        }
+
+        private void WatchDigitalMosIndicator()
+        {
+            string tagName;
+
+            try
+            {
+                tagName = CMApi.ReadString("DIGITALMOS").Trim();
+            }
+            catch
+            {
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(tagName))
+                return;
+
+            if (tagName == _lastDigitalMosValue)
+                return;
+
+            _lastDigitalMosValue = tagName;
+
+            if (string.Equals(tagName, "X", StringComparison.OrdinalIgnoreCase))
+                return;
+
+            OpenOrFocusDigitalMosFaceplate(tagName);
+        }
+
+        private void OpenOrFocusAnalogFaceplate(string tagName)
+        {
+            OpenOrFocusFaceplate(
+                tagName,
+                _openAnalogFaceplates,
+                name => new AnalogFaceplate(name));
+        }
+
+        private void OpenOrFocusValveFaceplate(string tagName)
+        {
+            OpenOrFocusFaceplate(
+                tagName,
+                _openValveFaceplates,
+                name => new ValveFaceplate(name));
+        }
+
+        private void OpenOrFocusDigitalMosFaceplate(string tagName)
+        {
+            OpenOrFocusFaceplate(
+                tagName,
+                _openDigitalMosFaceplates,
+                name => new DigitalMOSFaceplate(name));
+        }
+
+        private void OpenOrFocusFaceplate<TForm>(
+            string tagName,
+            Dictionary<string, TForm> openFaceplates,
+            Func<string, TForm> createFaceplate)
+            where TForm : Form
+        {
+            if (openFaceplates.TryGetValue(tagName, out TForm existing))
             {
                 if (!existing.IsDisposed)
                 {
@@ -80,17 +177,17 @@ namespace CMFaceplateManager
                     return;
                 }
 
-                _openFaceplates.Remove(tagName);
+                openFaceplates.Remove(tagName);
             }
 
-            var faceplate = new AnalogFaceplate(tagName);
+            TForm faceplate = createFaceplate(tagName);
 
             faceplate.FormClosed += (s, e) =>
             {
-                _openFaceplates.Remove(tagName);
+                openFaceplates.Remove(tagName);
             };
 
-            _openFaceplates[tagName] = faceplate;
+            openFaceplates[tagName] = faceplate;
 
             faceplate.Show();
             faceplate.WindowState = FormWindowState.Normal;
@@ -98,15 +195,6 @@ namespace CMFaceplateManager
             ForceToFront(faceplate);
         }
 
-        /// <summary>
-        /// Brings a form to the foreground reliably, even when the calling
-        /// process does not currently own the foreground window.
-        /// 
-        /// Windows blocks SetForegroundWindow() for background processes.
-        /// The workaround is to temporarily attach our thread's input queue
-        /// to the foreground thread's queue, which grants us foreground
-        /// promotion rights for the duration of that attachment.
-        /// </summary>
         private static void ForceToFront(Form form)
         {
             if (form == null || form.IsDisposed)
@@ -114,17 +202,14 @@ namespace CMFaceplateManager
 
             IntPtr hWnd = form.Handle;
 
-            // Get the thread that owns the current foreground window
             IntPtr foregroundWnd = GetForegroundWindow();
             uint foregroundThread = GetWindowThreadProcessId(foregroundWnd, IntPtr.Zero);
             uint currentThread = GetCurrentThreadId();
 
-            // Attach input queues so Windows grants us foreground rights
             bool attached = false;
+
             if (foregroundThread != currentThread)
-            {
                 attached = AttachThreadInput(currentThread, foregroundThread, true);
-            }
 
             try
             {
@@ -135,7 +220,6 @@ namespace CMFaceplateManager
             }
             finally
             {
-                // Always detach — leaving queues attached causes input bugs
                 if (attached)
                     AttachThreadInput(currentThread, foregroundThread, false);
             }

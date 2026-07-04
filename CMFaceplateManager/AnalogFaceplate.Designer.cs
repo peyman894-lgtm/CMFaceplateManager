@@ -166,7 +166,7 @@ namespace CMFaceplateManager
             this.MOS_SET1 = new System.Windows.Forms.Button();
             this.MOS_RESET1 = new System.Windows.Forms.Button();
             this.Confirm1 = new System.Windows.Forms.Button();
-            this.ProcessBar = new VerticalBar();
+            this.ProcessBar = new CMFaceplateManager.VerticalBar();
             this.Panel1.SuspendLayout();
             this.P_0.SuspendLayout();
             this.Panel3.SuspendLayout();
@@ -394,10 +394,10 @@ namespace CMFaceplateManager
             // DT_0_X
             // 
             this.DT_0_X.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.DT_0_X.Location = new System.Drawing.Point(13, 48);
+            this.DT_0_X.Location = new System.Drawing.Point(10, 48);
             this.DT_0_X.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DT_0_X.Name = "DT_0_X";
-            this.DT_0_X.Size = new System.Drawing.Size(12, 21);
+            this.DT_0_X.Size = new System.Drawing.Size(15, 21);
             this.DT_0_X.TabIndex = 0;
             this.DT_0_X.Text = "X";
             // 
@@ -457,40 +457,40 @@ namespace CMFaceplateManager
             // DT_0_O2
             // 
             this.DT_0_O2.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.DT_0_O2.Location = new System.Drawing.Point(7, 9);
+            this.DT_0_O2.Location = new System.Drawing.Point(0, 9);
             this.DT_0_O2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DT_0_O2.Name = "DT_0_O2";
-            this.DT_0_O2.Size = new System.Drawing.Size(24, 21);
+            this.DT_0_O2.Size = new System.Drawing.Size(35, 21);
             this.DT_0_O2.TabIndex = 0;
             this.DT_0_O2.Text = "H2";
             // 
             // DT_0_O1
             // 
             this.DT_0_O1.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.DT_0_O1.Location = new System.Drawing.Point(7, 48);
+            this.DT_0_O1.Location = new System.Drawing.Point(0, 48);
             this.DT_0_O1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DT_0_O1.Name = "DT_0_O1";
-            this.DT_0_O1.Size = new System.Drawing.Size(24, 21);
+            this.DT_0_O1.Size = new System.Drawing.Size(35, 21);
             this.DT_0_O1.TabIndex = 1;
             this.DT_0_O1.Text = "H1";
             // 
             // DT_0_U1
             // 
             this.DT_0_U1.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.DT_0_U1.Location = new System.Drawing.Point(7, 89);
+            this.DT_0_U1.Location = new System.Drawing.Point(0, 89);
             this.DT_0_U1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DT_0_U1.Name = "DT_0_U1";
-            this.DT_0_U1.Size = new System.Drawing.Size(21, 21);
+            this.DT_0_U1.Size = new System.Drawing.Size(35, 21);
             this.DT_0_U1.TabIndex = 2;
             this.DT_0_U1.Text = "L1";
             // 
             // DT_0_U2
             // 
             this.DT_0_U2.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.DT_0_U2.Location = new System.Drawing.Point(7, 128);
+            this.DT_0_U2.Location = new System.Drawing.Point(0, 128);
             this.DT_0_U2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DT_0_U2.Name = "DT_0_U2";
-            this.DT_0_U2.Size = new System.Drawing.Size(21, 21);
+            this.DT_0_U2.Size = new System.Drawing.Size(35, 21);
             this.DT_0_U2.TabIndex = 3;
             this.DT_0_U2.Text = "L2";
             // 
