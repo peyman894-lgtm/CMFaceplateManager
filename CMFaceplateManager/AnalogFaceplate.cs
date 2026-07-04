@@ -138,7 +138,7 @@ namespace CMFaceplateManager
 
             try
             {
-                var lookup = new TagLookup(csvPath);
+                var lookup = new ReglerLookup(csvPath);
 
                 valueFormat = BuildNumberFormat(lookup.Format(TagName));
 

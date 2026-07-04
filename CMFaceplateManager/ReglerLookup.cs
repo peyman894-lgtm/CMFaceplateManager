@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace CMFaceplateManager
 {
-    public class TagLookup
+    public class ReglerLookup
     {
         private string csvPath;
 
-        public TagLookup(string csvFilePath)
+        public ReglerLookup(string csvFilePath)
         {
             csvPath = csvFilePath;
         }

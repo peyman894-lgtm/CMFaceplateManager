@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
 
 namespace CMFaceplateManager
 {
@@ -71,6 +72,36 @@ namespace CMFaceplateManager
                 workArea.Right - this.Width,
                 workArea.Top);
         }
+        private void LoadTasterMetadata()
+        {
+            string csvPath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Taster.csv");
+
+            try
+            {
+                var lookup = new TasterLookup(csvPath);
+
+                string processTag = lookup.ProcessTag(TagName);
+                string description = lookup.Description(TagName);
+
+                PrcTag.Text = string.IsNullOrWhiteSpace(processTag)
+                    ? TagName
+                    : processTag;
+
+                Description.Text = string.IsNullOrWhiteSpace(description)
+                    ? TagName
+                    : description;
+            }
+            catch (Exception ex)
+            {
+                PrcTag.Text = TagName;
+                Description.Text = TagName;
+
+                System.Diagnostics.Debug.WriteLine(
+                    $"[{TagName}] LoadTasterMetadata failed: {ex.Message}");
+            }
+        }
 
         private void Parameter_0Click(object sender, EventArgs e)
         {
@@ -136,6 +167,7 @@ namespace CMFaceplateManager
 
         private void FormCreate(object sender, EventArgs e)
         {
+            LoadTasterMetadata();
             pollTimer.Start();
         }
 

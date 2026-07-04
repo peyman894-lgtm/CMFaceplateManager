@@ -83,6 +83,7 @@
     <Compile Include="DigitalMOSFaceplate.Designer.cs">
       <DependentUpon>DigitalMOSFaceplate.cs</DependentUpon>
     </Compile>
+    <Compile Include="TasterLookup.cs" />
     <Compile Include="ValveFaceplate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,7 +92,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TagLookup.cs" />
+    <Compile Include="ReglerLookup.cs" />
     <Compile Include="LayerManager.cs" />
     <Compile Include="VerticalProgressBar.cs">
       <SubType>Component</SubType>
@@ -127,5 +128,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Regler.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Taster.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
