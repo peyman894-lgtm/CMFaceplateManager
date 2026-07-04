@@ -77,15 +77,30 @@
     <Compile Include="AnalogFaceplate.Designer.cs">
       <DependentUpon>AnalogFaceplate.cs</DependentUpon>
     </Compile>
+    <Compile Include="DigitalMOSFaceplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DigitalMOSFaceplate.Designer.cs">
+      <DependentUpon>DigitalMOSFaceplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ValveFaceplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ValveFaceplate.Designer.cs">
+      <DependentUpon>ValveFaceplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagLookup.cs" />
-	<Compile Include="LayerManager.cs" />
+    <Compile Include="LayerManager.cs" />
     <Compile Include="VerticalProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="AnalogFaceplate.resx">
       <DependentUpon>AnalogFaceplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DigitalMOSFaceplate.resx">
+      <DependentUpon>DigitalMOSFaceplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -96,6 +111,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ValveFaceplate.resx">
+      <DependentUpon>ValveFaceplate.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
