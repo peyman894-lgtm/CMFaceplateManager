@@ -1,4 +1,3 @@
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -16,31 +15,55 @@ namespace CMFaceplateManager
         public int? SPL { get; set; } = null;
         public int? SPLL { get; set; } = null;
 
+        private const int MarkerAreaWidth = 20;
+        private const int BarWidth = 40;
+
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
 
-            g.FillRectangle(Brushes.LightGray, 0, 0, Width, Height);
+            int barLeft = MarkerAreaWidth;
+            int barTop = 0;
+            int barHeight = Height;
 
             int range = Maximum - Minimum;
             if (range <= 0)
                 return;
 
+            // Background of whole control
+            g.FillRectangle(Brushes.Black, 0, 0, Width, Height);
+
+            // Bar background
+            g.FillRectangle(Brushes.LightGray, barLeft, barTop, BarWidth, barHeight);
+
             int clampedValue = System.Math.Max(Minimum, System.Math.Min(Maximum, Value));
             int fillHeight = Height * (clampedValue - Minimum) / range;
 
             using (var brush = new SolidBrush(BarColor))
-                g.FillRectangle(brush, 0, Height - fillHeight, Width, fillHeight);
+            {
+                g.FillRectangle(
+                    brush,
+                    barLeft,
+                    Height - fillHeight,
+                    BarWidth,
+                    fillHeight);
+            }
 
-            g.DrawRectangle(Pens.DimGray, 0, 0, Width - 1, Height - 1);
+            // Border around actual bar only
+            g.DrawRectangle(
+                Pens.DimGray,
+                barLeft,
+                barTop,
+                BarWidth - 1,
+                barHeight - 1);
 
-            if (SPHH.HasValue) DrawSetpoint(g, SPHH.Value, Color.Red, "");
-            if (SPH.HasValue) DrawSetpoint(g, SPH.Value, Color.Yellow, "");
-            if (SPL.HasValue) DrawSetpoint(g, SPL.Value, Color.Yellow, "");
-            if (SPLL.HasValue) DrawSetpoint(g, SPLL.Value, Color.Red, "");
+            if (SPHH.HasValue) DrawSetpoint(g, SPHH.Value, Color.Red);
+            if (SPH.HasValue) DrawSetpoint(g, SPH.Value, Color.Yellow);
+            if (SPL.HasValue) DrawSetpoint(g, SPL.Value, Color.Yellow);
+            if (SPLL.HasValue) DrawSetpoint(g, SPLL.Value, Color.Red);
         }
 
-        private void DrawSetpoint(Graphics g, int value, Color color, string label)
+        private void DrawSetpoint(Graphics g, int value, Color color)
         {
             if (value < Minimum || value > Maximum)
                 return;
@@ -51,11 +74,13 @@ namespace CMFaceplateManager
 
             int y = Height - Height * (value - Minimum) / range;
 
-            using (var pen = new Pen(color, 2f))
-                g.DrawLine(pen, 0, y, Width, y);
+            int markerStartX = 0;
+            int markerEndX = MarkerAreaWidth;
 
-            using (var brush = new SolidBrush(color))
-                g.DrawString(label, Font, brush, 2, y - Font.Height / 2f);
+            using (var pen = new Pen(color, 2f))
+            {
+                g.DrawLine(pen, markerStartX, y, markerEndX, y);
+            }
         }
     }
 }

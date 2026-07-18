@@ -556,11 +556,11 @@ namespace CMFaceplateManager
             // ProcessBar
             // 
             this.ProcessBar.BarColor = System.Drawing.Color.Lime;
-            this.ProcessBar.Location = new System.Drawing.Point(74, 2);
+            this.ProcessBar.Location = new System.Drawing.Point(30, 2);
             this.ProcessBar.Maximum = 100;
             this.ProcessBar.Minimum = 0;
             this.ProcessBar.Name = "ProcessBar";
-            this.ProcessBar.Size = new System.Drawing.Size(28, 293);
+            this.ProcessBar.Size = new System.Drawing.Size(56, 293);
             this.ProcessBar.SPH = null;
             this.ProcessBar.SPHH = null;
             this.ProcessBar.SPL = null;
