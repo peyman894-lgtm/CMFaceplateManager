@@ -8,6 +8,7 @@ namespace CMFaceplateManager
     public partial class ValveFaceplate : Form
     {
         public string TagName { get; }
+        private string pendingMacroName = null;
 
         private readonly Timer pollTimer;
 
@@ -183,20 +184,49 @@ namespace CMFaceplateManager
         private void OpenClick(object sender, EventArgs e)
         {
             // Later: run valve open macro or command.
-            Console.WriteLine($"[{TagName}] OpenClick");
-            CMApi.RunMacro(TagName + "_OP");
+            Console.WriteLine($"[{TagName}] OpenClick - waiting for confirm");
+
+            OpenButton.BackColor = Color.LimeGreen;
+            OpenButton.ForeColor = Color.Black;
+
+            CloseButton.BackColor = Color.Gray;
+            CloseButton.ForeColor = Color.Black;
+
+            pendingMacroName = TagName + "_OP";
         }
 
         private void CloseClick(object sender, EventArgs e)
         {
             // Later: run valve close macro or command.
-            Console.WriteLine($"[{TagName}] CloseClick");
-            CMApi.RunMacro(TagName + "_CL");
+            Console.WriteLine($"[{TagName}] CloseClick - waiting for confirm");
+
+            CloseButton.BackColor = Color.Red;
+            CloseButton.ForeColor = Color.White;
+
+            OpenButton.BackColor = Color.Gray;
+            OpenButton.ForeColor = Color.Black;
+
+            pendingMacroName = TagName + "_CL";
         }
 
-        private void CONF_ButtonClick(object sender, EventArgs e)
+               
+
+        private void Confirm_Click(object sender, EventArgs e)
         {
-            // Later: confirm valve command.
+            if (string.IsNullOrWhiteSpace(pendingMacroName))
+                return;
+
+            Console.WriteLine($"[{TagName}] ConfirmClick - running {pendingMacroName}");
+
+            CMApi.RunMacro(pendingMacroName);
+
+            pendingMacroName = null;
+
+            OpenButton.BackColor = Color.Gray;
+            OpenButton.ForeColor = Color.Black;
+
+            CloseButton.BackColor = Color.Gray;
+            CloseButton.ForeColor = Color.Black;
         }
     }
 }

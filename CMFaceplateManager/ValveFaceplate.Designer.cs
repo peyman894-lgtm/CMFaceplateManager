@@ -59,6 +59,10 @@ namespace CMFaceplateManager
             this.Pin_Button = new System.Windows.Forms.Button();
             this.P_0 = new System.Windows.Forms.Panel();
             this.Panel3 = new System.Windows.Forms.Panel();
+            this.Confirm = new System.Windows.Forms.Button();
+            this.Command_Panel = new System.Windows.Forms.Panel();
+            this.OpenButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.WAR_0 = new System.Windows.Forms.TextBox();
             this.Panel8 = new System.Windows.Forms.Panel();
             this.PrcTag = new System.Windows.Forms.Label();
@@ -69,15 +73,12 @@ namespace CMFaceplateManager
             this.MOS_SET1 = new System.Windows.Forms.Button();
             this.MOS_RESET1 = new System.Windows.Forms.Button();
             this.Confirm1 = new System.Windows.Forms.Button();
-            this.CloseButton = new System.Windows.Forms.Button();
-            this.OpenButton = new System.Windows.Forms.Button();
-            this.Command_Panel = new System.Windows.Forms.Panel();
             this.Panel1.SuspendLayout();
             this.P_0.SuspendLayout();
             this.Panel3.SuspendLayout();
+            this.Command_Panel.SuspendLayout();
             this.Panel8.SuspendLayout();
             this.MOS1.SuspendLayout();
-            this.Command_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel1
@@ -141,6 +142,7 @@ namespace CMFaceplateManager
             // Panel3
             // 
             this.Panel3.BackColor = System.Drawing.Color.Gray;
+            this.Panel3.Controls.Add(this.Confirm);
             this.Panel3.Controls.Add(this.Command_Panel);
             this.Panel3.Controls.Add(this.WAR_0);
             this.Panel3.Controls.Add(this.Panel8);
@@ -151,6 +153,47 @@ namespace CMFaceplateManager
             this.Panel3.Size = new System.Drawing.Size(165, 769);
             this.Panel3.TabIndex = 0;
             this.Panel3.Click += new System.EventHandler(this.E_Regler_Zu);
+            // 
+            // Confirm
+            // 
+            this.Confirm.Location = new System.Drawing.Point(16, 538);
+            this.Confirm.Margin = new System.Windows.Forms.Padding(4);
+            this.Confirm.Name = "Confirm";
+            this.Confirm.Size = new System.Drawing.Size(129, 41);
+            this.Confirm.TabIndex = 7;
+            this.Confirm.Text = "Confirm";
+            this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
+            // 
+            // Command_Panel
+            // 
+            this.Command_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Command_Panel.Controls.Add(this.OpenButton);
+            this.Command_Panel.Controls.Add(this.CloseButton);
+            this.Command_Panel.Location = new System.Drawing.Point(4, 389);
+            this.Command_Panel.Margin = new System.Windows.Forms.Padding(4);
+            this.Command_Panel.Name = "Command_Panel";
+            this.Command_Panel.Size = new System.Drawing.Size(157, 211);
+            this.Command_Panel.TabIndex = 11;
+            // 
+            // OpenButton
+            // 
+            this.OpenButton.Location = new System.Drawing.Point(10, 14);
+            this.OpenButton.Margin = new System.Windows.Forms.Padding(4);
+            this.OpenButton.Name = "OpenButton";
+            this.OpenButton.Size = new System.Drawing.Size(129, 41);
+            this.OpenButton.TabIndex = 5;
+            this.OpenButton.Text = "Open";
+            this.OpenButton.Click += new System.EventHandler(this.OpenClick);
+            // 
+            // CloseButton
+            // 
+            this.CloseButton.Location = new System.Drawing.Point(10, 63);
+            this.CloseButton.Margin = new System.Windows.Forms.Padding(4);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(129, 41);
+            this.CloseButton.TabIndex = 6;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.Click += new System.EventHandler(this.CloseClick);
             // 
             // WAR_0
             // 
@@ -257,37 +300,6 @@ namespace CMFaceplateManager
             this.Confirm1.TabIndex = 3;
             this.Confirm1.Text = "Confirm";
             // 
-            // CloseButton
-            // 
-            this.CloseButton.Location = new System.Drawing.Point(10, 63);
-            this.CloseButton.Margin = new System.Windows.Forms.Padding(4);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(129, 41);
-            this.CloseButton.TabIndex = 6;
-            this.CloseButton.Text = "Close";
-            this.CloseButton.Click += new System.EventHandler(this.CloseClick);
-            // 
-            // OpenButton
-            // 
-            this.OpenButton.Location = new System.Drawing.Point(10, 14);
-            this.OpenButton.Margin = new System.Windows.Forms.Padding(4);
-            this.OpenButton.Name = "OpenButton";
-            this.OpenButton.Size = new System.Drawing.Size(129, 41);
-            this.OpenButton.TabIndex = 5;
-            this.OpenButton.Text = "Open";
-            this.OpenButton.Click += new System.EventHandler(this.OpenClick);
-            // 
-            // Command_Panel
-            // 
-            this.Command_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Command_Panel.Controls.Add(this.OpenButton);
-            this.Command_Panel.Controls.Add(this.CloseButton);
-            this.Command_Panel.Location = new System.Drawing.Point(4, 389);
-            this.Command_Panel.Margin = new System.Windows.Forms.Padding(4);
-            this.Command_Panel.Name = "Command_Panel";
-            this.Command_Panel.Size = new System.Drawing.Size(157, 124);
-            this.Command_Panel.TabIndex = 11;
-            // 
             // ValveFaceplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -305,9 +317,9 @@ namespace CMFaceplateManager
             this.P_0.ResumeLayout(false);
             this.Panel3.ResumeLayout(false);
             this.Panel3.PerformLayout();
+            this.Command_Panel.ResumeLayout(false);
             this.Panel8.ResumeLayout(false);
             this.MOS1.ResumeLayout(false);
-            this.Command_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -317,5 +329,6 @@ namespace CMFaceplateManager
         private System.Windows.Forms.Panel Command_Panel;
         private System.Windows.Forms.Button OpenButton;
         private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.Button Confirm;
     }
 }
