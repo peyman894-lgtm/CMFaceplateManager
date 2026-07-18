@@ -8,6 +8,32 @@ namespace CMFaceplateManager
     public partial class DigitalMOSFaceplate : Form
     {
         public string TagName { get; }
+        private string pendingMacroName = null;
+
+        private void ApplyMosVisibilityByUser()
+        {
+            string userName = CMApi.GetCurrentUserName();
+
+            bool isEngineer = string.Equals(
+                userName,
+                "Engineer",
+                StringComparison.OrdinalIgnoreCase);
+
+            // MOS Startup controls
+            StaticText1.Visible = isEngineer;
+            MOS_SET.Visible = isEngineer;
+            MOS_RESET.Visible = isEngineer;
+            CONF_MOS_S_Button.Visible = isEngineer;
+
+            // MOS Maintenance controls
+            StaticText2.Visible = !isEngineer;
+            MOS_Set3.Visible = !isEngineer;
+            MOS_Reset3.Visible = !isEngineer;
+            CONF_MOS_M_Button.Visible = !isEngineer;
+
+            System.Diagnostics.Debug.WriteLine(
+                $"[{TagName}] Current CM user='{userName}', Engineer={isEngineer}");
+        }
 
         private readonly Timer pollTimer;
 
@@ -168,6 +194,7 @@ namespace CMFaceplateManager
         private void FormCreate(object sender, EventArgs e)
         {
             LoadTasterMetadata();
+            ApplyMosVisibilityByUser();
             pollTimer.Start();
         }
 

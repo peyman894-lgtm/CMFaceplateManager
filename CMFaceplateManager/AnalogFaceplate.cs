@@ -35,6 +35,31 @@ namespace CMFaceplateManager
             FormClosed += AnalogFaceplate_FormClosed;
         }
 
+        private void ApplyMosVisibilityByUser()
+        {
+            string userName = CMApi.GetCurrentUserName();
+
+            bool isEngineer = string.Equals(
+                userName,
+                "Engineer",
+                StringComparison.OrdinalIgnoreCase);
+
+            // MOS Startup controls
+            StaticText1.Visible = isEngineer;
+            MOS_SET.Visible = isEngineer;
+            MOS_RESET.Visible = isEngineer;
+            CONF_MOS_S_Button.Visible = isEngineer;
+
+            // MOS Maintenance controls
+            StaticText2.Visible = !isEngineer;
+            MOS_Set3.Visible = !isEngineer;
+            MOS_Reset3.Visible = !isEngineer;
+            CONF_MOS_M_Button.Visible = !isEngineer;
+
+            System.Diagnostics.Debug.WriteLine(
+                $"[{TagName}] Current CM user='{userName}', Engineer={isEngineer}");
+        }
+
         private void PollTimer_Tick(object sender, EventArgs e)
         {
             ReadAndShowValue();
@@ -148,9 +173,20 @@ namespace CMFaceplateManager
                 showLL = lookup.ShowLL(TagName);
 
                 SPHH.Visible = showHH;
+                DT_0_O2.Visible= showHH;
+                PO2_0.Visible = showHH;
+
                 SPH.Visible = showH;
+                DT_0_O1.Visible = showH;
+                PO1_0.Visible = showH;
+
                 SPL.Visible = showL;
+                DT_0_U1.Visible = showL;
+                PU1_0.Visible = showL;
+
                 SPLL.Visible = showLL;
+                DT_0_U2.Visible = showLL;
+                PU2_0.Visible = showLL;
 
                 string description = lookup.Description(TagName);
                 string Range = lookup.Range(TagName);
@@ -351,6 +387,7 @@ namespace CMFaceplateManager
         {
             LoadTagMetadata();
             ReadAndShowValue();
+            ApplyMosVisibilityByUser();
             pollTimer.Start();
 
         }
@@ -416,6 +453,11 @@ namespace CMFaceplateManager
         private void ChartClick(object sender, EventArgs e)
         {
             CMApi.RunMacro(TagName + "_CH");
+        }
+
+        private void SPLL_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

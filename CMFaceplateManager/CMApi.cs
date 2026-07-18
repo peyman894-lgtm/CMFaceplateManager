@@ -48,6 +48,12 @@ namespace CMFaceplateManager
             uint Seconds,
             ushort MilliSeconds);
 
+
+        [DllImport("Wizpro.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+         public static extern ushort CMGetUserName(
+            byte Hook,
+            byte[] pUserName);
+
         [DllImport("WIZ5API.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern ushort CMRunMacroByName(
             byte Hook,
@@ -262,6 +268,27 @@ namespace CMFaceplateManager
                 milliseconds);
 
             return rc;
+        }
+
+        public static string GetCurrentUserName()
+        {
+            byte[] buffer = new byte[32];
+
+            ushort rc = CMGetUserName(Hook, buffer);
+
+            if (rc != 0)
+            {
+                System.Diagnostics.Debug.WriteLine(
+                    $"CMGetUserName failed, rc={rc}");
+
+                return string.Empty;
+            }
+
+            int length = Array.IndexOf(buffer, (byte)0);
+            if (length < 0)
+                length = buffer.Length;
+
+            return Encoding.Default.GetString(buffer, 0, length).Trim();
         }
     }
 }

@@ -43,14 +43,9 @@ namespace CMFaceplateManager
         private System.Windows.Forms.Label DT_0_O1;
         private System.Windows.Forms.Label DT_0_U1;
         private System.Windows.Forms.Label DT_0_U2;
-        private System.Windows.Forms.Panel PO2_0;
-        private System.Windows.Forms.Label SPHH;
         private System.Windows.Forms.Panel PO1_0;
-        private System.Windows.Forms.Label SPH;
         private System.Windows.Forms.Panel PU1_0;
-        private System.Windows.Forms.Label SPL;
         private System.Windows.Forms.Panel PU2_0;
-        private System.Windows.Forms.Label SPLL;
 
         private System.Windows.Forms.TextBox WAR_0;
 
@@ -131,16 +126,12 @@ namespace CMFaceplateManager
             this.DT_0_O1 = new System.Windows.Forms.Label();
             this.DT_0_U1 = new System.Windows.Forms.Label();
             this.DT_0_U2 = new System.Windows.Forms.Label();
-            this.PO2_0 = new System.Windows.Forms.Panel();
-            this.SPHH = new System.Windows.Forms.Label();
             this.PO1_0 = new System.Windows.Forms.Panel();
-            this.SPH = new System.Windows.Forms.Label();
             this.PU1_0 = new System.Windows.Forms.Panel();
-            this.SPL = new System.Windows.Forms.Label();
             this.PU2_0 = new System.Windows.Forms.Panel();
-            this.SPLL = new System.Windows.Forms.Label();
             this.WAR_0 = new System.Windows.Forms.TextBox();
             this.Panel4 = new System.Windows.Forms.Panel();
+            this.ProcessBar = new CMFaceplateManager.VerticalBar();
             this.P_100 = new System.Windows.Forms.Panel();
             this.P_90 = new System.Windows.Forms.Panel();
             this.P_80 = new System.Windows.Forms.Panel();
@@ -166,7 +157,11 @@ namespace CMFaceplateManager
             this.MOS_SET1 = new System.Windows.Forms.Button();
             this.MOS_RESET1 = new System.Windows.Forms.Button();
             this.Confirm1 = new System.Windows.Forms.Button();
-            this.ProcessBar = new CMFaceplateManager.VerticalBar();
+            this.PO2_0 = new System.Windows.Forms.Panel();
+            this.SPLL = new System.Windows.Forms.Label();
+            this.SPL = new System.Windows.Forms.Label();
+            this.SPH = new System.Windows.Forms.Label();
+            this.SPHH = new System.Windows.Forms.Label();
             this.Panel1.SuspendLayout();
             this.P_0.SuspendLayout();
             this.Panel3.SuspendLayout();
@@ -174,7 +169,6 @@ namespace CMFaceplateManager
             this.PV_Panel.SuspendLayout();
             this.Panel6.SuspendLayout();
             this.SP_Panel.SuspendLayout();
-            this.PO2_0.SuspendLayout();
             this.PO1_0.SuspendLayout();
             this.PU1_0.SuspendLayout();
             this.PU2_0.SuspendLayout();
@@ -182,6 +176,7 @@ namespace CMFaceplateManager
             this.Panel8.SuspendLayout();
             this.Panel5.SuspendLayout();
             this.MOS1.SuspendLayout();
+            this.PO2_0.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel1
@@ -494,30 +489,6 @@ namespace CMFaceplateManager
             this.DT_0_U2.TabIndex = 3;
             this.DT_0_U2.Text = "L2";
             // 
-            // PO2_0
-            // 
-            this.PO2_0.BackColor = System.Drawing.Color.White;
-            this.PO2_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PO2_0.Controls.Add(this.SPHH);
-            this.PO2_0.Location = new System.Drawing.Point(35, 0);
-            this.PO2_0.Margin = new System.Windows.Forms.Padding(4);
-            this.PO2_0.Name = "PO2_0";
-            this.PO2_0.Size = new System.Drawing.Size(112, 32);
-            this.PO2_0.TabIndex = 4;
-            // 
-            // SPHH
-            // 
-            this.SPHH.BackColor = System.Drawing.Color.White;
-            this.SPHH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SPHH.Font = new System.Drawing.Font("Arial", 10.5F);
-            this.SPHH.Location = new System.Drawing.Point(0, 0);
-            this.SPHH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.SPHH.Name = "SPHH";
-            this.SPHH.Size = new System.Drawing.Size(108, 28);
-            this.SPHH.TabIndex = 0;
-            this.SPHH.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.SPHH.Click += new System.EventHandler(this.Edit_0_O2_Click);
-            // 
             // PO1_0
             // 
             this.PO1_0.BackColor = System.Drawing.Color.White;
@@ -528,18 +499,6 @@ namespace CMFaceplateManager
             this.PO1_0.Name = "PO1_0";
             this.PO1_0.Size = new System.Drawing.Size(112, 31);
             this.PO1_0.TabIndex = 5;
-            // 
-            // SPH
-            // 
-            this.SPH.BackColor = System.Drawing.Color.White;
-            this.SPH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SPH.Font = new System.Drawing.Font("Arial", 10.5F);
-            this.SPH.Location = new System.Drawing.Point(0, 0);
-            this.SPH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.SPH.Name = "SPH";
-            this.SPH.Size = new System.Drawing.Size(108, 27);
-            this.SPH.TabIndex = 0;
-            this.SPH.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PU1_0
             // 
@@ -552,18 +511,6 @@ namespace CMFaceplateManager
             this.PU1_0.Size = new System.Drawing.Size(112, 32);
             this.PU1_0.TabIndex = 6;
             // 
-            // SPL
-            // 
-            this.SPL.BackColor = System.Drawing.Color.White;
-            this.SPL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SPL.Font = new System.Drawing.Font("Arial", 10.5F);
-            this.SPL.Location = new System.Drawing.Point(0, 0);
-            this.SPL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.SPL.Name = "SPL";
-            this.SPL.Size = new System.Drawing.Size(108, 28);
-            this.SPL.TabIndex = 0;
-            this.SPL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // PU2_0
             // 
             this.PU2_0.BackColor = System.Drawing.Color.White;
@@ -574,18 +521,6 @@ namespace CMFaceplateManager
             this.PU2_0.Name = "PU2_0";
             this.PU2_0.Size = new System.Drawing.Size(112, 31);
             this.PU2_0.TabIndex = 7;
-            // 
-            // SPLL
-            // 
-            this.SPLL.BackColor = System.Drawing.Color.White;
-            this.SPLL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SPLL.Font = new System.Drawing.Font("Arial", 10.5F);
-            this.SPLL.Location = new System.Drawing.Point(0, 0);
-            this.SPLL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.SPLL.Name = "SPLL";
-            this.SPLL.Size = new System.Drawing.Size(108, 27);
-            this.SPLL.TabIndex = 0;
-            this.SPLL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // WAR_0
             // 
@@ -617,6 +552,22 @@ namespace CMFaceplateManager
             this.Panel4.Name = "Panel4";
             this.Panel4.Size = new System.Drawing.Size(139, 303);
             this.Panel4.TabIndex = 3;
+            // 
+            // ProcessBar
+            // 
+            this.ProcessBar.BarColor = System.Drawing.Color.Lime;
+            this.ProcessBar.Location = new System.Drawing.Point(74, 2);
+            this.ProcessBar.Maximum = 100;
+            this.ProcessBar.Minimum = 0;
+            this.ProcessBar.Name = "ProcessBar";
+            this.ProcessBar.Size = new System.Drawing.Size(28, 293);
+            this.ProcessBar.SPH = null;
+            this.ProcessBar.SPHH = null;
+            this.ProcessBar.SPL = null;
+            this.ProcessBar.SPLL = null;
+            this.ProcessBar.TabIndex = 11;
+            this.ProcessBar.Text = "verticalBar1";
+            this.ProcessBar.Value = 20;
             // 
             // P_100
             // 
@@ -877,21 +828,65 @@ namespace CMFaceplateManager
             this.Confirm1.Text = "Confirm";
             this.Confirm1.Click += new System.EventHandler(this.CONF_MOS_M_ButtonClick);
             // 
-            // ProcessBar
+            // PO2_0
             // 
-            this.ProcessBar.BarColor = System.Drawing.Color.Lime;
-            this.ProcessBar.Location = new System.Drawing.Point(74, 2);
-            this.ProcessBar.Maximum = 100;
-            this.ProcessBar.Minimum = 0;
-            this.ProcessBar.Name = "ProcessBar";
-            this.ProcessBar.Size = new System.Drawing.Size(28, 293);
-            this.ProcessBar.SPH = null;
-            this.ProcessBar.SPHH = null;
-            this.ProcessBar.SPL = null;
-            this.ProcessBar.SPLL = null;
-            this.ProcessBar.TabIndex = 11;
-            this.ProcessBar.Text = "verticalBar1";
-            this.ProcessBar.Value = 20;
+            this.PO2_0.BackColor = System.Drawing.Color.White;
+            this.PO2_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PO2_0.Controls.Add(this.SPHH);
+            this.PO2_0.Location = new System.Drawing.Point(35, 0);
+            this.PO2_0.Margin = new System.Windows.Forms.Padding(4);
+            this.PO2_0.Name = "PO2_0";
+            this.PO2_0.Size = new System.Drawing.Size(112, 32);
+            this.PO2_0.TabIndex = 4;
+            // 
+            // SPLL
+            // 
+            this.SPLL.BackColor = System.Drawing.Color.White;
+            this.SPLL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SPLL.Font = new System.Drawing.Font("Arial", 10.5F);
+            this.SPLL.Location = new System.Drawing.Point(0, 0);
+            this.SPLL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SPLL.Name = "SPLL";
+            this.SPLL.Size = new System.Drawing.Size(108, 27);
+            this.SPLL.TabIndex = 0;
+            this.SPLL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // SPL
+            // 
+            this.SPL.BackColor = System.Drawing.Color.White;
+            this.SPL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SPL.Font = new System.Drawing.Font("Arial", 10.5F);
+            this.SPL.Location = new System.Drawing.Point(0, 0);
+            this.SPL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SPL.Name = "SPL";
+            this.SPL.Size = new System.Drawing.Size(108, 28);
+            this.SPL.TabIndex = 0;
+            this.SPL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // SPH
+            // 
+            this.SPH.BackColor = System.Drawing.Color.White;
+            this.SPH.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SPH.Font = new System.Drawing.Font("Arial", 10.5F);
+            this.SPH.Location = new System.Drawing.Point(0, 0);
+            this.SPH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SPH.Name = "SPH";
+            this.SPH.Size = new System.Drawing.Size(108, 27);
+            this.SPH.TabIndex = 0;
+            this.SPH.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // SPHH
+            // 
+            this.SPHH.BackColor = System.Drawing.Color.White;
+            this.SPHH.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SPHH.Font = new System.Drawing.Font("Arial", 10.5F);
+            this.SPHH.Location = new System.Drawing.Point(0, 0);
+            this.SPHH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SPHH.Name = "SPHH";
+            this.SPHH.Size = new System.Drawing.Size(108, 28);
+            this.SPHH.TabIndex = 0;
+            this.SPHH.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SPHH.Click += new System.EventHandler(this.Edit_0_O2_Click);
             // 
             // AnalogFaceplate
             // 
@@ -914,7 +909,6 @@ namespace CMFaceplateManager
             this.PV_Panel.ResumeLayout(false);
             this.Panel6.ResumeLayout(false);
             this.SP_Panel.ResumeLayout(false);
-            this.PO2_0.ResumeLayout(false);
             this.PO1_0.ResumeLayout(false);
             this.PU1_0.ResumeLayout(false);
             this.PU2_0.ResumeLayout(false);
@@ -922,6 +916,7 @@ namespace CMFaceplateManager
             this.Panel8.ResumeLayout(false);
             this.Panel5.ResumeLayout(false);
             this.MOS1.ResumeLayout(false);
+            this.PO2_0.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -931,5 +926,10 @@ namespace CMFaceplateManager
         private System.Windows.Forms.TextBox MOS_PASS;
         private System.Windows.Forms.Button Pin_Button;
         private VerticalBar ProcessBar;
+        private System.Windows.Forms.Panel PO2_0;
+        private System.Windows.Forms.Label SPHH;
+        private System.Windows.Forms.Label SPH;
+        private System.Windows.Forms.Label SPL;
+        private System.Windows.Forms.Label SPLL;
     }
 }
