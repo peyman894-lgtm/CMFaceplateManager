@@ -88,6 +88,8 @@ namespace CMFaceplateManager
                 string description = lookup.Description(TagName);
                 string upperText = lookup.UpperButtonText(TagName);
                 string lowerText = lookup.LowerButtonText(TagName);
+                string upperButtonTag = lookup.UpperButtonTag(TagName);
+                string lowerButtonTag = lookup.LowerButtonTag(TagName);
 
                 PrcTag.Text = string.IsNullOrWhiteSpace(processTag)
                     ? TagName
@@ -104,6 +106,14 @@ namespace CMFaceplateManager
                 CloseButton.Text = string.IsNullOrWhiteSpace(lowerText)
                     ? "Close"
                     : lowerText;
+
+                UpperButtonTagLabel.Text = string.IsNullOrWhiteSpace(upperButtonTag)
+                    ? string.Empty
+                    : upperButtonTag;
+
+                LowerButtonTagLabel.Text = string.IsNullOrWhiteSpace(lowerButtonTag)
+                    ? string.Empty
+                    : lowerButtonTag;
             }
             catch (Exception ex)
             {
@@ -111,6 +121,8 @@ namespace CMFaceplateManager
                 Description.Text = TagName;
                 OpenButton.Text = "Open";
                 CloseButton.Text = "Close";
+                UpperButtonTagLabel.Text = string.Empty;
+                LowerButtonTagLabel.Text = string.Empty;
 
                 System.Diagnostics.Debug.WriteLine(
                     $"[{TagName}] LoadTasterMetadata failed: {ex.Message}");

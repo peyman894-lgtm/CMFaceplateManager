@@ -57,5 +57,16 @@ namespace CMFaceplateManager
             var row = FindRow(prefix);
             return row != null && row.Length > 5 ? row[5].Trim() : null;
         }
+        public string UpperButtonTag(string prefix)
+        {
+            var row = FindRow(prefix);
+            return row != null && row.Length > 6 ? row[6].Trim() : null;
+        }
+
+        public string LowerButtonTag(string prefix)
+        {
+            var row = FindRow(prefix);
+            return row != null && row.Length > 7 ? row[7].Trim() : null;
+        }
     }
 }

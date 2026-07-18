@@ -73,6 +73,8 @@ namespace CMFaceplateManager
             this.MOS_SET1 = new System.Windows.Forms.Button();
             this.MOS_RESET1 = new System.Windows.Forms.Button();
             this.Confirm1 = new System.Windows.Forms.Button();
+            this.UpperButtonTagLabel = new System.Windows.Forms.Label();
+            this.LowerButtonTagLabel = new System.Windows.Forms.Label();
             this.Panel1.SuspendLayout();
             this.P_0.SuspendLayout();
             this.Panel3.SuspendLayout();
@@ -167,17 +169,19 @@ namespace CMFaceplateManager
             // Command_Panel
             // 
             this.Command_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Command_Panel.Controls.Add(this.LowerButtonTagLabel);
+            this.Command_Panel.Controls.Add(this.UpperButtonTagLabel);
             this.Command_Panel.Controls.Add(this.OpenButton);
             this.Command_Panel.Controls.Add(this.CloseButton);
-            this.Command_Panel.Location = new System.Drawing.Point(4, 389);
+            this.Command_Panel.Location = new System.Drawing.Point(4, 333);
             this.Command_Panel.Margin = new System.Windows.Forms.Padding(4);
             this.Command_Panel.Name = "Command_Panel";
-            this.Command_Panel.Size = new System.Drawing.Size(157, 211);
+            this.Command_Panel.Size = new System.Drawing.Size(157, 267);
             this.Command_Panel.TabIndex = 11;
             // 
             // OpenButton
             // 
-            this.OpenButton.Location = new System.Drawing.Point(10, 14);
+            this.OpenButton.Location = new System.Drawing.Point(10, 32);
             this.OpenButton.Margin = new System.Windows.Forms.Padding(4);
             this.OpenButton.Name = "OpenButton";
             this.OpenButton.Size = new System.Drawing.Size(129, 41);
@@ -187,7 +191,7 @@ namespace CMFaceplateManager
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(10, 63);
+            this.CloseButton.Location = new System.Drawing.Point(10, 97);
             this.CloseButton.Margin = new System.Windows.Forms.Padding(4);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(129, 41);
@@ -300,6 +304,24 @@ namespace CMFaceplateManager
             this.Confirm1.TabIndex = 3;
             this.Confirm1.Text = "Confirm";
             // 
+            // UpperButtonTagLabel
+            // 
+            this.UpperButtonTagLabel.AutoSize = true;
+            this.UpperButtonTagLabel.Location = new System.Drawing.Point(4, 12);
+            this.UpperButtonTagLabel.Name = "UpperButtonTagLabel";
+            this.UpperButtonTagLabel.Size = new System.Drawing.Size(141, 16);
+            this.UpperButtonTagLabel.TabIndex = 7;
+            this.UpperButtonTagLabel.Text = "UpperButtonTagLabel";
+            // 
+            // LowerButtonTagLabel
+            // 
+            this.LowerButtonTagLabel.AutoSize = true;
+            this.LowerButtonTagLabel.Location = new System.Drawing.Point(5, 78);
+            this.LowerButtonTagLabel.Name = "LowerButtonTagLabel";
+            this.LowerButtonTagLabel.Size = new System.Drawing.Size(139, 16);
+            this.LowerButtonTagLabel.TabIndex = 8;
+            this.LowerButtonTagLabel.Text = "LowerButtonTagLabel";
+            // 
             // ValveFaceplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -318,6 +340,7 @@ namespace CMFaceplateManager
             this.Panel3.ResumeLayout(false);
             this.Panel3.PerformLayout();
             this.Command_Panel.ResumeLayout(false);
+            this.Command_Panel.PerformLayout();
             this.Panel8.ResumeLayout(false);
             this.MOS1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -330,5 +353,7 @@ namespace CMFaceplateManager
         private System.Windows.Forms.Button OpenButton;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button Confirm;
+        private System.Windows.Forms.Label LowerButtonTagLabel;
+        private System.Windows.Forms.Label UpperButtonTagLabel;
     }
 }
